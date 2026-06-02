@@ -75,7 +75,7 @@ export default function ResumePage({ onBack, onNavigate, isPrintOnlyMode = false
               <a
                 href="/CV-Tzurit-Avraham.pdf"
                 download="CV-Tzurit-Avraham.pdf"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#32404F] hover:bg-[#32404F]/90 text-[#FDFCFA] rounded-full text-xs font-medium tracking-wide transition-all shadow-md cursor-pointer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#32404F] hover:bg-[#32404F]/90 text-[#FDFCFA] rounded-full text-xs font-medium tracking-wide transition-all cursor-pointer"
               >
                 <span>Download CV</span>
                 <Download size={13} />
