@@ -99,9 +99,23 @@ export default function AboutPage({ onBack, onNavigate }: AboutPageProps) {
         </div>
       </main>
       <footer id="Contact" className="h-32 flex items-center justify-end px-12 bg-[#FDFCFA] border-t border-[#858E97]/25">
-        <div className="flex gap-12 text-[12px] uppercase tracking-widest text-[#32404F] opacity-60">
-          <a href="mailto:tzurit88@gmail.com" className="hover:opacity-100 hover:text-[#32404F] transition-all">tzurit88@gmail.com</a>
-          <a href="#" className="hover:opacity-100 hover:text-[#32404F] transition-all">LinkedIn</a>
+        <div className="flex gap-12 text-[12px] uppercase tracking-widest text-[#32404F]">
+          <a
+            href="mailto:tzurit88@gmail.com"
+            className="opacity-60 hover:opacity-100 transition-all duration-300 relative py-1 group block"
+          >
+            <span>tzurit88@gmail.com</span>
+            <span className="absolute bottom-0 left-0 right-0 h-[1.2px] bg-[#32404F] transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100" />
+          </a>
+          <a
+            href="https://linkedin.com/in/tzurit-avraham-886013104"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="opacity-60 hover:opacity-100 transition-all duration-300 relative py-1 group block"
+          >
+            <span>LinkedIn</span>
+            <span className="absolute bottom-0 left-0 right-0 h-[1.2px] bg-[#32404F] transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100" />
+          </a>
         </div>
       </footer>
     </motion.div>
