@@ -107,7 +107,7 @@ export default function SystemOverview({ images, isPressPective, carouselImages 
   );
 
   return (
-    <section className="bg-[#FDFCFA] pb-14">
+    <section className="hidden md:block bg-[#FDFCFA] pb-14">
 
       {/* Header + Toggle — sticky row */}
       <div className="pt-10 pb-6 mb-6">
