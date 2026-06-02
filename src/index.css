@@ -6,6 +6,10 @@
 }
 
 @layer base {
+  html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
   body {
     @apply bg-[#FAFAFA] text-[#1A1A1A] antialiased selection:bg-[#1A1A1A] selection:text-white;
     direction: ltr;
