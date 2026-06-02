@@ -332,7 +332,7 @@ export default function PressPectivePage({ project, onBack, onNavigate }: PressP
         Back
       </motion.button>
 
-      <main className="pt-30 pb-40">
+      <main className="pt-44 pb-40">
         {/* Hero Section */}
         <section className="px-6 md:px-12 mb-20">
           <div className="max-w-4xl mx-auto space-y-8">

@@ -344,7 +344,7 @@ export default function MyzonPage({ project, onBack, onNavigate }: MyzonPageProp
         Back
       </motion.button>
 
-      <main className="pt-32 pb-40">
+      <main className="pt-44 pb-40">
         {/* Project Hero Headings */}
         <section className="px-6 md:px-12 mb-20">
           <div className="max-w-4xl mx-auto space-y-8">
