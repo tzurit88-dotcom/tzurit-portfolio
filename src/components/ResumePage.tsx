@@ -297,7 +297,7 @@ export default function ResumePage({ onBack, onNavigate, isPrintOnlyMode = false
       {!isPrintOnlyMode && (
         <div className="print:hidden">
           <footer id="Contact" className="h-32 flex items-center justify-end px-12 bg-[#fbfafa] border-t border-[#e0e0e0] mt-32">
-            <div className="flex gap-12 text-[10px] uppercase tracking-widest text-[#32404F]">
+            <div className="flex gap-12 text-[12px] uppercase tracking-widest text-[#32404F]">
               <a 
                 href="mailto:tzurit88@gmail.com" 
                 className="opacity-60 hover:opacity-100 transition-all duration-300 relative py-1 group block"

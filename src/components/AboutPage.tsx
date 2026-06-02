@@ -99,7 +99,7 @@ export default function AboutPage({ onBack, onNavigate }: AboutPageProps) {
         </div>
       </main>
       <footer id="Contact" className="h-32 flex items-center justify-end px-12 bg-[#FDFCFA] border-t border-[#858E97]/25">
-        <div className="flex gap-12 text-[10px] uppercase tracking-widest text-[#32404F] opacity-60">
+        <div className="flex gap-12 text-[12px] uppercase tracking-widest text-[#32404F] opacity-60">
           <a href="mailto:tzurit88@gmail.com" className="hover:opacity-100 hover:text-[#32404F] transition-all">tzurit88@gmail.com</a>
           <a href="#" className="hover:opacity-100 hover:text-[#32404F] transition-all">LinkedIn</a>
         </div>
