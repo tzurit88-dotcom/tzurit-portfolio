@@ -41,10 +41,11 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
                   : { x: 38, y: 103, rotate: -2.5, scale: 1.01 }
               }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+
               className={cn(
                 "absolute shadow-2xl rounded-[8px] z-20 object-cover",
-                project.id === '2' ? "w-[22%] aspect-[350/700]" : 
-                project.id === '4' ? "w-[80%] aspect-[1920/1080]" : "w-[80%] aspect-[15/7]"
+                project.id === '2' ? "w-[22%] aspect-[350/700]" :
+                project.id === '4' ? "w-[80%]" : "w-[80%] aspect-[15/7]"
               )}
             />
             <motion.img
@@ -59,10 +60,11 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
                   : { x: -38, y: 26, rotate: 5.5 }
               }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+
               className={cn(
                 "absolute shadow-2xl rounded-[8px] z-10 object-cover",
-                project.id === '2' ? "w-[80%] aspect-[15/7]" : 
-                project.id === '4' ? "w-[80%] aspect-[1920/1080]" : "w-[80%] aspect-[15/7]"
+                project.id === '2' ? "w-[80%] aspect-[15/7]" :
+                project.id === '4' ? "w-[80%]" : "w-[80%] aspect-[15/7]"
               )}
             />
           </div>
@@ -80,10 +82,11 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
                   : { x: 38, y: 103, rotate: -2.5, scale: 1.01 }
               }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+
               className={cn(
                 "absolute shadow-2xl rounded-[8px] z-20 object-cover",
-                project.id === '2' ? "w-[22%] aspect-[350/700]" : 
-                project.id === '4' ? "w-[80%] aspect-[1920/1080]" : "w-[80%] aspect-[15/7]"
+                project.id === '2' ? "w-[22%] aspect-[350/700]" :
+                project.id === '4' ? "w-[80%]" : "w-[80%] aspect-[15/7]"
               )}
             />
             <motion.img
@@ -98,10 +101,11 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
                   : { x: -38, y: 26, rotate: 5.5 }
               }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+
               className={cn(
                 "absolute shadow-2xl rounded-[8px] z-10 object-cover",
-                project.id === '2' ? "w-[80%] aspect-[15/7]" : 
-                project.id === '4' ? "w-[80%] aspect-[1920/1080]" : "w-[80%] aspect-[15/7]"
+                project.id === '2' ? "w-[80%] aspect-[15/7]" :
+                project.id === '4' ? "w-[80%]" : "w-[80%] aspect-[15/7]"
               )}
             />
           </div>
@@ -116,10 +120,10 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
       </div>
       
       <div className="p-8 flex flex-col gap-4 min-h-[175px] bg-[#FDFCFA] border-t border-[#858E97]/25 transition-colors duration-300">
-        <h2 className="text-xl md:text-[24px] font-semibold tracking-tight text-[#32404F] leading-snug">
+        <h2 className="text-2xl md:text-[28px] font-semibold tracking-tight text-[#32404F] leading-snug">
           {project.title}
         </h2>
-        <p className="text-[15px] md:text-[15.5px] leading-relaxed text-[#858E97] font-light line-clamp-2">
+        <p className="text-[16px] md:text-[17px] leading-relaxed text-[#858E97] line-clamp-2" style={{ fontWeight: 350 }}>
           {project.description}
         </p>
       </div>

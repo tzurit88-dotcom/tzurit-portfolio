@@ -258,7 +258,7 @@ export default function Hero() {
   return (
     <motion.section 
       id="hero" 
-      className="relative min-h-[68vh] md:min-h-[560px] flex flex-col justify-center pt-40 pb-6 px-12 border-b border-[#858E97]/30 bg-[#FDFCFA] overflow-hidden"
+      className="relative min-h-[78vh] md:min-h-[680px] flex flex-col justify-center pt-40 pb-6 px-12 bg-[#FDFCFA] overflow-hidden border-b border-[#858E97]/30"
     >
       {/* 2D Geometric Mouse-Interactive Graph Grid */}
       <InteractiveGrid hoverType={hoverType} />
@@ -270,7 +270,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-3xl md:text-5xl font-light leading-tight tracking-tight max-w-4xl text-[#32404F]"
+          className="text-4xl md:text-6xl font-light leading-tight tracking-tight max-w-4xl text-[#32404F]"
         >
           I solve problems through <span className="font-semibold text-[#32404F]">intentional</span> design and systematic thinking - using AI for faster, elevated results.
         </motion.h1>
@@ -293,7 +293,7 @@ export default function Hero() {
             whileHover="hover"
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-[#32404F] hover:bg-[#32404F]/90 text-[#FDFCFA] rounded-full text-sm font-medium shadow-md group cursor-pointer relative overflow-hidden transition-all duration-300"
+            className="inline-flex items-center gap-2.5 px-7 py-4 bg-[#32404F] hover:bg-[#32404F]/90 text-[#FDFCFA] rounded-full text-[15px] font-medium shadow-md group cursor-pointer relative overflow-hidden transition-all duration-300"
           >
             <span className="relative z-10 font-medium tracking-wide">
               Explore my work
@@ -319,7 +319,7 @@ export default function Hero() {
             whileHover="hover"
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-[#FDFCFA] hover:bg-[#858E97]/10 text-[#32404F] border border-[#858E97]/40 rounded-full text-sm font-medium shadow-sm group cursor-pointer relative overflow-hidden transition-all duration-300"
+            className="inline-flex items-center gap-2.5 px-7 py-4 bg-[#FDFCFA] hover:bg-[#858E97]/10 text-[#32404F] border border-[#858E97]/60 rounded-full text-[15px] font-medium shadow-sm group cursor-pointer relative overflow-hidden transition-all duration-300"
           >
             <motion.div
               variants={{

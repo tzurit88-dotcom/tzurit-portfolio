@@ -1,270 +1,275 @@
-import React, { useState } from 'react';
+﻿import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Maximize2, X, ChevronRight, ChevronLeft, Monitor, Smartphone } from 'lucide-react';
+import { CarouselImages } from '../types';
 
 interface SystemOverviewProps {
   images: string[];
   isPressPective?: boolean;
+  carouselImages?: CarouselImages;
 }
 
 type ViewMode = 'lecturer' | 'student-desktop' | 'student-mobile';
 
-export default function SystemOverview({ images, isPressPective }: SystemOverviewProps) {
+// Arrow button half-height (h-10 = 40px → half = 20px)
+const ARROW_HALF = 20;
+
+export default function SystemOverview({ images, isPressPective, carouselImages }: SystemOverviewProps) {
   const [viewMode, setViewMode] = useState<ViewMode>(isPressPective ? 'student-desktop' : 'lecturer');
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0); // 1 for next, -1 for prev
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedIsMobile, setSelectedIsMobile] = useState(false);
 
-  // Group images by mode (Mapping based on gallery structure)
+  // Measured from the image area container
+  const [arrowMarginTop, setArrowMarginTop] = useState(0);
+  const [standardHeight, setStandardHeight] = useState(0); // height of the 15:7 frame
+  const [mobileImgWidth, setMobileImgWidth] = useState(240);
+
+  const imageAreaRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+
+  const isMobile = viewMode === 'student-mobile';
+
+  // Recalculate on resize or mode change
+  const recalc = () => {
+    if (!imageAreaRef.current) return;
+    const w = imageAreaRef.current.offsetWidth;
+    // Standard desktop height (15:7 ratio)
+    const h = w * (7 / 15);
+    setStandardHeight(h);
+    const mobileW = Math.round(h / 2);
+    const headerH = headerRef.current?.offsetHeight ?? 0;
+    // Position arrow at vertical center of the standard image area
+    const arrowMT = isMobile
+      ? Math.max(0, headerH + mobileW - ARROW_HALF)
+      : Math.max(0, headerH + h / 2 - ARROW_HALF);
+    setArrowMarginTop(arrowMT);
+    setMobileImgWidth(mobileW);
+  };
+
+  useEffect(() => {
+    recalc();
+    window.addEventListener('resize', recalc);
+    return () => window.removeEventListener('resize', recalc);
+  }, [viewMode]);
+
   const modeImages: Record<ViewMode, string[]> = {
-    lecturer: isPressPective 
-      ? [images[5]] // Teacher Panel
-      : [
-          images[1] || images[0],
-          images[2] || images[0],
-          images[3] || images[0]
-        ],
-    'student-desktop': isPressPective
-      ? [
-          images[0], // Hero
-          images[1], // Metaphor
-          images[2], // Notepad
-          images[3], // Room
-          images[4], // Meter
-        ]
-      : [
-          images[0] || images[1],
-          images[3] || images[1]
-        ],
-    'student-mobile': isPressPective
-      ? [images[0]] // Just a fallback for mobile in presspective context
-      : [
-          images[4] || images[0],
-          images[5] || images[0],
-          images[6] || images[0],
-          images[7] || images[0]
-        ]
+    lecturer: carouselImages
+      ? carouselImages.lecturer
+      : isPressPective
+        ? [images[5]]
+        : [images[1] || images[0], images[2] || images[0], images[3] || images[0]],
+    'student-desktop': carouselImages
+      ? carouselImages.studentDesktop
+      : isPressPective
+        ? [images[0], images[1], images[2], images[3], images[4]]
+        : [images[0] || images[1], images[3] || images[1]],
+    'student-mobile': carouselImages
+      ? carouselImages.studentMobile
+      : isPressPective
+        ? [images[0]]
+        : [images[4] || images[0], images[5] || images[0], images[6] || images[0], images[7] || images[0]]
   };
 
   const displayImages = images.length > 0 ? modeImages[viewMode] : [
     'https://images.unsplash.com/photo-1551288049-bbbda5366391?auto=format&fit=crop&q=80&w=1500&h=700',
-    'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1500&h=700',
-    'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=1500&h=700',
   ];
+
+  const modeTitles: Record<ViewMode, string[]> = {
+    lecturer: carouselImages?.titles?.lecturer || [],
+    'student-desktop': carouselImages?.titles?.studentDesktop || [],
+    'student-mobile': carouselImages?.titles?.studentMobile || [],
+  };
+  const currentTitle = modeTitles[viewMode][currentIndex] || '';
 
   const handleModeChange = (mode: ViewMode) => {
     setViewMode(mode);
     setCurrentIndex(0);
-    setDirection(0);
   };
 
-  const nextSlide = (e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    setDirection(1); // Right arrow -> Current card slides RIGHT
-    setCurrentIndex((prev) => (prev + 1) % displayImages.length);
-  };
+  const nextSlide = (e?: React.MouseEvent) => { e?.stopPropagation(); setCurrentIndex((p) => (p + 1) % displayImages.length); };
+  const prevSlide = (e?: React.MouseEvent) => { e?.stopPropagation(); setCurrentIndex((p) => (p - 1 + displayImages.length) % displayImages.length); };
 
-  const prevSlide = (e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    setDirection(-1); // Left arrow -> Current card slides LEFT
-    setCurrentIndex((prev) => (prev - 1 + displayImages.length) % displayImages.length);
-  };
+  const openLightbox = (img: string) => { setSelectedImage(img); setSelectedIsMobile(isMobile); };
 
-  const variants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? -1000 : 1000,
-      opacity: 0,
-      scale: 0.95,
-      filter: 'blur(10px)',
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-      scale: 1,
-      filter: 'blur(0px)',
-    },
-    exit: (direction: number) => ({
-      x: direction * 1000,
-      opacity: 0,
-      scale: 0.9,
-      filter: 'blur(5px)',
-      zIndex: 50
-    })
-  };
+  // Subtle outside border
+  const outerBorderShadow = '0 0 0 1.5px rgba(0,0,0,0.10)';
+
+  const ArrowButton = ({ onClick, children }: { onClick: (e: React.MouseEvent) => void; children: React.ReactNode }) => (
+    <button
+      type="button"
+      onClick={onClick}
+      className="w-10 h-10 rounded-full bg-[#FDFCFA] border-2 border-black/10 flex items-center justify-center
+                 hover:scale-110 active:scale-95 transition-all text-[#32404F]/40 hover:text-[#32404F] z-20 shrink-0"
+    >
+      {children}
+    </button>
+  );
 
   return (
-    <section className="overflow-hidden bg-white border-y border-black/[0.03]">
-      <div className="max-w-6xl mx-auto px-6 md:px-12 text-center mb-16">
-        <div className="space-y-4">
-          <h2 className="text-xs uppercase tracking-[0.4em] font-bold opacity-30 mb-8">System Overview</h2>
-          <h3 className="text-3xl md:text-6xl font-light tracking-tight text-black/90">A multi-surface ecosystem.</h3>
-        </div>
-      </div>
+    <section className="bg-[#FDFCFA] pb-14">
 
-      <div className="max-w-6xl mx-auto px-6 md:px-12 text-center mb-2">
-        <div className="inline-flex items-center gap-1.5 p-1.5 bg-gray-50/50 border border-black/5 rounded-full overflow-hidden shadow-sm backdrop-blur-sm">
-          {(isPressPective 
-            ? [
-                { value: 'student-desktop', label: 'Student Interface' },
-                { value: 'lecturer', label: 'Teacher Interface' }
-              ]
-            : [
-                { value: 'lecturer', label: 'Lecturer' },
-                { value: 'student-desktop', label: 'Student Desktop' },
-                { value: 'student-mobile', label: 'Student Mobile' }
-              ]
-          ).map((mode) => (
-            <button
-              key={mode.value}
-              onClick={() => handleModeChange(mode.value as ViewMode)}
-              className={`
-                relative px-6 py-2.5 rounded-full text-[10px] uppercase tracking-widest font-bold transition-all flex items-center gap-2
-                ${viewMode === mode.value ? 'text-white' : 'text-black/40 hover:text-black/60'}
-              `}
-            >
-              {viewMode === mode.value && (
-                <motion.div
-                  layoutId="active-pill-system"
-                  className="absolute inset-0 bg-indigo-600 rounded-full z-0"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                />
-              )}
-              {!isPressPective && (mode.value === 'student-mobile' ? <Smartphone size={12} className="relative z-10" /> : <Monitor size={12} className="relative z-10" />)}
-              <span className="relative z-10">
+      {/* Header + Toggle — sticky row */}
+      <div className="pt-10 pb-6 mb-6">
+        <div className="max-w-6xl mx-auto px-4 md:px-6">
+          <div className="flex items-center gap-3">
+            <div className="w-10 shrink-0" />
+            <div className="flex-1 min-w-0 flex items-center justify-between">
+              <h2 className="text-3xl md:text-5xl font-light tracking-tight text-[#32404F]/90">System Overview</h2>
+              <div className="inline-flex items-center gap-1 p-1 bg-gray-100/80 border border-[#BEC2C6]/40 rounded-full">
+            {(isPressPective
+              ? [
+                  { value: 'student-desktop', label: 'Student Interface' },
+                  { value: 'lecturer', label: 'Teacher Interface' }
+                ]
+              : [
+                  { value: 'lecturer', label: 'Lecturer' },
+                  { value: 'student-desktop', label: 'Student Desktop' },
+                  { value: 'student-mobile', label: 'Student Mobile' }
+                ]
+            ).map((mode) => (
+              <button
+                key={mode.value}
+                onClick={() => handleModeChange(mode.value as ViewMode)}
+                className={`
+                  px-5 py-2 rounded-full text-[10px] uppercase tracking-widest font-bold
+                  flex items-center gap-1.5 transition-colors duration-200
+                  ${viewMode === mode.value
+                    ? 'bg-[#32404F] text-[#FDFCFA]'
+                    : 'text-[#32404F]/40 hover:text-[#32404F]/60 bg-transparent'}
+                `}
+              >
+                {!isPressPective && (mode.value === 'student-mobile' ? <Smartphone size={11} /> : <Monitor size={11} />)}
                 {mode.label}
-              </span>
-            </button>
-          ))}
+              </button>
+            ))}
+              </div>
+            </div>
+            <div className="w-10 shrink-0" />
+          </div>
         </div>
       </div>
 
-      <div className="relative h-[400px] md:h-[600px] lg:h-[700px] max-w-7xl mx-auto flex items-center justify-center px-4">
-        {/* Navigation Controls */}
-        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 md:px-12 z-50 pointer-events-none">
-          <button 
-            type="button"
-            onClick={prevSlide}
-            className="w-14 h-14 rounded-full bg-white/90 backdrop-blur-md border border-black/5 flex items-center justify-center shadow-lg pointer-events-auto hover:scale-110 active:scale-95 transition-all text-black/40 hover:text-indigo-600 z-[100]"
-          >
-            <ChevronLeft size={24} />
-          </button>
-          <button 
-            type="button"
-            onClick={nextSlide}
-            className="w-14 h-14 rounded-full bg-white/90 backdrop-blur-md border border-black/5 flex items-center justify-center shadow-lg pointer-events-auto hover:scale-110 active:scale-95 transition-all text-black/40 hover:text-indigo-600 z-[100]"
-          >
-            <ChevronRight size={24} />
-          </button>
-        </div>
+      {/* Carousel */}
+      <div className="max-w-6xl mx-auto px-4 md:px-6">
+        <div className="flex items-start gap-3">
 
-        {/* The Stack Container */}
-        <div className="relative w-full max-w-5xl aspect-[15/7]">
-          {/* Background Cards (Visual Stack) */}
-          <div className="absolute inset-0">
-             {[2, 1].map((offset) => {
-                const index = (currentIndex + offset) % displayImages.length;
-                return (
+          <div style={{ marginTop: arrowMarginTop }}><ArrowButton onClick={prevSlide}><ChevronLeft size={20} /></ArrowButton></div>
+
+          {/* Frame */}
+          <div ref={imageAreaRef} className="flex-1 min-w-0 bg-[#FDFCFA] rounded-2xl">
+
+            {/* Title header */}
+            <div ref={headerRef} className="px-5 py-3 flex items-center justify-between">
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={`${viewMode}-${currentIndex}-title`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.18 }}
+                  className="text-[14px] font-medium text-[#32404F]"
+                >
+                  {currentTitle || ' '}
+                </motion.p>
+              </AnimatePresence>
+              <span className="text-[11px] text-[#32404F]/25 font-medium shrink-0 ml-4">
+                {currentIndex + 1} / {displayImages.length}
+              </span>
+            </div>
+
+            {isMobile ? (
+              /* ── MOBILE ── */
+              <div className="flex justify-center py-3 bg-[#FDFCFA]">
+                <AnimatePresence mode="wait">
                   <motion.div
-                    key={`bg-${viewMode}-${index}-${offset}`}
-                    initial={false}
-                    animate={{
-                      scale: 1 - (offset * 0.05),
-                      y: offset * 25,
-                      opacity: 1 - (offset * 0.4),
-                      rotate: offset * 0.5,
-                    }}
-                    transition={{ 
-                      duration: 0.8, 
-                      ease: [0.16, 1, 0.3, 1] 
-                    }}
-                    className="absolute inset-0 pointer-events-none"
-                    style={{ zIndex: 10 - offset }}
+                    key={`${viewMode}-${currentIndex}`}
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="relative cursor-pointer group"
+                    style={{ width: `${mobileImgWidth}px` }}
+                    onClick={() => openLightbox(displayImages[currentIndex])}
                   >
-                    <div className="w-full h-full bg-white rounded-xl md:rounded-[2.5rem] shadow-xl border border-black/[0.03] overflow-hidden grayscale-[30%] opacity-80">
-                      <img src={displayImages[index]} alt="" className="w-full h-full object-cover" />
+                    <img
+                      src={displayImages[currentIndex]}
+                      alt={`Screen ${currentIndex + 1}`}
+                      className="w-full h-auto rounded-xl border border-[#BEC2C6]/65"
+                    />
+                    <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-[#FDFCFA]/90 shadow-md
+                                    flex items-center justify-center text-[#32404F]/60
+                                    opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                      <Maximize2 size={15} />
                     </div>
                   </motion.div>
-                );
-             })}
+                </AnimatePresence>
+              </div>
+            ) : (
+              /* ── DESKTOP ── */
+              <div className="p-3">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={`${viewMode}-${currentIndex}`}
+                    initial={{ opacity: 0, scale: 0.985 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.985 }}
+                    transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="relative cursor-pointer group"
+                    onClick={() => openLightbox(displayImages[currentIndex])}
+                  >
+                    {/* Ring border at fixed 15:7 — z-0 so the in-flow image at z-[1]
+                        covers it where the image overflows past the frame bottom */}
+                    <div className="absolute inset-x-0 top-0 aspect-[15/7] rounded-xl pointer-events-none z-0 ring-1 ring-[#BEC2C6]/65" />
+                    {/* Image in-flow — pushes all content below, z-[1] to cover ring at overflow edge */}
+                    <img
+                      src={displayImages[currentIndex]}
+                      alt={`Screen ${currentIndex + 1}`}
+                      className="relative w-full h-auto block rounded-xl z-[1]"
+                    />
+                    <div
+                      className="absolute top-3 right-3 w-8 h-8 rounded-full bg-[#FDFCFA]/90 shadow-md
+                                  flex items-center justify-center text-[#32404F]/60
+                                  opacity-0 group-hover:opacity-100 transition-opacity z-[2]"
+                      onClick={(e) => { e.stopPropagation(); openLightbox(displayImages[currentIndex]); }}
+                    >
+                      <Maximize2 size={15} />
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            )}
           </div>
 
-          {/* Top Card Navigation (AnimatePresence) */}
-          <div className="absolute inset-0">
-            <AnimatePresence initial={false} custom={direction}>
-              <motion.div
-                key={`${viewMode}-${currentIndex}`}
-                custom={direction}
-                variants={variants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{ 
-                  x: { type: "spring", stiffness: 200, damping: 24, mass: 0.8 },
-                  opacity: { duration: 0.3 },
-                  filter: { duration: 0.3 }
-                }}
-                className="absolute inset-0 z-20 cursor-pointer group"
-                onClick={() => setSelectedImage(displayImages[currentIndex])}
-              >
-                <div className="relative w-full h-full bg-white rounded-xl md:rounded-[2.5rem] shadow-[0_50px_120px_-30px_rgba(0,0,0,0.2)] border border-black/5 overflow-hidden">
-                  <img 
-                    src={displayImages[currentIndex]} 
-                    alt={`System Screen ${currentIndex + 1}`}
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.02]"
-                  />
-                  
-                  {/* Actions for top card */}
-                  <motion.button
-                    type="button"
-                    whileHover={{ scale: 1.1, backgroundColor: '#f5f3ff' }}
-                    whileTap={{ scale: 0.9 }}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setSelectedImage(displayImages[currentIndex]);
-                    }}
-                    className="absolute top-8 right-8 w-14 h-14 rounded-full bg-white/95 backdrop-blur-md shadow-2xl flex items-center justify-center text-indigo-600 z-30 opacity-0 group-hover:opacity-100 transition-opacity"
-                  >
-                    <Maximize2 size={24} />
-                  </motion.button>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+          <div style={{ marginTop: arrowMarginTop }}><ArrowButton onClick={nextSlide}><ChevronRight size={20} /></ArrowButton></div>
         </div>
       </div>
 
-      {/* Progress Dots */}
-      <div className="flex justify-center gap-3 mt-16 md:mt-24">
+      {/* Progress dots */}
+      <div className="flex justify-center gap-2 mt-6">
         {displayImages.map((_, i) => (
-          <button 
+          <button
             key={i}
             type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              setCurrentIndex(i);
-            }}
-            className={`h-1.5 transition-all duration-500 rounded-full ${i === currentIndex ? 'w-8 bg-indigo-500' : 'w-2 bg-black/10'}`}
+            onClick={() => setCurrentIndex(i)}
+            className={`h-1.5 transition-all duration-300 rounded-full ${
+              i === currentIndex ? 'w-7 bg-[#32404F]/60' : 'w-2 bg-[#BEC2C6]/30'
+            }`}
           />
         ))}
       </div>
-      
-      <div className="max-w-lg mx-auto px-6 text-center mt-12 md:mt-16 space-y-4">
-        <p className="text-[10px] tracking-[0.3em] font-bold uppercase opacity-30">
-          Click the stack to flip or expand the view
-        </p>
-      </div>
 
-      {/* Lightbox Modal */}
+      {/* Lightbox */}
       <AnimatePresence>
         {selectedImage && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12 lg:p-24 bg-black/95 backdrop-blur-2xl"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-6 md:p-16 bg-black/95 backdrop-blur-2xl"
             onClick={() => setSelectedImage(null)}
           >
-            <button 
+            <button
               type="button"
               className="absolute top-8 right-8 text-white/40 hover:text-white transition-colors z-[110]"
               onClick={() => setSelectedImage(null)}
@@ -272,17 +277,21 @@ export default function SystemOverview({ images, isPressPective }: SystemOvervie
               <X size={40} />
             </button>
             <motion.div
-              initial={{ scale: 0.9, opacity: 0, y: 40 }}
+              initial={{ scale: 0.92, opacity: 0, y: 30 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 40 }}
-              transition={{ type: "spring", stiffness: 260, damping: 20 }}
-              className="relative w-full max-w-7xl aspect-[15/7] bg-white rounded-2xl md:rounded-[3rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.5)] border border-white/10"
+              exit={{ scale: 0.92, opacity: 0, y: 30 }}
+              transition={{ type: 'spring', stiffness: 260, damping: 22 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <img 
-                src={selectedImage} 
+              <img
+                src={selectedImage}
                 alt="Full View"
-                className="w-full h-full object-cover"
+                className="rounded-2xl"
+                style={
+                  selectedIsMobile
+                    ? { maxHeight: '85vh', width: 'auto' }
+                    : { maxWidth: '88vw', maxHeight: '85vh', width: 'auto', height: 'auto' }
+                }
               />
             </motion.div>
           </motion.div>
@@ -291,3 +300,4 @@ export default function SystemOverview({ images, isPressPective }: SystemOvervie
     </section>
   );
 }
+

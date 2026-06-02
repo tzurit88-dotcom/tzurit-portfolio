@@ -95,33 +95,37 @@ export default function App() {
   if (currentView === 'project-page' && pageProject) {
     if (pageProject.id === '1') {
       return (
-        <MindEdPage 
-          project={pageProject} 
-          onBack={() => setCurrentView('home')} 
+        <MindEdPage
+          project={pageProject}
+          onBack={() => handleNavigation('home', 'Projects')}
+          onNavigate={handleNavigation}
         />
       );
     }
     if (pageProject.id === '2') {
       return (
-        <GusPage 
-          project={pageProject} 
-          onBack={() => setCurrentView('home')} 
+        <GusPage
+          project={pageProject}
+          onBack={() => handleNavigation('home', 'Projects')}
+          onNavigate={handleNavigation}
         />
       );
     }
     if (pageProject.id === '3') {
       return (
-        <PressPectivePage 
-          project={pageProject} 
-          onBack={() => setCurrentView('home')} 
+        <PressPectivePage
+          project={pageProject}
+          onBack={() => handleNavigation('home', 'Projects')}
+          onNavigate={handleNavigation}
         />
       );
     }
     if (pageProject.id === '4') {
       return (
-        <MyzonPage 
-          project={pageProject} 
-          onBack={() => setCurrentView('home')} 
+        <MyzonPage
+          project={pageProject}
+          onBack={() => handleNavigation('home', 'Projects')}
+          onNavigate={handleNavigation}
         />
       );
     }
@@ -138,7 +142,7 @@ export default function App() {
         <Hero />
 
         {/* Projects Grid */}
-        <section id="Projects" className="px-6 sm:px-12 md:px-24 lg:px-36 xl:px-44 pt-10 pb-20 md:pt-14 md:pb-28 border-b border-[#858E97]/25 bg-[#FDFCFA]">
+        <section id="Projects" className="px-6 sm:px-12 md:px-24 lg:px-36 xl:px-44 pt-10 pb-20 md:pt-14 md:pb-28 bg-[#FDFCFA] border-b border-[#858E97]/25">
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
             {PROJECTS.map((project) => (
               <ProjectCard 
@@ -152,7 +156,7 @@ export default function App() {
 
         {/* Simple Footer */}
         <footer id="Contact" className="h-32 flex items-center justify-end px-12 bg-[#FDFCFA] border-t border-[#858E97]/25">
-          <div className="flex gap-12 text-[10px] uppercase tracking-widest text-[#32404F]">
+          <div className="flex gap-12 text-[11.5px] uppercase tracking-widest text-[#32404F]">
             <a 
               href="mailto:tzurit88@gmail.com" 
               className="opacity-60 hover:opacity-100 transition-all duration-300 relative py-1 group block"

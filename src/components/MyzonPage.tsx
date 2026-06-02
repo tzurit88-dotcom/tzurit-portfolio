@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  ArrowLeft, 
-  Maximize2, 
+import {
+  ArrowLeft,
+  Maximize2,
   X,
   ChevronLeft,
   ChevronRight,
@@ -10,6 +10,7 @@ import {
   ArrowUp
 } from 'lucide-react';
 import { Project } from '../types';
+import Header from './Header';
 
 // Simple IndexedDB Cache for user-uploaded custom media to persist between reloads
 const DB_NAME = 'myzon-user-media';
@@ -56,10 +57,33 @@ function getMedia(key: string): Promise<Blob | null> {
 interface MyzonPageProps {
   project: Project;
   onBack: () => void;
+  onNavigate: (view: 'home' | 'about' | 'resume', targetId?: string) => void;
 }
 
-export default function MyzonPage({ project, onBack }: MyzonPageProps) {
+export default function MyzonPage({ project, onBack, onNavigate }: MyzonPageProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [headerVisible, setHeaderVisible] = useState(true);
+  const lastScrollY = useRef(0);
+  const showTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+        if (showTimeout.current) clearTimeout(showTimeout.current);
+        setHeaderVisible(false);
+      } else if (currentScrollY < lastScrollY.current) {
+        if (showTimeout.current) clearTimeout(showTimeout.current);
+        showTimeout.current = setTimeout(() => setHeaderVisible(true), 250);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (showTimeout.current) clearTimeout(showTimeout.current);
+    };
+  }, []);
   const [imageError, setImageError] = useState(false);
   const [systemImageError, setSystemImageError] = useState(false);
   const [carouselIndex, setCarouselIndex] = useState(0);
@@ -130,7 +154,7 @@ export default function MyzonPage({ project, onBack }: MyzonPageProps) {
       render: () => (
         <div className="w-full h-full relative bg-[#F6F4F7] p-2 sm:p-3 flex flex-col justify-start select-none font-sans overflow-visible rounded-2xl">
           {/* Main Simulated Browser UI Frame - displaying the high fidelity dashboard visual representation */}
-          <div className="w-full bg-white rounded-t-xl border border-black/[0.04] shadow-[0_15px_30px_rgba(0,0,0,0.03)] flex flex-col h-[70%] select-none relative overflow-hidden">
+          <div className="w-full bg-[#FDFCFA] rounded-t-xl border border-[#BEC2C6]/30 shadow-[0_15px_30px_rgba(0,0,0,0.03)] flex flex-col h-[70%] select-none relative overflow-hidden">
             <img 
               src={customImages[0] || project.galleryImages?.[1] || project.galleryImages?.[0] || project.imageUrl} 
               alt="Myzon Dashboard Presentation"
@@ -141,12 +165,12 @@ export default function MyzonPage({ project, onBack }: MyzonPageProps) {
 
           {/* Floating Products Panel! Overflows beyond the bottom boundary box and floats elegantly */}
           <div 
-            className="absolute bottom-1 sm:bottom-2 left-4 right-4 z-40 bg-white rounded-xl shadow-[0_12px_32px_rgba(45,15,63,0.14)] border border-neutral-100 p-2 ml-1 sm:ml-2 mr-1 sm:mr-2 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(45,15,63,0.22)] transition-all duration-300 pointer-events-auto"
+            className="absolute bottom-1 sm:bottom-2 left-4 right-4 z-40 bg-[#FDFCFA] rounded-xl shadow-[0_12px_32px_rgba(45,15,63,0.14)] border border-neutral-100 p-2 ml-1 sm:ml-2 mr-1 sm:mr-2 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(45,15,63,0.22)] transition-all duration-300 pointer-events-auto"
           >
             {/* Table top area */}
             <div className="flex flex-col gap-1.5 mb-2">
               <div className="flex items-center gap-1">
-                <h4 className="text-[10px] sm:text-[11px] font-bold tracking-tight text-neutral-800">Products</h4>
+                <h4 className="text-[10px] sm:text-[11px] font-bold tracking-tight text-[#32404F]">Products</h4>
                 <span className="bg-purple-100 text-purple-700 px-1 py-0.2 rounded text-[7px] font-extrabold">24</span>
               </div>
               <p className="text-[7.5px] text-neutral-400 -mt-2 leading-tight">Choose a product from the list below for in-depth insights and customized content generation.</p>
@@ -159,7 +183,7 @@ export default function MyzonPage({ project, onBack }: MyzonPageProps) {
                     type="text" 
                     placeholder="ASIN / product name" 
                     disabled
-                    className="w-full bg-neutral-50 text-[7px] text-neutral-500 placeholder:text-neutral-300 pl-5 pr-1 py-1 rounded border border-neutral-200 outline-none"
+                    className="w-full bg-[#E5E6E6]/40 text-[7px] text-neutral-500 placeholder:text-neutral-300 pl-5 pr-1 py-1 rounded border border-neutral-200 outline-none"
                   />
                   <div className="absolute left-1.5 top-1.5 text-neutral-300">
                     <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
@@ -168,7 +192,7 @@ export default function MyzonPage({ project, onBack }: MyzonPageProps) {
 
                 {/* Filters */}
                 {['Collection', 'Campaign status', 'Amazon rating', 'ACoS trend'].map((filter) => (
-                  <div key={filter} className="text-[7px] font-medium bg-neutral-50 px-1.5 py-1 border border-neutral-200 rounded text-neutral-500 flex items-center gap-0.5">
+                  <div key={filter} className="text-[7px] font-medium bg-[#E5E6E6]/40 px-1.5 py-1 border border-neutral-200 rounded text-neutral-500 flex items-center gap-0.5">
                     <span>{filter}</span>
                     <span className="text-[5.5px] opacity-60">▼</span>
                   </div>
@@ -208,10 +232,10 @@ export default function MyzonPage({ project, onBack }: MyzonPageProps) {
                   ].map((row, index) => (
                     <tr 
                       key={index} 
-                      className={`text-[7px] transition-colors border-b border-neutral-100/10 ${row.active ? 'bg-purple-50/40 text-purple-900 font-semibold border-y border-purple-100/50' : 'text-neutral-700 hover:bg-neutral-50/50'}`}
+                      className={`text-[7px] transition-colors border-b border-neutral-100/10 ${row.active ? 'bg-purple-50/40 text-purple-900 font-semibold border-y border-purple-100/50' : 'text-neutral-700 hover:bg-[#E5E6E6]/40'}`}
                     >
                       <td className="py-1.5 pl-1 font-medium flex items-center gap-1">
-                        <div className={`w-3.5 h-3.5 rounded shadow-sm border border-neutral-200 flex items-center justify-center font-bold text-[5.5px] shrink-0 ${row.active ? 'bg-purple-100 text-purple-700' : 'bg-neutral-100 text-neutral-500'}`}>
+                        <div className={`w-3.5 h-3.5 rounded shadow-sm border border-neutral-200 flex items-center justify-center font-bold text-[5.5px] shrink-0 ${row.active ? 'bg-purple-100 text-purple-700' : 'bg-[#E5E6E6] text-neutral-500'}`}>
                           {row.name[0]}
                         </div>
                         <span className="truncate max-w-[120px]">{row.name}</span>
@@ -234,7 +258,7 @@ export default function MyzonPage({ project, onBack }: MyzonPageProps) {
                             </button>
                             {/* White cursor hover pointer replicating exact action shot */}
                             <div className="absolute right-[-4px] bottom-[-6px] pointer-events-none z-50">
-                              <svg className="w-3.5 h-3.5 text-black filter drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
+                              <svg className="w-3.5 h-3.5 text-[#32404F] filter drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
                                 <path stroke="white" strokeWidth="0.5" d="M4.5 1.5l15 15-4.5.8L19.5 24l-3 1.5-4.5-6.7-3.8 3.8z"/>
                               </svg>
                             </div>
@@ -307,24 +331,20 @@ export default function MyzonPage({ project, onBack }: MyzonPageProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen bg-white text-[#1A1A1A] font-sans selection:bg-neutral-150"
+      className="min-h-screen bg-[#FDFCFA] text-[#32404F] font-sans selection:bg-neutral-150"
     >
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 h-20 flex items-center px-6 md:px-12 bg-white/80 backdrop-blur-md z-50 justify-between border-b border-[#EAE6DF]/10">
-        <button 
-          onClick={onBack}
-          className="group flex items-center gap-2 text-[10px] uppercase tracking-widest hover:opacity-100 opacity-60 transition-all font-bold"
-        >
-          <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
-          Back
-        </button>
-        <div className="text-[10px] uppercase tracking-[0.4em] font-bold opacity-30 hidden md:block">
-          Myzon — Case Study
-        </div>
-        <div className="w-10 h-10" />
-      </header>
+      <Header currentView="project-page" onNavigate={onNavigate} />
+      <motion.button
+        onClick={onBack}
+        animate={{ top: headerVisible ? 106 : 20 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className="fixed left-6 md:left-12 z-40 group flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#32404F] opacity-50 hover:opacity-100 transition-opacity bg-[#FDFCFA]/75 backdrop-blur-sm rounded-lg px-3 py-2"
+      >
+        <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform" />
+        Back
+      </motion.button>
 
-      <main className="pt-32 pb-44">
+      <main className="pt-32 pb-40">
         {/* Project Hero Headings */}
         <section className="px-6 md:px-12 mb-20">
           <div className="max-w-4xl mx-auto space-y-8">
@@ -341,17 +361,17 @@ export default function MyzonPage({ project, onBack }: MyzonPageProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-2xl font-light leading-relaxed text-black/60 max-w-3xl"
+              className="text-xl md:text-2xl font-light leading-relaxed text-[#32404F]/60 max-w-3xl"
             >
               {project.description}
             </motion.p>
             
             {/* Metadata Info Grid */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="grid grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-12 pt-12 border-t border-black/5"
+              className="grid grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-12 pt-4"
             >
               <div className="space-y-1">
                 <div className="text-[10px] uppercase tracking-wider font-bold opacity-30">Role</div>
@@ -370,12 +390,12 @@ export default function MyzonPage({ project, onBack }: MyzonPageProps) {
         </section>
 
         {/* Content Layers with High-Quality Layout */}
-        <div className="space-y-24 md:space-y-32 px-6 md:px-12 text-black/80">
+        <div className="space-y-24 md:space-y-32 px-6 md:px-12 text-[#32404F]/80">
            {/* Visual Presentation Area - High-Fidelity UI Image */}
           <section className="max-w-4xl mx-auto">
             <div 
               id="mayzon-interactive-mockup"
-              className="rounded-2xl overflow-hidden relative cursor-zoom-in bg-neutral-50 group border border-transparent transition-all duration-300 min-h-[180px] flex items-center justify-center p-0"
+              className="rounded-2xl overflow-hidden relative cursor-zoom-in bg-[#E5E6E6]/40 group border border-transparent transition-all duration-300 min-h-[180px] flex items-center justify-center p-0"
               onClick={() => {
                 setSelectedImage(customImages[0] || mainImage);
               }}
@@ -391,8 +411,8 @@ export default function MyzonPage({ project, onBack }: MyzonPageProps) {
           {/* Background */}
           <section className="max-w-4xl mx-auto space-y-12 font-light">
             <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl font-semibold text-[#1A1A1A] tracking-tight">Background</h2>
-              <p className="text-lg font-light leading-relaxed text-neutral-800">
+              <h2 className="text-2xl md:text-3xl font-semibold text-[#32404F] tracking-tight">Background</h2>
+              <p className="text-lg font-light leading-relaxed text-[#32404F]">
                 The project started as a collaboration with a startup to build a high-fidelity interactive demo for potential clients and investors. After my involvement with the team ended, I decided to continue working on the project independently as a design challenge, focusing on refining the primary user flows and organizing the interface architecture.
               </p>
             </div>
@@ -401,8 +421,8 @@ export default function MyzonPage({ project, onBack }: MyzonPageProps) {
           {/* The Problem */}
           <section className="max-w-4xl mx-auto space-y-12 font-light">
             <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl font-semibold text-[#1A1A1A] tracking-tight">The Problem</h2>
-              <p className="text-lg font-light leading-relaxed text-neutral-850">
+              <h2 className="text-2xl md:text-3xl font-semibold text-[#32404F] tracking-tight">The Problem</h2>
+              <p className="text-lg font-light leading-relaxed text-[#32404F]">
                 Amazon sellers often want to bring buyers from external platforms (like social media) to their product pages, but creating compliant and targeted marketing materials usually requires complex tools, a marketing budget, or manual design work that many sellers don't have the time or knowledge to handle.
               </p>
             </div>
@@ -411,8 +431,8 @@ export default function MyzonPage({ project, onBack }: MyzonPageProps) {
           {/* The Solution */}
           <section className="max-w-4xl mx-auto space-y-12 font-light">
             <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl font-semibold text-[#1A1A1A] tracking-tight">The Solution</h2>
-              <p className="text-lg font-light leading-relaxed text-neutral-850">
+              <h2 className="text-2xl md:text-3xl font-semibold text-[#32404F] tracking-tight">The Solution</h2>
+              <p className="text-lg font-light leading-relaxed text-[#32404F]">
                 A desktop and mobile interface for an AI system that takes raw Amazon product data and automatically formats it into tailored marketing assets for different target audiences. The design focuses on making the process simple, so sellers can easily choose their audience, adjust the details, and get the correct formats for social media.
               </p>
             </div>
@@ -428,17 +448,17 @@ export default function MyzonPage({ project, onBack }: MyzonPageProps) {
           ].map((sec) => {
             const activeImg = customImages[sec.slotIndex] || sec.defaultImg;
             return (
-              <section key={sec.slotIndex} className="max-w-4xl mx-auto space-y-8 pt-8 border-t border-black/5">
+              <section key={sec.slotIndex} className="max-w-4xl mx-auto space-y-8 pt-8">
                 <div className="space-y-6">
-                  <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 pb-4 border-b border-black/5">
+                  <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 pb-4">
                     <div className="flex flex-col gap-1">
-                      <h2 className="text-base md:text-lg font-medium text-neutral-600 tracking-tight">{sec.tag}</h2>
+                      <h2 className="text-base md:text-lg font-medium text-[#32404F] tracking-tight">{sec.tag}</h2>
                     </div>
                   </div>
                   
                   {/* Image Frame with proper custom height handling to avoid aspect ratio constraints */}
                   <div 
-                    className={`rounded-2xl overflow-hidden relative cursor-zoom-in bg-neutral-50 group border border-transparent transition-all duration-300 ${sec.style?.height ? 'w-full' : sec.aspect}`}
+                    className={`rounded-2xl overflow-hidden relative cursor-zoom-in bg-[#E5E6E6]/40 group border border-transparent transition-all duration-300 ${sec.style?.height ? 'w-full' : sec.aspect}`}
                     style={sec.style?.height ? { height: sec.style.height } : undefined}
                     onClick={() => setSelectedImage(activeImg)}
                   >
@@ -463,20 +483,20 @@ export default function MyzonPage({ project, onBack }: MyzonPageProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-white/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-20"
+            className="fixed inset-0 z-[100] bg-[#FDFCFA]/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-20"
             onClick={() => setSelectedImage(null)}
           >
             <motion.button
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
-              className="absolute top-8 right-8 p-3 rounded-full bg-black/5 hover:bg-black/10 transition-colors z-[110]"
+              className="absolute top-8 right-8 p-3 rounded-full bg-[#BEC2C6]/20 hover:bg-[#BEC2C6]/30 transition-colors z-[110]"
               onClick={(e) => {
                 e.stopPropagation();
                 setSelectedImage(null);
               }}
             >
-              <X size={24} className="text-black" />
+              <X size={24} className="text-[#32404F]" />
             </motion.button>
             
             <motion.div
@@ -496,9 +516,10 @@ export default function MyzonPage({ project, onBack }: MyzonPageProps) {
         )}
       </AnimatePresence>
 
-      <footer className="py-24 px-12 border-t border-black/5 text-center bg-neutral-50/50">
-        <button 
-          onClick={onBack}
+      <div className="flex justify-center py-8"><div className="w-10 h-px bg-black/[0.18]" /></div>
+      <footer className="py-14 px-12 text-center bg-[#FDFCFA]">
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.4em] font-bold opacity-30 hover:opacity-100 transition-opacity"
         >
           <span>Back to Top</span>
@@ -508,3 +529,4 @@ export default function MyzonPage({ project, onBack }: MyzonPageProps) {
     </motion.div>
   );
 }
+

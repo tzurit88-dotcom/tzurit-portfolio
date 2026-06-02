@@ -74,12 +74,11 @@ export default function ResumePage({ onBack, onNavigate, isPrintOnlyMode = false
             <div className="flex gap-3">
               <a
                 href="/?cv-print=true"
-                target="_blank"
-                rel="noopener noreferrer"
+                download
                 className="inline-flex items-center gap-2 px-5 py-2.5 bg-neutral-900 hover:bg-neutral-800 text-white rounded-lg text-xs uppercase tracking-wider font-normal transition-all shadow-sm cursor-pointer"
               >
-                <span>OPEN PDF</span>
-                <ExternalLink size={13} className="stroke-[1.8]" />
+                <span>DOWNLOAD PDF</span>
+                <Download size={13} className="stroke-[1.8]" />
               </a>
             </div>
           </div>

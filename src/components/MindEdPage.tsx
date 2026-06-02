@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Maximize2, X, Upload, RefreshCw, ChevronLeft, ChevronRight, ArrowUp } from 'lucide-react';
 import { Project } from '../types';
-import SystemOverview from './SystemOverview';
+import Header from './Header';
+import mindedBeforeNew from '../assets/images/minded_before_new.png';
+import mindedAfterNew from '../assets/images/minded_after_new.png';
 
 // Simple IndexedDB Cache for user-uploaded custom media to persist between reloads
 const DB_NAME = 'minded-user-media';
@@ -49,10 +51,33 @@ function getMedia(key: string): Promise<Blob | null> {
 interface MindEdPageProps {
   project: Project;
   onBack: () => void;
+  onNavigate: (view: 'home' | 'about' | 'resume', targetId?: string) => void;
 }
 
-export default function MindEdPage({ project, onBack }: MindEdPageProps) {
+export default function MindEdPage({ project, onBack, onNavigate }: MindEdPageProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [headerVisible, setHeaderVisible] = useState(true);
+  const lastScrollY = useRef(0);
+  const showTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+        if (showTimeout.current) clearTimeout(showTimeout.current);
+        setHeaderVisible(false);
+      } else if (currentScrollY < lastScrollY.current) {
+        if (showTimeout.current) clearTimeout(showTimeout.current);
+        showTimeout.current = setTimeout(() => setHeaderVisible(true), 250);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (showTimeout.current) clearTimeout(showTimeout.current);
+    };
+  }, []);
 
   const [customBefore, setCustomBefore] = useState<{ url: string; type: 'image' | 'video' } | null>(null);
   const [customAfter, setCustomAfter] = useState<{ url: string; type: 'image' | 'video' } | null>(null);
@@ -316,23 +341,20 @@ export default function MindEdPage({ project, onBack }: MindEdPageProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen bg-white text-[#1A1A1A] font-sans selection:bg-blue-100"
+      className="min-h-screen bg-[#FDFCFA] text-[#32404F] font-sans selection:bg-[#BEC2C6]/30"
     >
-      <header className="fixed top-0 left-0 right-0 h-20 flex items-center px-6 md:px-12 bg-white/80 backdrop-blur-md z-50 justify-between transition-all">
-        <button 
-          onClick={onBack}
-          className="group flex items-center gap-2 text-[10px] uppercase tracking-widest hover:opacity-100 opacity-60 transition-all font-bold"
-        >
-          <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
-          Back
-        </button>
-        <div className="text-[10px] uppercase tracking-[0.4em] font-bold opacity-30 hidden md:block">
-          MindEd — Case Study
-        </div>
-        <div className="w-10 h-10" />
-      </header>
+      <Header currentView="project-page" onNavigate={onNavigate} />
+      <motion.button
+        onClick={onBack}
+        animate={{ top: headerVisible ? 106 : 20 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className="fixed left-6 md:left-12 z-40 group flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-[#32404F] opacity-50 hover:opacity-100 transition-opacity bg-[#FDFCFA]/75 backdrop-blur-sm rounded-lg px-3 py-2"
+      >
+        <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform" />
+        Back
+      </motion.button>
 
-      <main className="pt-30 pb-64">
+      <main className="pt-30 pb-40">
         {/* Hero Section - Matching Home Style */}
         <section className="px-6 md:px-12 mb-20">
           <div className="max-w-4xl mx-auto space-y-8">
@@ -347,14 +369,46 @@ export default function MindEdPage({ project, onBack }: MindEdPageProps) {
               {project.title}
             </motion.h1>
             
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-2xl font-light leading-relaxed text-black/60 max-w-2xl"
+              className="text-xl md:text-2xl font-light leading-relaxed text-[#32404F]/60 max-w-2xl"
             >
               {project.description}
             </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="grid grid-cols-2 md:grid-cols-3 gap-y-6 gap-x-12 pt-4"
+            >
+              <div className="space-y-1">
+                <div className="text-[10px] uppercase tracking-wider font-bold opacity-30">Role</div>
+                <div className="text-sm font-medium">Sole Product Designer</div>
+              </div>
+              <div className="space-y-1">
+                <div className="text-[10px] uppercase tracking-wider font-bold opacity-30">Scope</div>
+                <div className="text-sm font-medium">UX/UI Design, UX Research, Product Strategy</div>
+              </div>
+              <div className="space-y-1">
+                <div className="text-[10px] uppercase tracking-wider font-bold opacity-30">Timeline</div>
+                <div className="text-sm font-medium">3 Months (2026)</div>
+              </div>
+              <div className="space-y-1">
+                <div className="text-[10px] uppercase tracking-wider font-bold opacity-30">Team</div>
+                <div className="text-sm font-medium">Product Manager, 2 Pedagogical Advisors, AI Consultant, 3 Developers</div>
+              </div>
+              <div className="space-y-1">
+                <div className="text-[10px] uppercase tracking-wider font-bold opacity-30">Platforms</div>
+                <div className="text-sm font-medium">Educator Desktop</div>
+              </div>
+              <div className="space-y-1">
+                <div className="text-[10px] uppercase tracking-wider font-bold opacity-30">Market</div>
+                <div className="text-sm font-medium">B2B2C (Schools &amp; Ministry of Education)</div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
@@ -363,119 +417,39 @@ export default function MindEdPage({ project, onBack }: MindEdPageProps) {
           
           {/* Before & After Frames Visual Showcase */}
           <section className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:-mx-16 lg:-mx-24 xl:-mx-32">
-              {/* Before Frame */}
-              <div className="space-y-4">
-                <div className="flex items-center gap-2 px-2">
-                  <div className="w-2 h-2 rounded-full bg-neutral-300" />
-                  <span className="text-[10px] uppercase tracking-widest font-bold opacity-30">Before Redesign</span>
-                </div>
-                <div 
-                  className="aspect-[15/7] bg-[#F7F5F2] rounded-2xl overflow-hidden border border-black/5 grid place-items-center relative shadow-sm hover:shadow-md transition-shadow group"
-                  onClick={() => {
-                    if (customBefore) {
-                      setSelectedImage(customBefore.url);
-                    } else {
-                      setSelectedImage(project.galleryImages?.[1] || project.imageUrl || null);
-                    }
-                  }}
-                >
-                  {customBefore ? (
-                    customBefore.type === 'video' ? (
-                      <video 
-                        src={customBefore.url}
-                        autoPlay 
-                        loop 
-                        muted 
-                        playsInline
-                        className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-[1.02] cursor-zoom-in"
-                      />
-                    ) : (
-                      <img 
-                        src={customBefore.url} 
-                        className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-[1.02] cursor-zoom-in" 
-                        alt="MindEd Before Redesign Custom" 
-                      />
-                    )
-                  ) : (
-                    <>
-                      <img 
-                        src={project.galleryImages?.[1] || project.imageUrl} 
-                        alt="MindEd Before Redesign"
-                        className="max-w-full max-h-full object-contain block transition-transform duration-700 group-hover:scale-[1.02] cursor-zoom-in"
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).style.display = 'none';
-                          const label = (e.target as HTMLImageElement).parentElement?.querySelector('.placeholder-label');
-                          if (label) label.removeAttribute('style');
-                        }}
-                      />
-                      <div className="text-black/20 italic text-center text-xs px-8 hidden placeholder-label" style={{ display: 'block' }}>
-                        [Before Redesign Image]
-                      </div>
-                    </>
-                  )}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/2 transition-colors flex items-center justify-center pointer-events-none">
-                    <Maximize2 className="text-black opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
+            <div className="md:-mx-24 lg:-mx-36 xl:-mx-52">
+              <div className="bg-[#D2C7FF] rounded-2xl p-6 md:p-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Before Frame */}
+                  <div className="space-y-3">
+                    <span className="block px-1 text-[12px] uppercase tracking-widest font-medium text-[#32404F]">Before Redesign</span>
+                    <img
+                      src={mindedBeforeNew}
+                      alt="MindEd Before Redesign"
+                      className="w-full h-auto block rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.18)]"
+                    />
                   </div>
-                </div>
-              </div>
 
-              {/* After Frame */}
-              <div className="space-y-4">
-                <div className="flex items-center gap-2 px-2">
-                  <div className="w-2 h-2 rounded-full bg-neutral-300" />
-                  <span className="text-[10px] uppercase tracking-widest font-black text-black">After Redesign</span>
-                </div>
-                <div 
-                  className="aspect-[15/7] bg-[#EEF7FF] rounded-2xl overflow-hidden border border-black/5 grid place-items-center relative shadow-sm hover:shadow-md transition-shadow group animate-fade-in"
-                  onClick={() => {
-                    if (customAfter) {
-                      setSelectedImage(customAfter.url);
-                    } else {
-                      setSelectedImage(project.galleryImages?.[2] || project.imageUrl || null);
-                    }
-                  }}
-                >
-                  {customAfter ? (
-                    customAfter.type === 'video' ? (
-                      <video 
-                        src={customAfter.url}
-                        autoPlay 
-                        loop 
-                        muted 
-                        playsInline
-                        className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-[1.02] cursor-zoom-in"
-                      />
-                    ) : (
-                      <img 
-                        src={customAfter.url} 
-                        className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-[1.02] cursor-zoom-in" 
-                        alt="MindEd After Redesign Custom" 
-                      />
-                    )
-                  ) : (
-                    <>
-                      <img 
-                        src={project.galleryImages?.[2] || project.imageUrl} 
-                        alt="MindEd After Redesign"
-                        className="max-w-full max-h-full object-contain block transition-transform duration-700 group-hover:scale-[1.02] cursor-zoom-in"
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).style.display = 'none';
-                          const label = (e.target as HTMLImageElement).parentElement?.querySelector('.placeholder-label');
-                          if (label) label.removeAttribute('style');
-                        }}
-                      />
-                      <div className="text-black/20 italic text-center text-xs px-8 hidden placeholder-label" style={{ display: 'block' }}>
-                        [After Redesign Image]
-                      </div>
-                    </>
-                  )}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/2 transition-colors flex items-center justify-center pointer-events-none">
-                    <Maximize2 className="text-black opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
+                  {/* After Frame */}
+                  <div className="space-y-3">
+                    <span className="block px-1 text-[12px] uppercase tracking-widest font-semibold text-[#32404F]">After Redesign</span>
+                    <img
+                      src={mindedAfterNew}
+                      alt="MindEd After Redesign"
+                      className="w-full h-auto block rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.18)]"
+                    />
                   </div>
                 </div>
               </div>
             </div>
+          </section>
+
+          {/* Background */}
+          <section className="max-w-4xl mx-auto space-y-6">
+            <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">Background</h2>
+            <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80">
+              Built at MindCET, Israel's EdTech innovation center, MindEd is a vibe coding platform that empowers educators to build tailored educational apps and games. Instead of waiting for external, generic tech solutions, educators can use AI to solve their specific classroom micro-problems instantly.
+            </p>
           </section>
 
           {/* Context & My Role */}
@@ -483,17 +457,17 @@ export default function MindEdPage({ project, onBack }: MindEdPageProps) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
               {/* Left Column: Context */}
               <div className="space-y-6">
-                <h2 className="text-xs uppercase tracking-[0.3em] font-bold opacity-30">Context</h2>
-                <p className="text-lg font-light leading-relaxed text-black/80">
-                  MindEd is a vibe coding platform for teachers, built at MindCET, Israel's EdTech innovation center. Unlike other tools, app building in MindEd works in structured stages rather than all at once. This lets users refine and monitor their tool as it's being built. To support this, a Roadmap feature was added to provide navigation and progress tracking.
+                <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">Context</h2>
+                <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80">
+                  App creation in MindEd follows three stages: defining the problem, mapping the solution, and development. Unlike other tools, app building in MindEd works in structured stages rather than all at once. This lets users refine and monitor their tool as it's being built. To support this, a Roadmap feature was added to provide progress tracking and the ability to revert to previous versions.
                 </p>
               </div>
 
               {/* Right Column: My Role */}
               <div className="space-y-6">
-                <h2 className="text-xs uppercase tracking-[0.3em] font-bold opacity-30">My role</h2>
-                <p className="text-lg font-light leading-relaxed text-black/80">
-                  I joined as the sole product designer after the initial pilot rounds. My focus was the Development Area — the critical stage where teachers turn a defined pedagogical idea into an interactive tool.
+                <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">My Role</h2>
+                <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80">
+                  I joined the project as the sole product designer after the initial pilot, where the immediate priority was optimizing the Development Area - the stage where educators turn their pedagogical ideas into interactive tools.
                 </p>
               </div>
             </div>
@@ -501,63 +475,71 @@ export default function MindEdPage({ project, onBack }: MindEdPageProps) {
 
           {/* The Problem */}
           <section className="max-w-4xl mx-auto space-y-6">
-            <h2 className="text-xs uppercase tracking-[0.3em] font-bold opacity-30">The problem</h2>
-            <p className="text-lg font-light leading-relaxed text-black/80">
-              Pilot data showed that while earlier stages went smoothly, the Development Area caused friction. Most teachers had no vibe coding background and found the interface unintuitive. Many were unsatisfied with the output and abandoned the flow entirely.
+            <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">The Problem</h2>
+            <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80">
+              While the first two stages went smoothly and left most educators satisfied, the Development Area proved confusing and less user-friendly. This led to:
             </p>
+            <ul className="space-y-2 text-lg font-[320] text-[#32404F]/80">
+              <li className="flex items-center gap-4"><span className="w-1.5 h-1.5 rounded-full bg-[#32404F]/80 shrink-0" />Inefficient use of the system</li>
+              <li className="flex items-center gap-4"><span className="w-1.5 h-1.5 rounded-full bg-[#32404F]/80 shrink-0" />Lower satisfaction with the generated applications</li>
+              <li className="flex items-center gap-4"><span className="w-1.5 h-1.5 rounded-full bg-[#32404F]/80 shrink-0" />User drop-off</li>
+            </ul>
           </section>
 
-          {/* Research */}
-          <section className="max-w-4xl mx-auto space-y-6">
-            <h2 className="text-xs uppercase tracking-[0.3em] font-bold opacity-30">Research</h2>
-            <p className="text-lg font-light leading-relaxed text-black/80">
-              We conducted post-pilot interviews with 20 teachers and usability testing with five teachers, specifically targeting the Development Area.
+          {/* Research & Insights */}
+          <section className="max-w-4xl mx-auto space-y-12">
+            <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">Research &amp; Insights</h2>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-2">
+                <div className="text-[10px] uppercase tracking-widest font-semibold text-[#32404F]">Goal</div>
+                <div className="text-[#32404F]/80">Understand the root causes of user drop-off</div>
+              </div>
+              <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-2">
+                <div className="text-[10px] uppercase tracking-widest font-semibold text-[#32404F]">Method</div>
+                <div className="text-[#32404F]/80"><span className="font-semibold text-[#32404F]">20 In-depth interviews</span> with pilot educators</div>
+              </div>
+            </div>
+            <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80">
+              The interviews revealed that educators skipped the introductory text and missed the Roadmap entirely. Without this visual anchor, they mistook the first partial output for the final product, leading to:
             </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-2">
+                <div className="font-semibold text-[#32404F]">Expectation Mismatch</div>
+                <p className="font-[320] leading-relaxed text-[#32404F]/70">The initial incomplete results felt disconnected from their goals, causing early frustration.</p>
+              </div>
+              <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-2">
+                <div className="font-semibold text-[#32404F]">Redundant Requests</div>
+                <p className="font-[320] leading-relaxed text-[#32404F]/70">Educators used the chat to ask for features already planned for later stages.</p>
+              </div>
+              <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-2">
+                <div className="font-semibold text-[#32404F]">Process Disorientation</div>
+                <p className="font-[320] leading-relaxed text-[#32404F]/70">The interface lacked clarity, making the workflow feel tedious and causing users to leave before realizing how much was left.</p>
+              </div>
+            </div>
           </section>
 
-          {/* What the research showed */}
+          {/* Constraints */}
           <section className="max-w-4xl mx-auto space-y-12">
             <div className="space-y-6">
-              <h2 className="text-xs uppercase tracking-[0.3em] font-bold opacity-30">What the research showed</h2>
-              <p className="text-lg font-light leading-relaxed text-black/80">
-                Teachers were skipping the introductory copy and missing the Roadmap entirely. Without that visual anchor, they assumed the first partial output was the final product. This led to:
+              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">Constraints</h2>
+              <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80">
+                I initially questioned the decision of staged generation itself, as it differs from standard vibe coding patterns. However, this was a structural product constraint not open to change. The design had to solve the orientation problem within this multi-stage framework.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-black/80 font-light">
-              <div className="space-y-2">
-                <div className="font-bold">Broken Trust:</div>
-                <p className="text-base leading-relaxed">The results felt insufficient and disconnected from their plan.</p>
-              </div>
-              <div className="space-y-2">
-                <div className="font-bold">Redundant Requests:</div>
-                <p className="text-base leading-relaxed">Teachers used the chat to ask for features already planned for later stages.</p>
-              </div>
-              <div className="space-y-2">
-                <div className="font-bold">High Drop-off:</div>
-                <p className="text-base leading-relaxed">Orientation was the primary bottleneck; users didn't know where they were or how much was left.</p>
-              </div>
-            </div>
-          </section>
 
-          {/* What I considered first */}
-          <section className="max-w-4xl mx-auto space-y-12">
-            <div className="space-y-6">
-              <h2 className="text-xs uppercase tracking-[0.3em] font-bold opacity-30">What I considered first</h2>
-              <p className="text-lg font-light leading-relaxed text-black/80">
-                I initially questioned the staged generation itself, as it differs from standard vibe coding patterns. However, this was a structural product constraint not open to change. The design had to solve the orientation problem within this multi-stage framework.
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <h2 className="text-xs uppercase tracking-[0.3em] font-bold opacity-30">A first, lighter attempt</h2>
-                <p className="text-lg font-light leading-relaxed text-black/80">
-                  I first tried a "low-effort" fix: increasing the Roadmap's visual prominence through color and neutralizing the surrounding palette. It wasn't enough. It became clear that visibility wasn't the only issue — the information hierarchy was.
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
+              <div className="space-y-6 md:col-span-2">
+                <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">A Lighter First Attempt</h2>
+                <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80">
+                  I first tried a tactical fix: increasing the Roadmap's visual prominence through color and neutralizing the surrounding palette.
+                </p>
+                <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80">
+                  It wasn't enough. <strong className="font-semibold text-[#32404F]">Usability testing</strong> showed that 3 out of 5 educators still missed the Roadmap. It made me realize that visibility wasn't the only issue - there was a more fundamental problem.
                 </p>
               </div>
 
-              <div 
-                className="aspect-[15/7] bg-[#F7F5F2] rounded-2xl overflow-hidden border border-black/5 grid place-items-center relative shadow-sm hover:shadow-md transition-shadow group"
+              <div
+                className="md:col-span-3 aspect-[15/7] bg-[#E5E6E6]/50 rounded-2xl overflow-hidden border border-[#BEC2C6]/40 grid place-items-center relative shadow-sm hover:shadow-md transition-shadow group"
                 onClick={() => {
                   if (customLighterAttempt) {
                     setSelectedImage(customLighterAttempt.url);
@@ -595,48 +577,45 @@ export default function MindEdPage({ project, onBack }: MindEdPageProps) {
                         if (label) label.removeAttribute('style');
                       }}
                     />
-                    <div className="text-black/20 italic text-center text-xs px-8 placeholder-label" style={{ display: 'none' }}>
+                    <div className="text-[#32404F]/20 italic text-center text-xs px-8 placeholder-label" style={{ display: 'none' }}>
                       [Placeholder: Image (1500x700)]
                     </div>
                   </>
                 )}
                 
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/2 transition-colors flex items-center justify-center pointer-events-none">
-                  <Maximize2 className="text-black opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <Maximize2 className="text-[#32404F] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
                 </div>
 
               </div>
             </div>
           </section>
 
-          {/* The redesign */}
+          {/* The Solution */}
           <section className="max-w-4xl mx-auto space-y-12">
             <div className="space-y-6">
-              <h2 className="text-xs uppercase tracking-[0.3em] font-bold opacity-30">The redesign</h2>
-              <p className="text-lg font-light leading-relaxed text-black/80">
-                The goal was to reduce visual noise and establish a clear mental model for the process.
-              </p>
+              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">The Solution</h2>
             </div>
 
             <div 
-              className="bg-[#F7F5F2] rounded-2xl overflow-hidden border border-black/5 group shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center md:-mx-12 lg:-mx-20 w-full md:w-[calc(100%+6rem)] lg:w-[calc(100%+10rem)] max-w-none"
+              className="bg-[#E5E6E6]/15 rounded-2xl overflow-hidden border border-[#BEC2C6]/25 group shadow-sm flex flex-col items-center md:-mx-12 lg:-mx-20 w-full md:w-[calc(100%+6rem)] lg:w-[calc(100%+10rem)] max-w-none"
             >
               {/* Centered within the card at the top but not overlapping the image */}
               <div className="w-full py-5 flex justify-center items-center">
                 <div 
-                  className="inline-flex p-1 bg-[#EFECE6]/70 rounded-full border border-black/[0.03] select-none shadow-[inner_0_1px_3px_rgba(0,0,0,0.01)]"
+                  className="inline-flex p-1 bg-[#FDFCFA] rounded-full border border-[#BEC2C6]/40 select-none shadow-sm"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <button
                     type="button"
                     onClick={() => setRedesignMode('after')}
-                    className={`flex items-center justify-center px-4 py-2 rounded-full text-[8.5px] md:text-[10px] font-bold uppercase tracking-[0.18em] transition-all duration-300 relative z-10 cursor-pointer ${redesignMode === 'after' ? 'text-black font-extrabold' : 'text-black/40 hover:text-black/60 font-medium'}`}
+                    className={`flex items-center justify-center px-4 py-2 rounded-full text-[8.5px] md:text-[10px] font-bold uppercase tracking-[0.18em] transition-all duration-300 relative z-10 cursor-pointer ${redesignMode === 'after' ? 'text-[#FDFCFA] font-medium' : 'text-[#32404F]/40 hover:text-[#32404F]/60 font-medium'}`}
                   >
                     After Redesign
                     {redesignMode === 'after' && (
                       <motion.div
                         layoutId="activeRedesignTabBg"
-                        className="absolute inset-0 bg-white rounded-full shadow-[0_3px_10px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.02)] -z-10 border border-black/[0.01]"
+                        className="absolute inset-0 bg-[#32404F] rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.15),0_1px_2px_rgba(0,0,0,0.08)] -z-10"
                         transition={{ type: "spring", stiffness: 420, damping: 30 }}
                       />
                     )}
@@ -645,13 +624,13 @@ export default function MindEdPage({ project, onBack }: MindEdPageProps) {
                   <button
                     type="button"
                     onClick={() => setRedesignMode('before')}
-                    className={`flex items-center justify-center px-4 py-2 rounded-full text-[8.5px] md:text-[10px] font-bold uppercase tracking-[0.18em] transition-all duration-300 relative z-10 cursor-pointer ${redesignMode === 'before' ? 'text-black font-extrabold' : 'text-black/40 hover:text-black/60 font-medium'}`}
+                    className={`flex items-center justify-center px-4 py-2 rounded-full text-[8.5px] md:text-[10px] font-bold uppercase tracking-[0.18em] transition-all duration-300 relative z-10 cursor-pointer ${redesignMode === 'before' ? 'text-[#FDFCFA] font-medium' : 'text-[#32404F]/40 hover:text-[#32404F]/60 font-medium'}`}
                   >
                     Before Redesign
                     {redesignMode === 'before' && (
                       <motion.div
                         layoutId="activeRedesignTabBg"
-                        className="absolute inset-0 bg-white rounded-full shadow-[0_3px_10px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.02)] -z-10 border border-black/[0.01]"
+                        className="absolute inset-0 bg-[#32404F] rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.15),0_1px_2px_rgba(0,0,0,0.08)] -z-10"
                         transition={{ type: "spring", stiffness: 420, damping: 30 }}
                       />
                     )}
@@ -663,9 +642,9 @@ export default function MindEdPage({ project, onBack }: MindEdPageProps) {
                 className="w-full aspect-[15/5.8] flex items-center justify-center p-4 md:p-8 pb-8 md:pb-12 pt-0 md:pt-0 cursor-zoom-in relative"
                 onClick={() => {
                   if (redesignMode === 'before') {
-                    setSelectedImage(customBefore?.url || project.galleryImages?.[1] || null);
+                    setSelectedImage(customBefore?.url || project.galleryImages?.[2] || null);
                   } else {
-                    setSelectedImage(customAfter?.url || project.galleryImages?.[2] || null);
+                    setSelectedImage(customAfter?.url || project.galleryImages?.[1] || null);
                   }
                 }}
               >
@@ -681,26 +660,26 @@ export default function MindEdPage({ project, onBack }: MindEdPageProps) {
                     >
                       {customBefore ? (
                         customBefore.type === 'video' ? (
-                          <video 
+                          <video
                             src={customBefore.url}
-                            autoPlay 
-                            loop 
-                            muted 
+                            autoPlay
+                            loop
+                            muted
                             playsInline
-                            className="max-w-full max-h-full object-contain transition-transform duration-700"
+                            className="max-w-full max-h-full object-contain transition-transform duration-700 rounded-xl border border-[#BEC2C6]/40 shadow-sm"
                           />
                         ) : (
-                          <img 
-                            src={customBefore.url} 
-                            className="max-w-full max-h-full object-contain transition-transform duration-700" 
-                            alt="MindEd Before Redesign Custom" 
+                          <img
+                            src={customBefore.url}
+                            className="max-w-full max-h-full object-contain transition-transform duration-700 rounded-xl border border-[#BEC2C6]/40 shadow-sm"
+                            alt="MindEd Before Redesign Custom"
                           />
                         )
                       ) : (
-                        <img 
-                          src={project.galleryImages?.[1]} 
-                          alt="Before Redesign" 
-                          className="max-w-full max-h-full object-contain transition-transform duration-700" 
+                        <img
+                          src={project.galleryImages?.[2]}
+                          alt="Before Redesign"
+                          className="max-w-full max-h-full object-contain transition-transform duration-700 rounded-xl border border-[#BEC2C6]/40 shadow-sm"
                           onError={(e) => {
                             (e.target as HTMLImageElement).style.display = 'none';
                           }}
@@ -718,26 +697,26 @@ export default function MindEdPage({ project, onBack }: MindEdPageProps) {
                     >
                       {customAfter ? (
                         customAfter.type === 'video' ? (
-                          <video 
+                          <video
                             src={customAfter.url}
-                            autoPlay 
-                            loop 
-                            muted 
+                            autoPlay
+                            loop
+                            muted
                             playsInline
-                            className="max-w-full max-h-full object-contain transition-transform duration-700"
+                            className="max-w-full max-h-full object-contain transition-transform duration-700 rounded-xl border border-[#BEC2C6]/40 shadow-sm"
                           />
                         ) : (
-                          <img 
-                            src={customAfter.url} 
-                            className="max-w-full max-h-full object-contain transition-transform duration-700" 
-                            alt="After Redesign Custom" 
+                          <img
+                            src={customAfter.url}
+                            className="max-w-full max-h-full object-contain transition-transform duration-700 rounded-xl border border-[#BEC2C6]/40 shadow-sm"
+                            alt="After Redesign Custom"
                           />
                         )
                       ) : (
-                        <img 
-                          src={project.galleryImages?.[2]} 
-                          alt="After Redesign" 
-                          className="max-w-full max-h-full object-contain transition-transform duration-700" 
+                        <img
+                          src={project.galleryImages?.[1]}
+                          alt="After Redesign"
+                          className="max-w-full max-h-full object-contain transition-transform duration-700 rounded-xl border border-[#BEC2C6]/40 shadow-sm"
                           onError={(e) => {
                             (e.target as HTMLImageElement).style.display = 'none';
                           }}
@@ -747,8 +726,8 @@ export default function MindEdPage({ project, onBack }: MindEdPageProps) {
                   )}
                 </AnimatePresence>
                 
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/2 transition-colors flex items-center justify-center pointer-events-none">
-                  <Maximize2 className="text-black opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <Maximize2 className="text-[#32404F] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
                 </div>
               </div>
             </div>
@@ -756,26 +735,26 @@ export default function MindEdPage({ project, onBack }: MindEdPageProps) {
 
           {/* Redesign details & final mockups */}
           <section className="max-w-4xl mx-auto space-y-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-              <div className="space-y-4">
-                <div className="font-bold text-lg">Established Master-Detail Hierarchy:</div>
-                <p className="text-base font-light text-black/60 leading-relaxed">I flipped the Chat and Roadmap positions. In this RTL interface, placing the Chat (Master) on the right and the Roadmap (Detail) on the left creates a natural cause-and-effect flow.</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-3">
+                <div className="font-semibold text-[#32404F]">Established Master-Detail Hierarchy</div>
+                <p className="font-[320] leading-relaxed text-[#32404F]/70">I flipped the Chat and Roadmap positions. In this RTL interface, placing the Chat (Master) on the right and the Roadmap (Detail) on the left creates a <strong className="font-normal text-[#32404F]">natural cause-and-effect flow.</strong></p>
               </div>
-              <div className="space-y-4">
-                <div className="font-bold text-lg">Simplified Roadmap Structure:</div>
-                <p className="text-base font-light text-black/60 leading-relaxed">Condensed the Roadmap into three constant stages (Foundations, Main Features, Expansion). This provides a clear "beginning, middle, and end" to prevent cognitive overload, with titles visible at all times for constant orientation.</p>
+              <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-3">
+                <div className="font-semibold text-[#32404F]">Simplified Roadmap Structure</div>
+                <p className="font-[320] leading-relaxed text-[#32404F]/70">Condensed the Roadmap into three constant stages (Foundations, Main Features, Expansion). This provides a clear "beginning, middle, and end" to prevent cognitive overload, with titles visible at all times for <strong className="font-normal text-[#32404F]">constant orientation.</strong></p>
               </div>
-              <div className="space-y-4">
-                <div className="font-bold text-lg">Reduced Visual Load:</div>
-                <p className="text-base font-light text-black/60 leading-relaxed">Neutralized the UI palette to minimize competing signals and keep the focus on the generated app.</p>
+              <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-3">
+                <div className="font-semibold text-[#32404F]">Reduced Visual Load</div>
+                <p className="font-[320] leading-relaxed text-[#32404F]/70">Neutralized the UI palette to minimize competing signals and <strong className="font-normal text-[#32404F]">keep the focus on the generated app.</strong></p>
               </div>
-              <div className="space-y-4">
-                <div className="font-bold text-lg">Closed the Feedback Loop:</div>
-                <p className="text-base font-light text-black/60 leading-relaxed">Allowed the Chat and Roadmap to be open simultaneously. This eliminates context switching and lets teachers see the Roadmap update in real-time as they interact with the Chat.</p>
+              <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-3">
+                <div className="font-semibold text-[#32404F]">Closed the Feedback Loop</div>
+                <p className="font-[320] leading-relaxed text-[#32404F]/70">Enabled the Chat and Roadmap to be open simultaneously. This <strong className="font-normal text-[#32404F]">eliminates context switching</strong> and lets educators see the Roadmap update in real-time as they interact with the Chat.</p>
               </div>
-              <div className="space-y-4 md:col-span-2">
-                <div className="font-bold text-lg">Improved Discoverability:</div>
-                <p className="text-base font-light text-black/60 leading-relaxed">Redesigned the drawer button to provide a clearer affordance, making the Roadmap functionality easier to find and access.</p>
+              <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-3">
+                <div className="font-semibold text-[#32404F]">Improved Discoverability</div>
+                <p className="font-[320] leading-relaxed text-[#32404F]/70">Redesigned the drawer button to provide a <strong className="font-normal text-[#32404F]">clearer affordance,</strong> making the Roadmap functionality easier to find and access.</p>
               </div>
             </div>
 
@@ -784,16 +763,15 @@ export default function MindEdPage({ project, onBack }: MindEdPageProps) {
 
           {/* Project Status & Next Steps */}
           <section className="max-w-4xl mx-auto space-y-12">
-            <h2 className="text-xs uppercase tracking-[0.3em] font-bold opacity-30">Project Status & Next Steps</h2>
-            <p className="text-lg font-light leading-relaxed text-black/80">
-              The project was closed at the concept stage, so this redesign wasn't validated in the field. If it had moved forward, the next step would have been a focused usability test with a prototype (5-6 teachers) to verify if this orientation-heavy approach effectively reduced the drop-off rates seen in the pilot.
+            <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">Project Status & Next Steps</h2>
+            <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80">
+              The project was closed at the concept stage, so this redesign wasn't validated in the field. If it had moved forward, the next step would have been a focused usability test with a prototype (5–6 educators) to verify if this orientation-heavy approach effectively reduced the drop-off rates seen in the pilot.
             </p>
           </section>
 
         </div>
       </main>
 
-      <SystemOverview images={project.galleryImages || []} />
 
       {/* Fullscreen Image Overlay */}
       <AnimatePresence>
@@ -802,20 +780,20 @@ export default function MindEdPage({ project, onBack }: MindEdPageProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-white/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-20"
+            className="fixed inset-0 z-[100] bg-[#FDFCFA]/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-20"
             onClick={() => setSelectedImage(null)}
           >
             <motion.button
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
-              className="absolute top-8 right-8 p-3 rounded-full bg-black/5 hover:bg-black/10 transition-colors z-[110]"
+              className="absolute top-8 right-8 p-3 rounded-full bg-[#BEC2C6]/20 hover:bg-[#BEC2C6]/30 transition-colors z-[110]"
               onClick={(e) => {
                 e.stopPropagation();
                 setSelectedImage(null);
               }}
             >
-              <X size={24} className="text-black" />
+              <X size={24} className="text-[#32404F]" />
             </motion.button>
             
             <motion.div
@@ -861,9 +839,10 @@ export default function MindEdPage({ project, onBack }: MindEdPageProps) {
         )}
       </AnimatePresence>
 
-      <footer className="py-32 px-12 border-t border-black/5 text-center">
-        <button 
-          onClick={onBack}
+      <div className="flex justify-center py-8"><div className="w-10 h-px bg-black/[0.18]" /></div>
+      <footer className="py-16 px-12 text-center">
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.4em] font-bold opacity-30 hover:opacity-100 transition-opacity"
         >
           <span>Back to Top</span>
@@ -873,3 +852,4 @@ export default function MindEdPage({ project, onBack }: MindEdPageProps) {
     </motion.div>
   );
 }
+

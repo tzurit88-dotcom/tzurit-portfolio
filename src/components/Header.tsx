@@ -1,15 +1,45 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
-export default function Header({ 
+export default function Header({
   onNavigate,
   currentView = 'home'
-}: { 
+}: {
   onNavigate?: (view: 'home' | 'about' | 'resume', targetId?: string) => void;
   currentView?: 'home' | 'about' | 'resume' | 'project-page';
 }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
+  const showTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+        // Scrolling down — hide immediately
+        if (showTimeout.current) clearTimeout(showTimeout.current);
+        setIsVisible(false);
+        setIsOpen(false);
+      } else if (currentScrollY < lastScrollY.current) {
+        // Scrolling up — show with delay
+        if (showTimeout.current) clearTimeout(showTimeout.current);
+        showTimeout.current = setTimeout(() => {
+          setIsVisible(true);
+        }, 250);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (showTimeout.current) clearTimeout(showTimeout.current);
+    };
+  }, []);
 
   const menuItems = [
     { label: 'my work', id: 'Projects', view: 'home' as const },
@@ -21,38 +51,42 @@ export default function Header({
   return (
     <>
       <motion.header
+        animate={{ y: isVisible ? 0 : -100 }}
         initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed top-0 left-0 right-0 z-50 bg-[#FDFCFA]/90 backdrop-blur-md border-b border-[#858E97]/20 px-6 sm:px-12 h-20 flex items-center"
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className="fixed top-0 left-0 right-0 z-50 bg-[#FDFCFA]/90 backdrop-blur-md border-b border-[#858E97]/20 px-6 sm:px-12 h-[86px] flex items-center"
       >
         <div className="w-full flex items-center justify-between">
-          <button
-            onClick={() => {
-              setIsOpen(false);
-              if (onNavigate) {
-                onNavigate('home');
-              } else {
-                window.location.hash = '';
-              }
-            }}
-            className="flex flex-col items-start justify-center cursor-pointer border-none bg-transparent hover:opacity-75 transition-opacity text-left p-0 z-50"
-          >
-            <span className="font-medium text-lg lg:text-xl tracking-tighter uppercase leading-none text-left text-[#32404F]">
-              Tzurit Avraham
-            </span>
-            <span className="text-[10px] uppercase tracking-[0.15em] text-[#858E97] mt-1 text-left font-light leading-none">
-              Product Designer
-            </span>
-          </button>
+
+          <div className="flex items-center gap-6">
+            {/* Logo */}
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                if (onNavigate) {
+                  onNavigate('home');
+                } else {
+                  window.location.hash = '';
+                }
+              }}
+              className="flex flex-col items-start justify-center cursor-pointer border-none bg-transparent hover:opacity-75 transition-opacity text-left p-0 z-50"
+            >
+              <span className="font-semibold text-[20px] tracking-tight uppercase leading-none text-left text-[#32404F]">
+                Tzurit Avraham
+              </span>
+              <span className="text-[11px] uppercase tracking-[0.2em] text-[#858E97] mt-1.5 text-left font-normal leading-none">
+                Product Designer
+              </span>
+            </button>
+          </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1 text-[10px] uppercase tracking-[0.2em] font-medium text-[#32404F]">
+          <nav className="hidden md:flex items-center gap-1 text-[12px] uppercase tracking-[0.2em] font-medium text-[#32404F]">
             {menuItems.map((item) => {
-              const isActive = item.view === 'current' 
-                 ? false 
+              const isActive = item.view === 'current'
+                 ? false
                  : currentView === item.view;
-              
+
               return (
                 <button
                   key={item.label}
@@ -114,12 +148,12 @@ export default function Header({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-x-0 top-20 z-40 md:hidden bg-[#FDFCFA] border-b border-[#858E97]/20 shadow-lg"
+            className="fixed inset-x-0 top-[86px] z-40 md:hidden bg-[#FDFCFA] border-b border-[#858E97]/20 shadow-lg"
           >
             <div className="flex flex-col py-6 px-10 space-y-2">
               {menuItems.map((item) => {
-                const isActive = item.view === 'current' 
-                   ? false 
+                const isActive = item.view === 'current'
+                   ? false
                    : currentView === item.view;
 
                 return (
@@ -127,7 +161,6 @@ export default function Header({
                     key={item.label}
                     onClick={() => {
                       setIsOpen(false);
-                      // Settle transition then scroll or change view
                       setTimeout(() => {
                         if (item.view === 'current') {
                           const el = document.getElementById('Contact');
@@ -159,4 +192,3 @@ export default function Header({
     </>
   );
 }
-
