@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Download, Mail, Phone, MapPin, Linkedin, Globe, Briefcase, GraduationCap, Compass, Award, ExternalLink } from 'lucide-react';
 import Header from './Header';
@@ -10,6 +10,30 @@ interface ResumePageProps {
 }
 
 export default function ResumePage({ onBack, onNavigate, isPrintOnlyMode = false }: ResumePageProps) {
+  const [headerVisible, setHeaderVisible] = useState(true);
+  const lastScrollY = useRef(0);
+  const showTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (isPrintOnlyMode) return;
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+        if (showTimeout.current) clearTimeout(showTimeout.current);
+        setHeaderVisible(false);
+      } else if (currentScrollY < lastScrollY.current) {
+        if (showTimeout.current) clearTimeout(showTimeout.current);
+        showTimeout.current = setTimeout(() => setHeaderVisible(true), 250);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (showTimeout.current) clearTimeout(showTimeout.current);
+    };
+  }, [isPrintOnlyMode]);
+
   useEffect(() => {
     if (isPrintOnlyMode) {
       // Small timeout to allow styles and layout to settle before printing
@@ -32,25 +56,42 @@ export default function ResumePage({ onBack, onNavigate, isPrintOnlyMode = false
     >
       {!isPrintOnlyMode && (
         <div className="print:hidden">
-          <Header 
-            currentView="resume" 
+          <Header
+            currentView="resume"
             onNavigate={(view, targetId) => {
               if (view === 'home') {
                 onNavigate('home', targetId);
               } else if (view === 'about') {
                 onNavigate('about', targetId);
               }
-            }} 
+            }}
           />
+          {/* Mobile: full-width back bar */}
+          <motion.div
+            className="fixed top-0 left-0 right-0 z-[39] bg-[#fdfdfd]/80 backdrop-blur-sm md:hidden print:hidden"
+            initial={{ height: 154 }}
+            animate={{ height: headerVisible ? 154 : 68 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          />
+          {/* Mobile: back button */}
+          <motion.button
+            onClick={onBack}
+            animate={{ top: headerVisible ? 106 : 20 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed left-6 z-40 md:hidden print:hidden group flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-neutral-600 opacity-50 hover:opacity-100 transition-opacity px-3 py-2"
+          >
+            <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform" />
+            Back
+          </motion.button>
         </div>
       )}
 
       <main className={`max-w-5xl mx-auto px-6 sm:px-12 md:px-16 lg:px-24 print:px-0 print:py-0 ${
         isPrintOnlyMode ? 'py-4' : 'py-12'
       }`}>
-        {/* Simple crisp back navigation */}
+        {/* Desktop: back navigation */}
         {!isPrintOnlyMode && (
-          <div className="print:hidden">
+          <div className="print:hidden hidden md:block">
             <motion.button
               onClick={onBack}
               initial={{ opacity: 0, x: -10 }}
