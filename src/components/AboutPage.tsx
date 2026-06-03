@@ -39,7 +39,7 @@ export default function AboutPage({ onBack, onNavigate }: AboutPageProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -15 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="relative min-h-screen font-sans text-[#32404F] bg-[#FDFCFA] pt-44 md:pt-24"
+      className="relative min-h-screen font-sans text-[#32404F] bg-[#FDFCFA] pt-44 md:pt-32"
     >
       <Header
         currentView="about"
@@ -66,7 +66,7 @@ export default function AboutPage({ onBack, onNavigate }: AboutPageProps) {
         Back
       </motion.button>
 
-      <main className="max-w-7xl mx-auto px-6 sm:px-12 md:px-24 lg:px-36 xl:px-44 pt-6 pb-16">
+      <main className="max-w-7xl mx-auto px-6 sm:px-12 md:px-24 lg:px-36 xl:px-44 pt-6 md:pt-12 pb-16">
 
         <div className="flex flex-col md:flex-row gap-8 md:gap-10 lg:gap-12 items-start">
           {/* Left Column: Stylized high-end aspect ratio image */}

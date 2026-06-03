@@ -148,7 +148,7 @@ export default function Header({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-x-0 top-[86px] z-40 md:hidden bg-[#FDFCFA] border-b border-[#858E97]/20 shadow-lg"
+            className="fixed inset-x-0 top-[86px] z-[60] md:hidden bg-[#FDFCFA] border-b border-[#858E97]/20 shadow-lg"
           >
             <div className="flex flex-col py-6 px-10 space-y-2">
               {menuItems.map((item) => {

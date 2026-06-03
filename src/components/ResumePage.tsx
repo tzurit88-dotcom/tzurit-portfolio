@@ -108,7 +108,7 @@ export default function ResumePage({ onBack, onNavigate, isPrintOnlyMode = false
 
         {/* Action Header block for web vs print view */}
         {!isPrintOnlyMode && (
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#e0e0e0] pb-6 mb-12 gap-6 print:hidden">
+          <div className="flex flex-row items-center justify-between border-b border-[#e0e0e0] pb-6 mb-12 gap-4 print:hidden">
             <div>
               <h1 className="text-3xl font-light tracking-tight text-neutral-900 uppercase">cv</h1>
             </div>
