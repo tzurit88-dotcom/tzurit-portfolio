@@ -362,7 +362,7 @@ export default function GusPage({ project, onBack, onNavigate }: GusPageProps) {
                </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[260px] md:max-w-3xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[260px] md:max-w-3xl mx-auto mt-12 md:mt-0">
               {[8, 9, 10].map((idx) => (
                 <div 
                   key={idx} 
