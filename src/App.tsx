@@ -22,6 +22,7 @@ import PressPectivePage from './components/PressPectivePage';
 import MyzonPage from './components/MyzonPage';
 import AboutPage from './components/AboutPage';
 import ResumePage from './components/ResumePage';
+import MobilePopup from './components/MobilePopup';
 
 export default function App() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -179,12 +180,14 @@ export default function App() {
 
       <AnimatePresence>
         {selectedProject && (
-          <ProjectDetail 
-            project={selectedProject} 
-            onClose={() => setSelectedProject(null)} 
+          <ProjectDetail
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
           />
         )}
       </AnimatePresence>
+
+      <MobilePopup />
     </div>
   );
 }
