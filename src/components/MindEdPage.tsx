@@ -345,15 +345,16 @@ export default function MindEdPage({ project, onBack, onNavigate }: MindEdPagePr
     >
       <Header currentView="project-page" onNavigate={onNavigate} />
       <motion.div
-        className="fixed left-0 right-0 h-12 z-[39] bg-[#FDFCFA]/80 backdrop-blur-sm md:hidden"
-        animate={{ top: headerVisible ? 106 : 20 }}
+        className="fixed top-0 left-0 right-0 z-[39] bg-[#FDFCFA]/80 backdrop-blur-sm md:hidden"
+        initial={{ height: 154 }}
+        animate={{ height: headerVisible ? 154 : 68 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       />
       <motion.button
         onClick={onBack}
         animate={{ top: headerVisible ? 106 : 20 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed left-6 md:left-12 z-40 group flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-[#32404F] opacity-50 hover:opacity-100 transition-opacity bg-[#FDFCFA]/75 backdrop-blur-sm rounded-lg px-3 py-2"
+        className="fixed left-6 md:left-12 z-40 group flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-[#32404F] opacity-50 hover:opacity-100 transition-opacity px-3 py-2"
       >
         <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform" />
         Back
