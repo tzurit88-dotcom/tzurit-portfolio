@@ -48,37 +48,25 @@ export default function AboutPage({ onBack, onNavigate }: AboutPageProps) {
         }}
       />
 
-      {/* Mobile: full-width back bar */}
+      {/* Full-width back bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 z-[39] bg-[#FDFCFA]/80 backdrop-blur-sm md:hidden"
+        className="fixed top-0 left-0 right-0 z-[39] bg-[#FDFCFA]/80 backdrop-blur-sm"
         initial={{ height: 154 }}
         animate={{ height: headerVisible ? 154 : 68 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       />
-      {/* Mobile: back button */}
+      {/* Back button */}
       <motion.button
         onClick={onBack}
         animate={{ top: headerVisible ? 106 : 20 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed left-6 z-40 md:hidden group flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#32404F]/60 opacity-50 hover:opacity-100 transition-opacity px-3 py-2"
+        className="fixed left-6 md:left-12 z-40 group flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#32404F]/60 opacity-50 hover:opacity-100 transition-opacity px-3 py-2"
       >
         <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform" />
         Back
       </motion.button>
 
       <main className="max-w-7xl mx-auto px-6 sm:px-12 md:px-24 lg:px-36 xl:px-44 pt-6 pb-16">
-        {/* Desktop: back navigation */}
-        <motion.button
-          onClick={onBack}
-          initial={{ opacity: 0, x: -10 }}
-          animate={{ opacity: 0.4, x: 0 }}
-          whileHover={{ opacity: 1, x: -4 }}
-          transition={{ duration: 0.3 }}
-          className="hidden md:inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] font-bold mb-10 cursor-pointer border-none bg-transparent"
-        >
-          <ArrowLeft size={14} className="stroke-[2.5]" />
-          <span>Back to Home</span>
-        </motion.button>
 
         <div className="flex flex-col md:flex-row gap-8 md:gap-10 lg:gap-12 items-start">
           {/* Left Column: Stylized high-end aspect ratio image */}

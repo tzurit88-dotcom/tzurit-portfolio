@@ -335,7 +335,7 @@ export default function MyzonPage({ project, onBack, onNavigate }: MyzonPageProp
     >
       <Header currentView="project-page" onNavigate={onNavigate} />
       <motion.div
-        className="fixed top-0 left-0 right-0 z-[39] bg-[#FDFCFA]/80 backdrop-blur-sm md:hidden"
+        className="fixed top-0 left-0 right-0 z-[39] bg-[#FDFCFA]/80 backdrop-blur-sm"
         initial={{ height: 154 }}
         animate={{ height: headerVisible ? 154 : 68 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}

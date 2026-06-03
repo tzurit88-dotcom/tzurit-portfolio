@@ -66,19 +66,19 @@ export default function ResumePage({ onBack, onNavigate, isPrintOnlyMode = false
               }
             }}
           />
-          {/* Mobile: full-width back bar */}
+          {/* Full-width back bar */}
           <motion.div
-            className="fixed top-0 left-0 right-0 z-[39] bg-[#fdfdfd]/80 backdrop-blur-sm md:hidden print:hidden"
+            className="fixed top-0 left-0 right-0 z-[39] bg-[#fdfdfd]/80 backdrop-blur-sm print:hidden"
             initial={{ height: 154 }}
             animate={{ height: headerVisible ? 154 : 68 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           />
-          {/* Mobile: back button */}
+          {/* Back button */}
           <motion.button
             onClick={onBack}
             animate={{ top: headerVisible ? 106 : 20 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed left-6 z-40 md:hidden print:hidden group flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-neutral-600 opacity-50 hover:opacity-100 transition-opacity px-3 py-2"
+            className="fixed left-6 md:left-12 z-40 print:hidden group flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-neutral-600 opacity-50 hover:opacity-100 transition-opacity px-3 py-2"
           >
             <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform" />
             Back
@@ -91,7 +91,7 @@ export default function ResumePage({ onBack, onNavigate, isPrintOnlyMode = false
       }`}>
         {/* Desktop: back navigation */}
         {!isPrintOnlyMode && (
-          <div className="print:hidden hidden md:block">
+          <div className="print:hidden hidden">
             <motion.button
               onClick={onBack}
               initial={{ opacity: 0, x: -10 }}
