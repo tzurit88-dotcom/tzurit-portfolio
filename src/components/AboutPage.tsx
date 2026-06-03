@@ -39,7 +39,7 @@ export default function AboutPage({ onBack, onNavigate }: AboutPageProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -15 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="relative min-h-screen font-sans text-[#32404F] bg-[#FDFCFA] pt-24"
+      className="relative min-h-screen font-sans text-[#32404F] bg-[#FDFCFA] pt-44 md:pt-24"
     >
       <Header
         currentView="about"

@@ -51,7 +51,7 @@ export default function ResumePage({ onBack, onNavigate, isPrintOnlyMode = false
       exit={{ opacity: 0, y: isPrintOnlyMode ? 0 : -15 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className={`relative min-h-screen font-sans text-neutral-800 bg-[#fdfdfd] print:pt-0 print:bg-white ${
-        isPrintOnlyMode ? 'pt-4 sm:pt-10' : 'pt-32'
+        isPrintOnlyMode ? 'pt-4 sm:pt-10' : 'pt-44 md:pt-32'
       }`}
     >
       {!isPrintOnlyMode && (
