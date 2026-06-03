@@ -7,7 +7,7 @@ export default function MobilePopup() {
 
   useEffect(() => {
     const isMobile = window.innerWidth < 768 || /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
-    const dismissed = sessionStorage.getItem('mobile-popup-v2');
+    const dismissed = sessionStorage.getItem('mobile-popup-v3');
 
     if (isMobile && !dismissed) {
       const timer = setTimeout(() => setVisible(true), 1000);
@@ -17,7 +17,7 @@ export default function MobilePopup() {
 
   const dismiss = () => {
     setVisible(false);
-    sessionStorage.setItem('mobile-popup-v2', '1');
+    sessionStorage.setItem('mobile-popup-v3', '1');
   };
 
   return (
