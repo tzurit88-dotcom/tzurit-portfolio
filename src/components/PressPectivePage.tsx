@@ -322,6 +322,11 @@ export default function PressPectivePage({ project, onBack, onNavigate }: PressP
       className="min-h-screen bg-[#FDFCFA] text-[#32404F] font-sans selection:bg-[#BEC2C6]/30"
     >
       <Header currentView="project-page" onNavigate={onNavigate} />
+      <motion.div
+        className="fixed left-0 right-0 h-12 z-[39] bg-[#FDFCFA]/80 backdrop-blur-sm md:hidden"
+        animate={{ top: headerVisible ? 106 : 20 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      />
       <motion.button
         onClick={onBack}
         animate={{ top: headerVisible ? 106 : 20 }}
