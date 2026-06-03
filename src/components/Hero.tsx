@@ -258,7 +258,7 @@ export default function Hero() {
   return (
     <motion.section 
       id="hero" 
-      className="relative min-h-[78vh] md:min-h-[680px] flex flex-col justify-center pt-40 pb-6 px-12 bg-[#FDFCFA] overflow-hidden border-b border-[#858E97]/30"
+      className="relative min-h-[78vh] md:min-h-[680px] flex flex-col justify-center pt-40 pb-16 md:pb-6 px-12 bg-[#FDFCFA] overflow-hidden border-b border-[#858E97]/30"
     >
       {/* 2D Geometric Mouse-Interactive Graph Grid */}
       <InteractiveGrid hoverType={hoverType} />
