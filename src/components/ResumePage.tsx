@@ -115,7 +115,7 @@ export default function ResumePage({ onBack, onNavigate, isPrintOnlyMode = false
           {/* BIO SUMMARY STATEMENT */}
           <div className="mb-10">
             <p className="text-[13px] sm:text-[14px] text-neutral-700 leading-relaxed font-light text-justify">
-              I am a product designer with 3 years of experience designing AI-powered SaaS products end to end, with a focus on B2B and B2B2C platforms. As the sole designer across multiple projects, I manage everything from research through UX/UI to shipped MVP. I bring a background in occupational therapy, adding a behavior-driven, human-centered lens to products by combining empathy with research-backed decision-making.
+              I am a product designer with 3 years of experience designing AI-powered SaaS products end to end, with a focus on B2B and B2B2C platforms. As the sole designer across multiple projects, I manage the entire lifecycle from initial research to final production. I bring a background in occupational therapy, adding a behavior-driven, human-centered lens to products by combining empathy with research-backed decision-making.
             </p>
           </div>
 
@@ -141,20 +141,24 @@ export default function ResumePage({ onBack, onNavigate, isPrintOnlyMode = false
                       <span className="text-[11px] font-medium text-neutral-500 sm:ml-auto">2024–2026</span>
                     </div>
                     <p className="text-[12px] text-neutral-600 leading-relaxed mb-3">
-                      Sole product designer on three B2C / B2B2C AI-powered EdTech platforms developed in parallel, owning research, UX/UI, and product strategy end to end.
+                      Led end-to-end research, UX/UI, and product strategy for three B2C/B2B2C AI platforms developed in parallel, delivering multiple tailored interfaces for different user types across desktop and mobile.
                     </p>
                     <ul className="space-y-2 text-[12px] text-neutral-600 font-light leading-relaxed pl-1">
                       <li className="flex gap-2">
                         <span className="text-neutral-400 shrink-0 select-none">•</span>
-                        <span>Designed a SaaS platform end to end - multiple interfaces for different user types across desktop and mobile - for an international network; shipped the MVP and delivered it to the client.</span>
+                        <span>Led the research phase through interviews, surveys, usability testing, and insight synthesis to identify user needs and shape product direction.</span>
                       </li>
                       <li className="flex gap-2">
                         <span className="text-neutral-400 shrink-0 select-none">•</span>
-                        <span>Designed and led an AI-driven experiential learning platform, including user pilots, delivering above-target engagement results and strong product-market-fit signals.</span>
+                        <span>Defined core user flows and translated user needs, product goals, and technological constraints into clear UX structure.</span>
                       </li>
                       <li className="flex gap-2">
                         <span className="text-neutral-400 shrink-0 select-none">•</span>
-                        <span>Redesigned the core build experience of an AI "vibe coding" platform, grounded in post-pilot interviews and usability testing to reduce drop-off at the product's most critical stage.</span>
+                        <span>Led the UI design of the product and established its design guidelines. Collaborated closely with product, development to move ideas from concept to a coherent product experience.</span>
+                      </li>
+                      <li className="flex gap-2">
+                        <span className="text-neutral-400 shrink-0 select-none">•</span>
+                        <span>Applied AI tools throughout the design process and contributed to prompt engineering as part of the AI based product experience.</span>
                       </li>
                     </ul>
                   </div>
@@ -181,7 +185,7 @@ export default function ResumePage({ onBack, onNavigate, isPrintOnlyMode = false
                       <span className="text-[11px] font-medium text-neutral-500 sm:ml-auto">2013–2022</span>
                     </div>
                     <p className="text-[12px] text-neutral-600 font-light leading-relaxed">
-                      Assessing function and designing interventions around real human needs - the foundation of a research-led, user-centered design practice.
+                      Specialized in behavioral analysis, empathetic user interviewing, and driving data-backed decisions to translate complex human needs into actionable plans.
                     </p>
                   </div>
                 </div>
@@ -237,7 +241,7 @@ export default function ResumePage({ onBack, onNavigate, isPrintOnlyMode = false
                   <h2 className="text-[11px] uppercase tracking-[0.25em] font-semibold text-neutral-400">Tools</h2>
                 </div>
                 <div className="flex flex-col space-y-1.5 text-[12px] text-neutral-600">
-                  {['Figma', 'Prototyping', 'Recraft', 'Google AI Studio'].map((tool) => (
+                  {['Figma', 'Prototyping', 'Recraft', 'Google AI Studio', 'Claude Code'].map((tool) => (
                     <span key={tool}>{tool}</span>
                   ))}
                 </div>
