@@ -323,10 +323,10 @@ export default function GusPage({ project, onBack, onNavigate }: GusPageProps) {
               {[0, 1, 2].map((i) => (
                 <div 
                   key={i} 
-                  className="aspect-[350/700] bg-[#E5E6E6]/40 rounded-[2rem] overflow-hidden flex items-center justify-center border border-[#BEC2C6]/60 relative group cursor-zoom-in"
+                  className="md:aspect-[350/700] bg-[#E5E6E6]/40 rounded-[2rem] overflow-hidden flex items-center justify-center border border-[#BEC2C6]/60 relative group cursor-zoom-in"
                   onClick={() => setSelectedImage(project.galleryImages?.[i + 5] || null)}
                 >
-                  <img src={project.galleryImages?.[i + 5]} alt={`Mobile view ${i + 1}`} className="w-full h-auto transition-transform duration-700 group-hover:scale-[1.02]" />
+                  <img src={project.galleryImages?.[i + 5]} alt={`Mobile view ${i + 1}`} className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.02]" />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-[#BEC2C6]/10 transition-colors flex items-center justify-center">
                     <Maximize2 className="text-[#32404F] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
                   </div>
@@ -366,10 +366,10 @@ export default function GusPage({ project, onBack, onNavigate }: GusPageProps) {
               {[8, 9, 10].map((idx) => (
                 <div 
                   key={idx} 
-                  className="aspect-[350/700] bg-[#E5E6E6]/40 rounded-[2rem] overflow-hidden flex items-center justify-center border border-[#BEC2C6]/60 relative group cursor-zoom-in"
+                  className="md:aspect-[350/700] bg-[#E5E6E6]/40 rounded-[2rem] overflow-hidden flex items-center justify-center border border-[#BEC2C6]/60 relative group cursor-zoom-in"
                   onClick={() => setSelectedImage(project.galleryImages?.[idx] || null)}
                 >
-                  <img src={project.galleryImages?.[idx]} alt={`Mobile view adaptability ${idx - 7}`} className="w-full h-auto transition-transform duration-700 group-hover:scale-[1.02]" />
+                  <img src={project.galleryImages?.[idx]} alt={`Mobile view adaptability ${idx - 7}`} className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.02]" />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-[#BEC2C6]/10 transition-colors flex items-center justify-center">
                     <Maximize2 className="text-[#32404F] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
                   </div>
