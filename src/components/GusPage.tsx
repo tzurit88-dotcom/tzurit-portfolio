@@ -342,16 +342,16 @@ export default function GusPage({ project, onBack, onNavigate }: GusPageProps) {
               <h3 className="text-2xl md:text-3xl font-light tracking-tight text-[#32404F]/80">Chat & Engagement</h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 md:gap-x-16 md:gap-y-0 md:mb-[-1.5rem]">
-               <div className="space-y-2 pb-4 md:pb-10">
+            <div className="flex flex-col gap-6 md:grid md:grid-cols-2 md:gap-x-16 md:gap-y-0 md:mb-[-1.5rem]">
+               <div className="space-y-2">
                  <span className="text-[10px] font-bold opacity-40 uppercase tracking-widest block">Challenge 1</span>
                  <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80">The mobile screen only had room for the lesson slide (text and image). However, to nudge students to ask questions, the team agreed the AI chat must remain highly accessible.</p>
                </div>
-               <div className="space-y-2 pb-4 md:pb-10">
+               <div className="space-y-2">
                  <span className="text-[10px] font-bold opacity-40 uppercase tracking-widest block">Solution</span>
                  <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80">Contained the chat within a top action button, using an icon and clear microcopy to actively invite engagement.</p>
                </div>
-               <div className="hidden md:block md:col-span-2 mb-10" />
+               <div className="hidden md:block md:col-span-2 md:mb-10" />
                <div className="space-y-2 md:min-h-[160px]">
                  <span className="text-[10px] font-bold opacity-40 uppercase tracking-widest block">Challenge 2</span>
                  <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80">The mobile chat drawer could not fit both the soft keyboard and the suggested questions simultaneously.</p>
@@ -362,7 +362,7 @@ export default function GusPage({ project, onBack, onNavigate }: GusPageProps) {
                </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[260px] md:max-w-3xl mx-auto mt-12 md:mt-0">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[260px] md:max-w-3xl mx-auto mt-20 md:mt-0">
               {[8, 9, 10].map((idx) => (
                 <div 
                   key={idx} 
