@@ -51,7 +51,7 @@ export default function MobilePopup() {
 
             {/* Body text */}
             <p className="text-[15px] font-semibold text-[#32404F] leading-snug pr-6 mb-6">
-              Hey there! The desktop version is way more fun, just saying... 😉
+              Hey there!<br />The desktop version is way more fun, just saying... 😉
             </p>
 
             {/* CTA */}
