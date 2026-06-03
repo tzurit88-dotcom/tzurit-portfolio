@@ -102,7 +102,7 @@ export default function AboutPage({ onBack, onNavigate }: AboutPageProps) {
               </p>
             </div>
 
-            <div className="mt-3">
+            <div className="mt-8 md:mt-3">
               <motion.a
                 href="mailto:tzurit88@gmail.com"
                 initial="initial"
