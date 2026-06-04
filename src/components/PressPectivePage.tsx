@@ -332,7 +332,7 @@ export default function PressPectivePage({ project, onBack, onNavigate }: PressP
         onClick={onBack}
         animate={{ top: headerVisible ? 106 : 20 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed left-6 md:left-12 z-40 group flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#32404F]/60 opacity-50 hover:opacity-100 transition-opacity px-3 py-2"
+        className="fixed left-6 md:left-12 z-40 group flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#32404F]/60 opacity-70 hover:opacity-100 transition-opacity px-3 py-2"
       >
         <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform" />
         Back
@@ -369,27 +369,27 @@ export default function PressPectivePage({ project, onBack, onNavigate }: PressP
               className="grid grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-12 pt-4"
             >
               <div className="space-y-1">
-                <div className="text-[10px] uppercase tracking-wider font-bold opacity-30">Role</div>
+                <div className="text-[10px] uppercase tracking-wider font-bold opacity-50">Role</div>
                 <div className="text-sm font-medium">Sole Product Designer</div>
               </div>
               <div className="space-y-1">
-                <div className="text-[10px] uppercase tracking-wider font-bold opacity-30">Scope</div>
+                <div className="text-[10px] uppercase tracking-wider font-bold opacity-50">Scope</div>
                 <div className="text-sm font-medium">UX UI, Research, Product Strategy</div>
               </div>
               <div className="space-y-1">
-                <div className="text-[10px] uppercase tracking-wider font-bold opacity-30">Timeline</div>
+                <div className="text-[10px] uppercase tracking-wider font-bold opacity-50">Timeline</div>
                 <div className="text-sm font-medium">17 Months (2024–2026)</div>
               </div>
               <div className="space-y-1">
-                <div className="text-[10px] uppercase tracking-wider font-bold opacity-30">Team</div>
+                <div className="text-[10px] uppercase tracking-wider font-bold opacity-50">Team</div>
                 <div className="text-sm font-medium">Program Manager, Developer, Pedagogical Advisor</div>
               </div>
               <div className="space-y-1">
-                <div className="text-[10px] uppercase tracking-wider font-bold opacity-30">Platforms</div>
+                <div className="text-[10px] uppercase tracking-wider font-bold opacity-50">Platforms</div>
                 <div className="text-sm font-medium">Teacher & Student Desktop</div>
               </div>
               <div className="space-y-1">
-                <div className="text-[10px] uppercase tracking-wider font-bold opacity-30">Market</div>
+                <div className="text-[10px] uppercase tracking-wider font-bold opacity-50">Market</div>
                 <div className="text-sm font-medium">B2B2C (Schools, Districts and Ministries of Education)</div>
               </div>
             </motion.div>
@@ -397,7 +397,7 @@ export default function PressPectivePage({ project, onBack, onNavigate }: PressP
         </section>
 
         {/* Content Layers */}
-        <div className="space-y-28 md:space-y-36 px-6 md:px-12 text-[#32404F]/80">
+        <div className="space-y-28 md:space-y-36 px-6 md:px-12 text-[#32404F]/90">
           
           {/* Overview */}
           <section className="max-w-4xl mx-auto space-y-28">
@@ -418,7 +418,7 @@ export default function PressPectivePage({ project, onBack, onNavigate }: PressP
             <div className="space-y-6">
               <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">Overview</h2>
               <div className="space-y-8">
-                <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80">
+                <p className="text-lg font-[320] leading-relaxed text-[#32404F]/90">
                   PressPective is an EdTech platform designed to move students from passive fact-memorization to active historical inquiry. The product is built around the concept of "Learning Through Perspectives" - enabling students to investigate historical events through the worldviews of different groups prominent in that era, and analyze events from multiple angles by interviewing AI-driven figures.
                 </p>
               </div>
@@ -430,40 +430,40 @@ export default function PressPectivePage({ project, onBack, onNavigate }: PressP
             <div className="space-y-3">
               <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">The Problem</h2>
               <div className="space-y-8">
-                <h3 className="text-2xl md:text-3xl font-light tracking-tight text-[#32404F]/80">Curriculum vs. Engagement</h3>
-                <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80">
+                <h3 className="text-2xl md:text-3xl font-light tracking-tight text-[#32404F]/90">Curriculum vs. Engagement</h3>
+                <p className="text-lg font-[320] leading-relaxed text-[#32404F]/90">
                   Through a survey of 28 history teachers and 7 in-depth interviews, we surfaced three critical classroom tensions:
                 </p>
                 <div className="space-y-8 pt-4">
                   <div className="space-y-2">
-                    <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80"><span className="font-bold">Shallow Comprehension:</span> Students memorize isolated dates and facts, failing to develop a deeper historical understanding.</p>
+                    <p className="text-lg font-[320] leading-relaxed text-[#32404F]/90"><span className="font-bold">Shallow Comprehension:</span> Students memorize isolated dates and facts, failing to develop a deeper historical understanding.</p>
                   </div>
                   <div className="space-y-2">
-                    <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80"><span className="font-bold">The Skill vs. Knowledge Trade-off:</span> Teachers lack the time and resources to teach higher-order thinking skills, and worry that prioritizing them will jeopardize curriculum coverage - their primary evaluation metric.</p>
+                    <p className="text-lg font-[320] leading-relaxed text-[#32404F]/90"><span className="font-bold">The Skill vs. Knowledge Trade-off:</span> Teachers lack the time and resources to teach higher-order thinking skills, and worry that prioritizing them will jeopardize curriculum coverage - their primary evaluation metric.</p>
                   </div>
                   <div className="space-y-2">
-                    <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80"><span className="font-bold">The Engagement Gap:</span> Capturing and maintaining student attention in text-heavy history lessons is a constant uphill battle.</p>
+                    <p className="text-lg font-[320] leading-relaxed text-[#32404F]/90"><span className="font-bold">The Engagement Gap:</span> Capturing and maintaining student attention in text-heavy history lessons is a constant uphill battle.</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="space-y-8 pt-4">
-              <h3 className="text-2xl md:text-3xl font-light tracking-tight text-[#32404F]/80">The Strategic Framework</h3>
-              <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80">To address these challenges, we defined three core pillars to guide the design of our solution:</p>
+              <h3 className="text-2xl md:text-3xl font-light tracking-tight text-[#32404F]/90">The Strategic Framework</h3>
+              <p className="text-lg font-[320] leading-relaxed text-[#32404F]/90">To address these challenges, we defined three core pillars to guide the design of our solution:</p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-8">
                  <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-2">
                    <div className="font-semibold text-[#32404F]">Higher-Order Skill Development</div>
-                   <p className="font-[320] leading-relaxed text-[#32404F]/70">Focusing on critical thinking, deep questioning, and multi-perspective analysis.</p>
+                   <p className="font-[320] leading-relaxed text-[#32404F]/80">Focusing on critical thinking, deep questioning, and multi-perspective analysis.</p>
                  </div>
                  <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-2">
                    <div className="font-semibold text-[#32404F]">Core Knowledge Acquisition</div>
-                   <p className="font-[320] leading-relaxed text-[#32404F]/70">Driving deep, contextual understanding rather than shallow memorization.</p>
+                   <p className="font-[320] leading-relaxed text-[#32404F]/80">Driving deep, contextual understanding rather than shallow memorization.</p>
                  </div>
                  <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-2">
                    <div className="font-semibold text-[#32404F]">Engaging Experience</div>
-                   <p className="font-[320] leading-relaxed text-[#32404F]/70">Creating a motivating, active learning environment.</p>
+                   <p className="font-[320] leading-relaxed text-[#32404F]/80">Creating a motivating, active learning environment.</p>
                  </div>
               </div>
             </div>
@@ -477,16 +477,16 @@ export default function PressPectivePage({ project, onBack, onNavigate }: PressP
               <div className="space-y-6 pt-6 font-light">
                 <div className="space-y-6">
                   <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">MVP Testing & Insights</h2>
-                  <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80">The first MVP featured a "Story" format (text and imagery) followed by a Q&A session. Testing this early version in three classrooms provided two critical insights:</p>
+                  <p className="text-lg font-[320] leading-relaxed text-[#32404F]/90">The first MVP featured a "Story" format (text and imagery) followed by a Q&A session. Testing this early version in three classrooms provided two critical insights:</p>
                 </div>
                 <ul className="space-y-4">
                   <li className="flex gap-4">
                     <span className="font-bold text-[#32404F]/60">01.</span>
-                    <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80"><span className="font-bold">Shift in Focus:</span> Survey and interview feedback revealed lukewarm motivation and low learning perception. However, a pattern emerged: students drifted off during the initial reading, but became noticeably more engaged during the question-asking phase.</p>
+                    <p className="text-lg font-[320] leading-relaxed text-[#32404F]/90"><span className="font-bold">Shift in Focus:</span> Survey and interview feedback revealed lukewarm motivation and low learning perception. However, a pattern emerged: students drifted off during the initial reading, but became noticeably more engaged during the question-asking phase.</p>
                   </li>
                   <li className="flex gap-4">
                     <span className="font-bold text-[#32404F]/60">02.</span>
-                    <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80"><span className="font-bold">User Need:</span> Both teachers and students repeatedly asked for "the other side of the story," suggesting a need for comparative analysis.</p>
+                    <p className="text-lg font-[320] leading-relaxed text-[#32404F]/90"><span className="font-bold">User Need:</span> Both teachers and students repeatedly asked for "the other side of the story," suggesting a need for comparative analysis.</p>
                   </li>
                 </ul>
               </div>
@@ -495,7 +495,7 @@ export default function PressPectivePage({ project, onBack, onNavigate }: PressP
             <div className="space-y-12 pt-4">
               <div className="space-y-2">
                 <span className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F] block">The Pivot</span>
-                <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80">
+                <p className="text-lg font-[320] leading-relaxed text-[#32404F]/90">
                   Based on these signals, we shifted the product’s gravity. We removed the "Story" component and made the interview the core experience. The model evolved into a Dual-Perspective Interview, allowing students to interact with two contradicting narratives simultaneously (e.g., an aristocrat vs. a revolutionary supporter during the French Revolution).
                 </p>
               </div>
@@ -506,7 +506,7 @@ export default function PressPectivePage({ project, onBack, onNavigate }: PressP
           <section className="max-w-4xl mx-auto space-y-12 md:space-y-16">
             <div className="space-y-3">
               <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">The Solution</h2>
-              <h3 className="text-2xl md:text-3xl font-light tracking-tight text-[#32404F]/80">Designing the Experience</h3>
+              <h3 className="text-2xl md:text-3xl font-light tracking-tight text-[#32404F]/90">Designing the Experience</h3>
             </div>
 
             <div className="space-y-20 md:space-y-24">
@@ -516,7 +516,7 @@ export default function PressPectivePage({ project, onBack, onNavigate }: PressP
                   <div className="space-y-2">
                     <h4 className="text-xl font-semibold text-[#32404F]/85">1. The Journalistic Metaphor</h4>
                   </div>
-                  <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80">
+                  <p className="text-lg font-[320] leading-relaxed text-[#32404F]/90">
                     To create a unique experience that would pull students in, we wrapped the process in a "Journalistic Studio" metaphor. This storytelling framework was designed to spark curiosity and increase task-immersion.
                   </p>
                 </div>
@@ -581,7 +581,7 @@ export default function PressPectivePage({ project, onBack, onNavigate }: PressP
                   <div className="space-y-2">
                     <h4 className="text-xl font-semibold text-[#32404F]/85">2. The Preparation Phase (Question Notepad)</h4>
                   </div>
-                  <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80">
+                  <p className="text-lg font-[320] leading-relaxed text-[#32404F]/90">
                     Recognizing that students needed a structured entry point before interacting with the AI, I designed a "Question Notepad" interface. This phase guides students to draft and refine their inquiries, ensuring the subsequent interview is focused and meaningful.
                   </p>
                 </div>
@@ -629,7 +629,7 @@ export default function PressPectivePage({ project, onBack, onNavigate }: PressP
                   <div className="space-y-2">
                     <h4 className="text-xl font-semibold text-[#32404F]/85">3. The Dual-Perspective Interview Room</h4>
                   </div>
-                  <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80">
+                  <p className="text-lg font-[320] leading-relaxed text-[#32404F]/90">
                     The core UI features a split-screen interface for real-time interaction with two figures at once. The decision to use text-based chat rather than voice was made to better suit a noisy classroom environment and to manage technical complexity during the MVP stage.
                   </p>
                 </div>
@@ -657,7 +657,7 @@ export default function PressPectivePage({ project, onBack, onNavigate }: PressP
                   <div className="space-y-2">
                     <h4 className="text-xl font-semibold text-[#32404F]/85">4. Gamification & Quality Feedback</h4>
                   </div>
-                  <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80">
+                  <p className="text-lg font-[320] leading-relaxed text-[#32404F]/90">
                     We integrated a Rating Meter that provides real-time scores and written feedback on question quality, based on predefined criteria. This created a motivating feedback loop for students and provided the teacher with a clear signal of the classroom’s comprehension levels.
                   </p>
                 </div>
@@ -760,7 +760,7 @@ export default function PressPectivePage({ project, onBack, onNavigate }: PressP
                   <div className="space-y-2">
                     <h4 className="text-xl font-semibold text-[#32404F]/85">5. Teacher Control Panel</h4>
                   </div>
-                  <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80">
+                  <p className="text-lg font-[320] leading-relaxed text-[#32404F]/90">
                     A dedicated dashboard focused on real-time classroom management. It allows teachers to track each student's progress, manage session timing, and use a "Live-peek" feature to monitor ongoing interviews and ensure students remain focused on the task.
                   </p>
                 </div>
@@ -788,7 +788,7 @@ export default function PressPectivePage({ project, onBack, onNavigate }: PressP
           <section className="max-w-4xl mx-auto space-y-12">
             <div className="space-y-6">
               <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">Impact & Outcomes</h2>
-              <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80">
+              <p className="text-lg font-[320] leading-relaxed text-[#32404F]/90">
                 The platform was tested across three pilot rounds involving 8 classes, approximately 160 students, and 6 teachers - delivering <strong className="font-bold text-[#32404F]/60">higher-than-expected</strong> results in student motivation, core knowledge acquisition, and higher-order thinking skills.
               </p>
             </div>
@@ -811,7 +811,7 @@ export default function PressPectivePage({ project, onBack, onNavigate }: PressP
                         fill="currentColor"
                         stroke="none"
                       />
-                      <p className="text-xl md:text-2xl font-light italic leading-relaxed text-[#32404F]/80 relative z-10">
+                      <p className="text-xl md:text-2xl font-light italic leading-relaxed text-[#32404F]/90 relative z-10">
                         "{quote}"
                       </p>
                       <div className="flex items-center gap-3 pt-6 border-t border-black/[0.05] relative z-10">
@@ -824,7 +824,7 @@ export default function PressPectivePage({ project, onBack, onNavigate }: PressP
 
                <div className="space-y-6 font-light pt-8">
                   <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">Market Validation</h2>
-                  <p className="text-lg font-[320] leading-relaxed text-[#32404F]/80">
+                  <p className="text-lg font-[320] leading-relaxed text-[#32404F]/90">
                     Although the department closed prior to a commercial launch, we identified strong signals of Product-Market Fit. Several schools expressed a formal intent to purchase, and teachers reported direct inquiries from parents interested in private access to the platform.
                   </p>
                </div>
@@ -897,7 +897,7 @@ export default function PressPectivePage({ project, onBack, onNavigate }: PressP
       <footer className="py-16 px-12 text-center">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.4em] font-bold opacity-30 hover:opacity-100 transition-opacity"
+          className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.4em] font-bold opacity-50 hover:opacity-100 transition-opacity"
         >
           <span>Back to Top</span>
           <ArrowUp size={14} className="stroke-[2.5]" />
@@ -906,4 +906,7 @@ export default function PressPectivePage({ project, onBack, onNavigate }: PressP
     </motion.div>
   );
 }
+
+
+
 

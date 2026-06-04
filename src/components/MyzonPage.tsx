@@ -344,7 +344,7 @@ export default function MyzonPage({ project, onBack, onNavigate }: MyzonPageProp
         onClick={onBack}
         animate={{ top: headerVisible ? 106 : 20 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed left-6 md:left-12 z-40 group flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#32404F] opacity-50 hover:opacity-100 transition-opacity px-3 py-2"
+        className="fixed left-6 md:left-12 z-40 group flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#32404F] opacity-70 hover:opacity-100 transition-opacity px-3 py-2"
       >
         <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform" />
         Back
@@ -380,15 +380,15 @@ export default function MyzonPage({ project, onBack, onNavigate }: MyzonPageProp
               className="grid grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-12 pt-4"
             >
               <div className="space-y-1">
-                <div className="text-[10px] uppercase tracking-wider font-bold opacity-30">Role</div>
+                <div className="text-[10px] uppercase tracking-wider font-bold opacity-50">Role</div>
                 <div className="text-sm font-medium">{project.role}</div>
               </div>
               <div className="space-y-1">
-                <div className="text-[10px] uppercase tracking-wider font-bold opacity-30">Timeline</div>
+                <div className="text-[10px] uppercase tracking-wider font-bold opacity-50">Timeline</div>
                 <div className="text-sm font-medium">3 Months (2023)</div>
               </div>
               <div className="space-y-1">
-                <div className="text-[10px] uppercase tracking-wider font-bold opacity-30">Market</div>
+                <div className="text-[10px] uppercase tracking-wider font-bold opacity-50">Market</div>
                 <div className="text-sm font-medium">B2B SaaS (E-commerce)</div>
               </div>
             </motion.div>
@@ -396,7 +396,7 @@ export default function MyzonPage({ project, onBack, onNavigate }: MyzonPageProp
         </section>
 
         {/* Content Layers with High-Quality Layout */}
-        <div className="space-y-24 md:space-y-32 px-6 md:px-12 text-[#32404F]/80">
+        <div className="space-y-24 md:space-y-32 px-6 md:px-12 text-[#32404F]/90">
            {/* Visual Presentation Area - High-Fidelity UI Image */}
           <section className="max-w-4xl mx-auto">
             <div 
@@ -526,7 +526,7 @@ export default function MyzonPage({ project, onBack, onNavigate }: MyzonPageProp
       <footer className="py-14 px-12 text-center bg-[#FDFCFA]">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.4em] font-bold opacity-30 hover:opacity-100 transition-opacity"
+          className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.4em] font-bold opacity-50 hover:opacity-100 transition-opacity"
         >
           <span>Back to Top</span>
           <ArrowUp size={14} className="stroke-[2.5]" />
@@ -535,4 +535,7 @@ export default function MyzonPage({ project, onBack, onNavigate }: MyzonPageProp
     </motion.div>
   );
 }
+
+
+
 
