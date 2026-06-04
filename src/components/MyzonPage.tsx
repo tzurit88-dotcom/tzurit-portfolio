@@ -367,7 +367,7 @@ export default function MyzonPage({ project, onBack, onNavigate }: MyzonPageProp
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-2xl font-light leading-relaxed text-[#32404F]/60 max-w-3xl"
+              className="text-xl md:text-2xl font-light leading-relaxed text-[#32404F]/75 max-w-3xl"
             >
               {project.description}
             </motion.p>
@@ -535,6 +535,7 @@ export default function MyzonPage({ project, onBack, onNavigate }: MyzonPageProp
     </motion.div>
   );
 }
+
 
 
 

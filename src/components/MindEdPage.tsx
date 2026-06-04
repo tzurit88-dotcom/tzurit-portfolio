@@ -511,15 +511,15 @@ export default function MindEdPage({ project, onBack, onNavigate }: MindEdPagePr
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-2">
                 <div className="font-semibold text-[#32404F]">Expectation Mismatch</div>
-                <p className="font-[370] leading-relaxed text-[#32404F]/80">The initial incomplete results felt disconnected from their goals, causing early frustration.</p>
+                <p className="font-[370] leading-relaxed text-[#32404F]/90">The initial incomplete results felt disconnected from their goals, causing early frustration.</p>
               </div>
               <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-2">
                 <div className="font-semibold text-[#32404F]">Redundant Requests</div>
-                <p className="font-[370] leading-relaxed text-[#32404F]/80">Educators used the chat to ask for features already planned for later stages.</p>
+                <p className="font-[370] leading-relaxed text-[#32404F]/90">Educators used the chat to ask for features already planned for later stages.</p>
               </div>
               <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-2">
                 <div className="font-semibold text-[#32404F]">Process Disorientation</div>
-                <p className="font-[370] leading-relaxed text-[#32404F]/80">The interface lacked clarity, making the workflow feel tedious and causing users to leave before realizing how much was left.</p>
+                <p className="font-[370] leading-relaxed text-[#32404F]/90">The interface lacked clarity, making the workflow feel tedious and causing users to leave before realizing how much was left.</p>
               </div>
             </div>
           </section>
@@ -744,23 +744,23 @@ export default function MindEdPage({ project, onBack, onNavigate }: MindEdPagePr
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-3">
                 <div className="font-semibold text-[#32404F]">Established Master-Detail Hierarchy</div>
-                <p className="font-[370] leading-relaxed text-[#32404F]/80">I flipped the Chat and Roadmap positions. In this RTL interface, placing the Chat (Master) on the right and the Roadmap (Detail) on the left creates a <strong className="font-normal text-[#32404F]">natural cause-and-effect flow.</strong></p>
+                <p className="font-[370] leading-relaxed text-[#32404F]/90">I flipped the Chat and Roadmap positions. In this RTL interface, placing the Chat (Master) on the right and the Roadmap (Detail) on the left creates a <strong className="font-normal text-[#32404F]">natural cause-and-effect flow.</strong></p>
               </div>
               <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-3">
                 <div className="font-semibold text-[#32404F]">Simplified Roadmap Structure</div>
-                <p className="font-[370] leading-relaxed text-[#32404F]/80">Condensed the Roadmap into three constant stages (Foundations, Main Features, Expansion). This provides a clear "beginning, middle, and end" to prevent cognitive overload, with titles visible at all times for <strong className="font-normal text-[#32404F]">constant orientation.</strong></p>
+                <p className="font-[370] leading-relaxed text-[#32404F]/90">Condensed the Roadmap into three constant stages (Foundations, Main Features, Expansion). This provides a clear "beginning, middle, and end" to prevent cognitive overload, with titles visible at all times for <strong className="font-normal text-[#32404F]">constant orientation.</strong></p>
               </div>
               <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-3">
                 <div className="font-semibold text-[#32404F]">Reduced Visual Load</div>
-                <p className="font-[370] leading-relaxed text-[#32404F]/80">Neutralized the UI palette to minimize competing signals and <strong className="font-normal text-[#32404F]">keep the focus on the generated app.</strong></p>
+                <p className="font-[370] leading-relaxed text-[#32404F]/90">Neutralized the UI palette to minimize competing signals and <strong className="font-normal text-[#32404F]">keep the focus on the generated app.</strong></p>
               </div>
               <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-3">
                 <div className="font-semibold text-[#32404F]">Closed the Feedback Loop</div>
-                <p className="font-[370] leading-relaxed text-[#32404F]/80">Enabled the Chat and Roadmap to be open simultaneously. This <strong className="font-normal text-[#32404F]">eliminates context switching</strong> and lets educators see the Roadmap update in real-time as they interact with the Chat.</p>
+                <p className="font-[370] leading-relaxed text-[#32404F]/90">Enabled the Chat and Roadmap to be open simultaneously. This <strong className="font-normal text-[#32404F]">eliminates context switching</strong> and lets educators see the Roadmap update in real-time as they interact with the Chat.</p>
               </div>
               <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-3">
                 <div className="font-semibold text-[#32404F]">Improved Discoverability</div>
-                <p className="font-[370] leading-relaxed text-[#32404F]/80">Redesigned the drawer button to provide a <strong className="font-normal text-[#32404F]">clearer affordance,</strong> making the Roadmap functionality easier to find and access.</p>
+                <p className="font-[370] leading-relaxed text-[#32404F]/90">Redesigned the drawer button to provide a <strong className="font-normal text-[#32404F]">clearer affordance,</strong> making the Roadmap functionality easier to find and access.</p>
               </div>
             </div>
 
@@ -858,6 +858,7 @@ export default function MindEdPage({ project, onBack, onNavigate }: MindEdPagePr
     </motion.div>
   );
 }
+
 
 
 

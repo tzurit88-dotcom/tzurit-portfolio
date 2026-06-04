@@ -187,11 +187,11 @@ export default function GusPage({ project, onBack, onNavigate }: GusPageProps) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-2">
                   <div className="font-semibold text-[#32404F]">Lecturer Interface</div>
-                  <p className="font-[370] leading-relaxed text-[#32404F]/80">Providing total control over the content, while reducing uncertainty regarding what students see on their end.</p>
+                  <p className="font-[370] leading-relaxed text-[#32404F]/90">Providing total control over the content, while reducing uncertainty regarding what students see on their end.</p>
                 </div>
                 <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-2">
                   <div className="font-semibold text-[#32404F]">Student Interface</div>
-                  <p className="font-[370] leading-relaxed text-[#32404F]/80">Reducing cognitive load and encouraging steady progress through the learning material.</p>
+                  <p className="font-[370] leading-relaxed text-[#32404F]/90">Reducing cognitive load and encouraging steady progress through the learning material.</p>
                 </div>
               </div>
           </section>
@@ -453,6 +453,7 @@ export default function GusPage({ project, onBack, onNavigate }: GusPageProps) {
     </motion.div>
   );
 }
+
 
 
 

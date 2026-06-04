@@ -455,15 +455,15 @@ export default function PressPectivePage({ project, onBack, onNavigate }: PressP
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-8">
                  <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-2">
                    <div className="font-semibold text-[#32404F]">Higher-Order Skill Development</div>
-                   <p className="font-[370] leading-relaxed text-[#32404F]/80">Focusing on critical thinking, deep questioning, and multi-perspective analysis.</p>
+                   <p className="font-[370] leading-relaxed text-[#32404F]/90">Focusing on critical thinking, deep questioning, and multi-perspective analysis.</p>
                  </div>
                  <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-2">
                    <div className="font-semibold text-[#32404F]">Core Knowledge Acquisition</div>
-                   <p className="font-[370] leading-relaxed text-[#32404F]/80">Driving deep, contextual understanding rather than shallow memorization.</p>
+                   <p className="font-[370] leading-relaxed text-[#32404F]/90">Driving deep, contextual understanding rather than shallow memorization.</p>
                  </div>
                  <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-2">
                    <div className="font-semibold text-[#32404F]">Engaging Experience</div>
-                   <p className="font-[370] leading-relaxed text-[#32404F]/80">Creating a motivating, active learning environment.</p>
+                   <p className="font-[370] leading-relaxed text-[#32404F]/90">Creating a motivating, active learning environment.</p>
                  </div>
               </div>
             </div>
@@ -906,6 +906,7 @@ export default function PressPectivePage({ project, onBack, onNavigate }: PressP
     </motion.div>
   );
 }
+
 
 
 
