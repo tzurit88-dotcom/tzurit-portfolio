@@ -138,16 +138,16 @@ export default function ResumePage({ onBack, onNavigate, isPrintOnlyMode = false
             </div>
             
             <div className="flex flex-col md:items-end text-xs font-light text-neutral-600 space-y-2 md:text-right select-none">
-              <span className="underline decoration-neutral-300">
+              <span className="">
                 tzurit88@gmail.com
               </span>
-              <span className="underline decoration-neutral-300">
+              <span className="">
                 +972 509 607 267
               </span>
-              <span className="underline decoration-neutral-300">
+              <span className="">
                 LinkedIn
               </span>
-              <span className="underline decoration-neutral-300">
+              <span className="">
                 Portfolio
               </span>
             </div>
