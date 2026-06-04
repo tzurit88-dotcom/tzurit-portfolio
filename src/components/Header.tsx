@@ -1,13 +1,17 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 
 export default function Header({
   onNavigate,
-  currentView = 'home'
+  currentView = 'home',
+  onOpenContact,
+  onNavigateToContact,
 }: {
   onNavigate?: (view: 'home' | 'about' | 'resume', targetId?: string) => void;
-  currentView?: 'home' | 'about' | 'resume' | 'project-page';
+  currentView?: 'home' | 'about' | 'resume' | 'project-page' | 'contact';
+  onOpenContact?: () => void;
+  onNavigateToContact?: () => void;
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
@@ -45,7 +49,6 @@ export default function Header({
     { label: 'my work', id: 'Projects', view: 'home' as const },
     { label: 'About', id: 'About', view: 'about' as const },
     { label: 'cv', id: 'Resume', view: 'resume' as const },
-    { label: 'Contact', id: 'Contact', view: 'current' as const }
   ];
 
   return (
@@ -117,6 +120,16 @@ export default function Header({
             })}
           </nav>
 
+            {/* Desktop Contact Button */}
+            <button
+              onClick={onOpenContact}
+              className="hidden md:inline-flex items-center gap-2 px-5 py-2 border border-[#32404F]/30 rounded-full text-[12px] uppercase tracking-[0.2em] font-medium text-[#32404F] hover:bg-[#32404F]/5 transition-all duration-300 cursor-pointer ml-4"
+            >
+              <span>contact</span>
+              <ArrowUpRight size={13} strokeWidth={1.8} />
+            </button>
+          </nav>
+
           {/* Mobile Menu Action Toggle Button */}
           <div className="md:hidden flex items-center z-50">
             <button
@@ -152,9 +165,7 @@ export default function Header({
           >
             <div className="flex flex-col py-6 px-10 space-y-2">
               {menuItems.map((item) => {
-                const isActive = item.view === 'current'
-                   ? false
-                   : currentView === item.view;
+                const isActive = currentView === item.view;
 
                 return (
                   <button
@@ -185,6 +196,19 @@ export default function Header({
                   </button>
                 );
               })}
+              {/* Contact tab — mobile only */}
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  setTimeout(() => { if (onNavigateToContact) onNavigateToContact(); }, 100);
+                }}
+                className={`text-[12px] uppercase tracking-[0.25em] font-semibold text-left py-4 w-full border-b border-neutral-100/50 hover:bg-neutral-50/50 px-2 rounded-sm transition-all text-[#32404F] flex items-center justify-between ${
+                  currentView === 'contact' ? 'opacity-100 font-bold bg-[#F5F4F0]/30' : 'opacity-70'
+                }`}
+              >
+                <span>Contact</span>
+                {currentView === 'contact' && <span className="w-1.5 h-1.5 rounded-full bg-[#32404F]" />}
+              </button>
             </div>
           </motion.div>
         )}

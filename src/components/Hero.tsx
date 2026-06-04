@@ -310,32 +310,6 @@ export default function Hero() {
             </motion.div>
           </motion.button>
 
-          {/* Secondary Button: Get in touch */}
-          <motion.a
-            href="mailto:tzurit88@gmail.com"
-            onMouseEnter={() => setHoverType('heart')}
-            onMouseLeave={() => setHoverType('none')}
-            initial="initial"
-            whileHover="hover"
-            whileTap={{ scale: 0.97 }}
-            transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            className="inline-flex items-center gap-2.5 px-7 py-4 bg-[#FDFCFA] hover:bg-[#858E97]/10 text-[#32404F] border border-[#858E97]/60 rounded-full text-[15px] font-medium shadow-sm group cursor-pointer relative overflow-hidden transition-all duration-300"
-          >
-            <motion.div
-              variants={{
-                initial: { rotate: 0, y: 0 },
-                hover: { rotate: -12, y: -1.5, scale: 1.1 }
-              }}
-              transition={{ type: "spring", stiffness: 350, damping: 15 }}
-              className="text-[#858E97] group-hover:text-[#32404F] flex items-center justify-center relative z-10"
-            >
-              <Mail size={15} />
-            </motion.div>
-
-            <span className="relative z-10 font-medium tracking-wide">
-              Get in touch
-            </span>
-          </motion.a>
         </motion.div>
       </div>
     </motion.section>

@@ -22,11 +22,14 @@ import PressPectivePage from './components/PressPectivePage';
 import MyzonPage from './components/MyzonPage';
 import AboutPage from './components/AboutPage';
 import ResumePage from './components/ResumePage';
+import ContactDrawer from './components/ContactDrawer';
+import ContactPage from './components/ContactPage';
 
 export default function App() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [currentView, setCurrentView] = useState<'home' | 'about' | 'resume' | 'project-page'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'about' | 'resume' | 'project-page' | 'contact'>('home');
   const [pageProject, setPageProject] = useState<Project | null>(null);
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   // Auto-redirect to print-only view if the query param is present
   const isPrintOnlyMode = typeof window !== 'undefined' && window.location.search.includes('cv-print');
@@ -74,9 +77,18 @@ export default function App() {
     );
   }
 
+  if (currentView === 'contact') {
+    return (
+      <ContactPage
+        onBack={() => handleNavigation('home')}
+        onNavigate={handleNavigation}
+      />
+    );
+  }
+
   if (currentView === 'about') {
     return (
-      <AboutPage 
+      <AboutPage
         onBack={() => handleNavigation('home')}
         onNavigate={handleNavigation}
       />
@@ -133,10 +145,13 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen font-sans text-[#32404F] bg-[#FDFCFA]">
-      <Header 
+      <Header
         currentView={currentView}
-        onNavigate={handleNavigation} 
+        onNavigate={handleNavigation}
+        onOpenContact={() => setIsContactOpen(true)}
+        onNavigateToContact={() => { setCurrentView('contact'); window.scrollTo(0, 0); }}
       />
+      <ContactDrawer isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
       
       <main>
         <Hero />
