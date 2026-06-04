@@ -135,7 +135,7 @@ export default function AboutPage({ onBack, onNavigate }: AboutPageProps) {
         <div className="flex gap-12 text-[12px] uppercase tracking-widest text-[#32404F]">
           <a
             href="mailto:tzurit88@gmail.com"
-            className="opacity-60 hover:opacity-100 transition-all duration-300 relative py-1 group block"
+            className="opacity-80 hover:opacity-100 transition-all duration-300 relative py-1 group block"
           >
             <span>tzurit88@gmail.com</span>
             <span className="absolute bottom-0 left-0 right-0 h-[1.2px] bg-[#32404F] transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100" />
@@ -144,7 +144,7 @@ export default function AboutPage({ onBack, onNavigate }: AboutPageProps) {
             href="https://linkedin.com/in/tzurit-avraham-886013104"
             target="_blank"
             rel="noopener noreferrer"
-            className="opacity-60 hover:opacity-100 transition-all duration-300 relative py-1 group block"
+            className="opacity-80 hover:opacity-100 transition-all duration-300 relative py-1 group block"
           >
             <span>LinkedIn</span>
             <span className="absolute bottom-0 left-0 right-0 h-[1.2px] bg-[#32404F] transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100" />
@@ -154,5 +154,6 @@ export default function AboutPage({ onBack, onNavigate }: AboutPageProps) {
     </motion.div>
   );
 }
+
 
 
