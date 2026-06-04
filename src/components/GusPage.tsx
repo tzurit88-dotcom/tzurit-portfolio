@@ -284,18 +284,18 @@ export default function GusPage({ project, onBack, onNavigate }: GusPageProps) {
                     className="w-full rounded-2xl overflow-hidden border border-[#BEC2C6]/60 group relative cursor-zoom-in"
                     onClick={() => setSelectedImage(showTutorMode ? gusTutorMode : (project.galleryImages?.[3] || null))}
                   >
-                    <AnimatePresence mode="wait">
-                      <motion.img
-                        key={showTutorMode ? 'tutor' : 'normal'}
-                        src={showTutorMode ? gusTutorMode : project.galleryImages?.[3]}
-                        alt="Tutor Mode chat"
-                        className="w-full h-auto"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
+                    <div className="relative">
+                      <img
+                        src={project.galleryImages?.[3]}
+                        alt="Context-Aware Chat"
+                        className={`w-full h-auto transition-opacity duration-400 ${showTutorMode ? 'opacity-0' : 'opacity-100'}`}
                       />
-                    </AnimatePresence>
+                      <img
+                        src={gusTutorMode}
+                        alt="Tutor Mode"
+                        className={`absolute inset-0 w-full h-auto transition-opacity duration-400 ${showTutorMode ? 'opacity-100' : 'opacity-0'}`}
+                      />
+                    </div>
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-[#BEC2C6]/10 transition-colors flex items-center justify-center">
                       <Maximize2 className="text-[#32404F] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
                     </div>
