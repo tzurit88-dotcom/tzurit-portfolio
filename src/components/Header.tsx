@@ -103,7 +103,7 @@ export default function Header({
                     }
                   }}
                   className={`transition-all duration-300 uppercase tracking-[0.2em] cursor-pointer border-none bg-transparent px-6 py-5 block text-[#32404F] relative group ${
-                    isActive ? 'opacity-100 font-bold' : 'opacity-60 hover:opacity-100 font-medium'
+                    isActive ? 'opacity-100 font-bold' : 'opacity-80 hover:opacity-100 font-medium'
                   }`}
                 >
                   <span className="relative py-1">
