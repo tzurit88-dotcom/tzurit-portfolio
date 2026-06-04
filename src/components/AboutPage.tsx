@@ -60,7 +60,7 @@ export default function AboutPage({ onBack, onNavigate }: AboutPageProps) {
         onClick={onBack}
         animate={{ top: headerVisible ? 106 : 20 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed left-6 md:left-12 z-40 group flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#32404F]/60 opacity-70 hover:opacity-100 transition-opacity px-3 py-2"
+        className="fixed left-6 md:left-12 z-40 group flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#32404F]/80 opacity-70 hover:opacity-100 transition-opacity px-3 py-2"
       >
         <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform" />
         Back
@@ -87,7 +87,7 @@ export default function AboutPage({ onBack, onNavigate }: AboutPageProps) {
           {/* Right Column: Bio text */}
           <div className="flex-grow flex flex-col" style={{ height: '416px' }}>
             <h1 className="text-3xl font-light tracking-tight text-[#32404F] uppercase mb-5 block">About Me</h1>
-            <div className="text-sm md:text-base font-light leading-relaxed text-[#32404F]/90 space-y-4 flex-1">
+            <div className="text-sm md:text-base font-[370] leading-relaxed text-[#32404F]/90 space-y-4 flex-1">
               <p>
                 I am a Product Designer dedicated to building innovative, minimalistic products where the user's needs always drive the design.
               </p>
@@ -154,6 +154,7 @@ export default function AboutPage({ onBack, onNavigate }: AboutPageProps) {
     </motion.div>
   );
 }
+
 
 
 
