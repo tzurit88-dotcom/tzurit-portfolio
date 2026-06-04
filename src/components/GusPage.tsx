@@ -4,6 +4,7 @@ import { ArrowLeft, Maximize2, X, ArrowUp } from 'lucide-react';
 import { Project } from '../types';
 import SystemOverview from './SystemOverview';
 import Header from './Header';
+import gusTutorMode from '../assets/images/gus_tutor_mode.png';
 
 interface GusPageProps {
   project: Project;
@@ -14,6 +15,7 @@ interface GusPageProps {
 export default function GusPage({ project, onBack, onNavigate }: GusPageProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [headerVisible, setHeaderVisible] = useState(true);
+  const [showTutorMode, setShowTutorMode] = useState(false);
   const lastScrollY = useRef(0);
   const showTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -267,12 +269,33 @@ export default function GusPage({ project, onBack, onNavigate }: GusPageProps) {
                       <div className="text-xl font-bold">Context-Aware Chat</div>
                     </div>
                     <p className="text-lg font-[370] leading-relaxed text-[#32404F]/90">The AI assistant adapts its behavior based on the lesson stage: it answers freely during instruction, switches to "Tutor Mode" (guiding the student without revealing the answer) during interactive challenges, and is disabled during assessments.</p>
+                    {/* Toggle */}
+                    <button
+                      onClick={() => setShowTutorMode(v => !v)}
+                      className="flex items-center gap-3 cursor-pointer group"
+                    >
+                      <div className={`relative w-11 h-6 rounded-full transition-colors duration-300 ${showTutorMode ? 'bg-[#32404F]' : 'bg-[#BEC2C6]/50'}`}>
+                        <div className={`absolute top-0.5 w-5 h-5 rounded-full bg-white shadow-sm transition-transform duration-300 ${showTutorMode ? 'translate-x-5' : 'translate-x-0.5'}`} />
+                      </div>
+                      <span className="text-sm font-medium text-[#32404F]/70 group-hover:text-[#32404F] transition-colors">Show Tutor mode</span>
+                    </button>
                   </div>
                   <div
                     className="w-full rounded-2xl overflow-hidden border border-[#BEC2C6]/60 group relative cursor-zoom-in"
-                    onClick={() => setSelectedImage(project.galleryImages?.[3] || null)}
+                    onClick={() => setSelectedImage(showTutorMode ? gusTutorMode : (project.galleryImages?.[3] || null))}
                   >
-                    <img src={project.galleryImages?.[3]} alt="Tutor Mode chat" className="w-full h-auto transition-transform duration-700 group-hover:scale-[1.02]" />
+                    <AnimatePresence mode="wait">
+                      <motion.img
+                        key={showTutorMode ? 'tutor' : 'normal'}
+                        src={showTutorMode ? gusTutorMode : project.galleryImages?.[3]}
+                        alt="Tutor Mode chat"
+                        className="w-full h-auto"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </AnimatePresence>
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-[#BEC2C6]/10 transition-colors flex items-center justify-center">
                       <Maximize2 className="text-[#32404F] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
                     </div>
