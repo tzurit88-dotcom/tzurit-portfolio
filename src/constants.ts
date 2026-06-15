@@ -43,7 +43,7 @@ import gusDesktop from './assets/images/gus_desktop.png';
 import gusMobile from './assets/images/gus_mobile.png';
 import gusHeroNew from './assets/images/gus_hero_new.png';
 import gusRevision from './assets/images/gus_revision.png';
-import gusModal from './assets/images/gus_modal.png';
+import gusModal from './assets/images/gus_module_new.png';
 import gusChat from './assets/images/gus_chat.png';
 import gusFeedback from './assets/images/gus_feedback.png';
 import gusMobileView from './assets/images/gus_mobile_view.png';

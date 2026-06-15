@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Maximize2, X, ArrowUp } from 'lucide-react';
 import { Project } from '../types';
+import OtherProjects from './OtherProjects';
 import SystemOverview from './SystemOverview';
 import Header from './Header';
 import gusTutorMode from '../assets/images/gus_tutor_mode.png';
@@ -10,9 +11,10 @@ interface GusPageProps {
   project: Project;
   onBack: () => void;
   onNavigate: (view: 'home' | 'about' | 'resume', targetId?: string) => void;
+  onNavigateToProject: (project: Project) => void;
 }
 
-export default function GusPage({ project, onBack, onNavigate }: GusPageProps) {
+export default function GusPage({ project, onBack, onNavigate, onNavigateToProject }: GusPageProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [headerVisible, setHeaderVisible] = useState(true);
   const [showTutorMode, setShowTutorMode] = useState(false);
@@ -232,10 +234,10 @@ export default function GusPage({ project, onBack, onNavigate }: GusPageProps) {
                <div className="space-y-8">
                   <div className="space-y-6">
                     <div className="space-y-2">
-                      <span className="text-[10px] font-bold opacity-40 uppercase tracking-widest block">Error Prevention</span>
-                      <div className="text-xl font-bold">Balancing Guidance with Autonomy</div>
+                      <span className="text-[10px] font-bold opacity-40 uppercase tracking-widest block">Post-Publication Control</span>
+                      <div className="text-xl font-bold">Real-time editing and student tracking</div>
                     </div>
-                    <p className="text-lg font-[370] leading-relaxed text-[#32404F]/90">To prevent accidental publishing, the system alerts the lecturer if a module contains unapproved lessons. However, it does not block the action; instead, it introduces "friction" via a confirmation modal, allowing the lecturer to maintain full control in edge cases where a partial publication is preferred.</p>
+                    <p className="text-lg font-[370] leading-relaxed text-[#32404F]/90">After publishing, the module remains editable. Lecturers can switch to "View as Student" at any time to check the content layout, while using progress data to spot lessons where students get stuck. If an issue is found, content updates can be pushed immediately without disrupting the students' learning flow.</p>
                   </div>
                   <div
                     className="w-full rounded-2xl overflow-hidden border border-[#BEC2C6]/60 group relative cursor-zoom-in"
@@ -462,6 +464,8 @@ export default function GusPage({ project, onBack, onNavigate }: GusPageProps) {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <OtherProjects currentProjectId={project.id} onNavigateProject={onNavigateToProject} />
 
       <div className="flex justify-center py-8"><div className="w-10 h-px bg-black/[0.18]" /></div>
       <footer className="py-16 px-12 text-center">
