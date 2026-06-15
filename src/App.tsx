@@ -22,14 +22,13 @@ import PressPectivePage from './components/PressPectivePage';
 import MyzonPage from './components/MyzonPage';
 import AboutPage from './components/AboutPage';
 import ResumePage from './components/ResumePage';
-import ContactDrawer from './components/ContactDrawer';
 import ContactPage from './components/ContactPage';
 
 export default function App() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentView, setCurrentView] = useState<'home' | 'about' | 'resume' | 'project-page' | 'contact'>('home');
   const [pageProject, setPageProject] = useState<Project | null>(null);
-  const [isContactOpen, setIsContactOpen] = useState(false);
+  const [gridHoverType, setGridHoverType] = useState<'none' | 'heart' | 'arrow'>('none');
 
   // Auto-redirect to print-only view if the query param is present
   const isPrintOnlyMode = typeof window !== 'undefined' && window.location.search.includes('cv-print');
@@ -53,7 +52,7 @@ export default function App() {
     }
   };
 
-  const handleNavigation = (view: 'home' | 'about' | 'resume', targetId?: string) => {
+  const handleNavigation = (view: 'home' | 'about' | 'resume' | 'contact', targetId?: string) => {
     setCurrentView(view);
     if (targetId) {
       setTimeout(() => {
@@ -111,6 +110,7 @@ export default function App() {
           project={pageProject}
           onBack={() => handleNavigation('home', 'Projects')}
           onNavigate={handleNavigation}
+          onNavigateToProject={handleProjectClick}
         />
       );
     }
@@ -120,6 +120,7 @@ export default function App() {
           project={pageProject}
           onBack={() => handleNavigation('home', 'Projects')}
           onNavigate={handleNavigation}
+          onNavigateToProject={handleProjectClick}
         />
       );
     }
@@ -129,6 +130,7 @@ export default function App() {
           project={pageProject}
           onBack={() => handleNavigation('home', 'Projects')}
           onNavigate={handleNavigation}
+          onNavigateToProject={handleProjectClick}
         />
       );
     }
@@ -138,6 +140,7 @@ export default function App() {
           project={pageProject}
           onBack={() => handleNavigation('home', 'Projects')}
           onNavigate={handleNavigation}
+          onNavigateToProject={handleProjectClick}
         />
       );
     }
@@ -148,13 +151,13 @@ export default function App() {
       <Header
         currentView={currentView}
         onNavigate={handleNavigation}
-        onOpenContact={() => setIsContactOpen(true)}
         onNavigateToContact={() => { setCurrentView('contact'); window.scrollTo(0, 0); }}
+        onContactMouseEnter={() => setGridHoverType('heart')}
+        onContactMouseLeave={() => setGridHoverType('none')}
       />
-      <ContactDrawer isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
-      
+
       <main>
-        <Hero />
+        <Hero externalHoverType={gridHoverType} />
 
         {/* Projects Grid */}
         <section id="Projects" className="px-6 sm:px-12 md:px-24 lg:px-36 xl:px-44 pt-10 pb-20 md:pt-14 md:pb-28 bg-[#FDFCFA] border-b border-[#858E97]/25">
