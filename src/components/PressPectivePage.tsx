@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Maximize2, X, Quote, Upload, RefreshCw, ArrowUp } from 'lucide-react';
 import { Project } from '../types';
+import OtherProjects from './OtherProjects';
 import SystemOverview from './SystemOverview';
 import Header from './Header';
 
@@ -51,9 +52,10 @@ interface PressPectivePageProps {
   project: Project;
   onBack: () => void;
   onNavigate: (view: 'home' | 'about' | 'resume', targetId?: string) => void;
+  onNavigateToProject: (project: Project) => void;
 }
 
-export default function PressPectivePage({ project, onBack, onNavigate }: PressPectivePageProps) {
+export default function PressPectivePage({ project, onBack, onNavigate, onNavigateToProject }: PressPectivePageProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [headerVisible, setHeaderVisible] = useState(true);
   const lastScrollY = useRef(0);
@@ -892,6 +894,8 @@ export default function PressPectivePage({ project, onBack, onNavigate }: PressP
           </motion.div>
         )}
       </AnimatePresence>
+
+      <OtherProjects currentProjectId={project.id} onNavigateProject={onNavigateToProject} />
 
       <div className="flex justify-center py-8"><div className="w-10 h-px bg-black/[0.18]" /></div>
       <footer className="py-16 px-12 text-center">

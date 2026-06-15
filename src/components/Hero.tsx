@@ -252,12 +252,19 @@ function InteractiveGrid({ hoverType }: InteractiveGridProps) {
   );
 }
 
-export default function Hero() {
-  const [hoverType, setHoverType] = useState<'none' | 'heart' | 'arrow'>('none');
+interface HeroProps {
+  externalHoverType?: 'none' | 'heart' | 'arrow';
+}
+
+export default function Hero({ externalHoverType = 'none' }: HeroProps) {
+  const [localHoverType, setLocalHoverType] = useState<'none' | 'heart' | 'arrow'>('none');
+
+  // External hover (e.g. Contact button in Header) takes priority over local hover
+  const hoverType = externalHoverType !== 'none' ? externalHoverType : localHoverType;
 
   return (
-    <motion.section 
-      id="hero" 
+    <motion.section
+      id="hero"
       className="relative min-h-[78vh] md:min-h-[680px] flex flex-col justify-center pt-40 pb-16 md:pb-6 px-12 bg-[#FDFCFA] overflow-hidden border-b border-[#858E97]/30"
     >
       {/* 2D Geometric Mouse-Interactive Graph Grid */}
@@ -270,16 +277,22 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-4xl md:text-6xl font-light leading-tight tracking-tight max-w-4xl text-[#32404F]"
+          className="font-light leading-tight tracking-tight max-w-5xl text-[#32404F] font-sans"
+          style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)' }}
         >
-          I solve problems through <span className="font-semibold text-[#32404F]">intentional</span> design and systematic thinking - using AI for faster, elevated results.
+          I solve problems through{' '}
+          <span className="font-bold text-[#32404F]">intentional</span>
+          <br />
+          <span className="md:whitespace-nowrap">design and systematic thinking - using AI</span>
+          <br />
+          for faster, elevated result.
         </motion.h1>
 
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="pt-4 pointer-events-auto flex flex-wrap gap-4 items-center"
+          className="pt-5 pointer-events-auto flex flex-wrap gap-4 items-center"
         >
           {/* Primary Button: Explore my work */}
           <motion.button
@@ -287,15 +300,15 @@ export default function Hero() {
               const el = document.getElementById('Projects');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }}
-            onMouseEnter={() => setHoverType('arrow')}
-            onMouseLeave={() => setHoverType('none')}
+            onMouseEnter={() => setLocalHoverType('arrow')}
+            onMouseLeave={() => setLocalHoverType('none')}
             initial="initial"
             whileHover="hover"
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
             className="inline-flex items-center gap-2.5 px-7 py-4 bg-[#32404F] hover:bg-[#32404F]/90 text-[#FDFCFA] rounded-full text-[15px] font-medium shadow-md group cursor-pointer relative overflow-hidden transition-all duration-300"
           >
-            <span className="relative z-10 font-medium tracking-wide">
+            <span className="relative z-10 font-medium tracking-wide leading-none flex items-center">
               Explore my work
             </span>
             <motion.div

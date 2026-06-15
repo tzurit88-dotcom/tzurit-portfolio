@@ -48,23 +48,6 @@ export default function AboutPage({ onBack, onNavigate }: AboutPageProps) {
         }}
       />
 
-      {/* Full-width back bar */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 z-[39] bg-[#FDFCFA]/80 backdrop-blur-sm"
-        initial={{ height: 154 }}
-        animate={{ height: headerVisible ? 154 : 68 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      />
-      {/* Back button */}
-      <motion.button
-        onClick={onBack}
-        animate={{ top: headerVisible ? 106 : 20 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed left-6 md:left-12 z-40 group flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#32404F]/80 opacity-70 hover:opacity-100 transition-opacity px-3 py-2"
-      >
-        <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform" />
-        Back
-      </motion.button>
 
       <main className="max-w-7xl mx-auto px-6 sm:px-12 md:px-24 lg:px-36 xl:px-44 pt-6 md:pt-12 pb-16">
 
@@ -102,28 +85,6 @@ export default function AboutPage({ onBack, onNavigate }: AboutPageProps) {
               </p>
             </div>
 
-            <div className="mt-8 md:mt-3">
-              <motion.a
-                href="mailto:tzurit88@gmail.com"
-                initial="initial"
-                whileHover="hover"
-                whileTap={{ scale: 0.97 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#FDFCFA] hover:bg-[#858E97]/10 text-[#32404F] border border-[#858E97]/60 rounded-full text-sm font-medium shadow-sm group cursor-pointer relative overflow-hidden transition-all duration-300"
-              >
-                <motion.div
-                  variants={{
-                    initial: { rotate: 0, y: 0 },
-                    hover: { rotate: -12, y: -1.5, scale: 1.1 },
-                  }}
-                  transition={{ type: 'spring', stiffness: 350, damping: 15 }}
-                  className="text-[#858E97] group-hover:text-[#32404F] flex items-center justify-center relative z-10"
-                >
-                  <Mail size={13} />
-                </motion.div>
-                <span className="relative z-10 font-medium tracking-wide">Get in touch</span>
-              </motion.a>
-            </div>
           </div>
         </div>
       </main>

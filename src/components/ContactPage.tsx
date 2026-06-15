@@ -27,18 +27,8 @@ export default function ContactPage({ onBack, onNavigate }: ContactPageProps) {
       <Header currentView="home" onNavigate={onNavigate} />
 
       <main className="max-w-sm mx-auto px-8 pt-36 pb-16 flex flex-col">
-        {/* Back button */}
-        <button
-          onClick={onBack}
-          className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#32404F]/60 mb-12 w-fit"
-        >
-          <ArrowLeft size={13} />
-          Back
-        </button>
-
         {/* Title */}
-        <h1 className="text-3xl font-semibold text-[#32404F] tracking-tight mb-2">Contact</h1>
-        <p className="text-sm text-[#858E97] mb-16">Tzurit Avraham • Product Design</p>
+        <h1 className="text-3xl font-semibold text-[#32404F] tracking-tight mb-16">Contact</h1>
 
         {/* Contact links */}
         <div className="flex flex-col gap-10">
@@ -69,7 +59,7 @@ export default function ContactPage({ onBack, onNavigate }: ContactPageProps) {
           </a>
         </div>
 
-        <p className="mt-auto pt-20 text-sm text-[#858E97]/70 font-light">Lets talk:)</p>
+        <p className="mt-auto pt-20 text-xl text-[#858E97]/70 font-light">Lets talk:)</p>
       </main>
     </motion.div>
   );

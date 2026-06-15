@@ -66,23 +66,6 @@ export default function ResumePage({ onBack, onNavigate, isPrintOnlyMode = false
               }
             }}
           />
-          {/* Full-width back bar */}
-          <motion.div
-            className="fixed top-0 left-0 right-0 z-[39] bg-[#fdfdfd]/80 backdrop-blur-sm print:hidden"
-            initial={{ height: 154 }}
-            animate={{ height: headerVisible ? 154 : 68 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          />
-          {/* Back button */}
-          <motion.button
-            onClick={onBack}
-            animate={{ top: headerVisible ? 106 : 20 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed left-6 md:left-12 z-40 print:hidden group flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-neutral-600 opacity-70 hover:opacity-100 transition-opacity px-3 py-2"
-          >
-            <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform" />
-            Back
-          </motion.button>
         </div>
       )}
 
@@ -177,28 +160,28 @@ export default function ResumePage({ onBack, onNavigate, isPrintOnlyMode = false
                   <div>
                     <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
                       <h3 className="font-bold text-neutral-950 text-sm">
-                        Product Designer <span className="font-light text-neutral-400 mx-1">ג€¢</span> MindCET
+                        Product Designer <span className="font-light text-neutral-400 mx-1">•</span> MindCET
                       </h3>
-                      <span className="text-[11px] font-medium text-neutral-500 sm:ml-auto">2024ג€“2026</span>
+                      <span className="text-[11px] font-medium text-neutral-500 sm:ml-auto">2024–2026</span>
                     </div>
                     <p className="text-[12px] text-neutral-600 leading-relaxed mb-3">
                       Led end-to-end research, UX/UI, and product strategy for three B2C/B2B2C AI platforms developed in parallel, delivering multiple tailored interfaces for different user types across desktop and mobile.
                     </p>
                     <ul className="space-y-2 text-[12px] text-neutral-600 font-light leading-relaxed pl-1">
                       <li className="flex gap-2">
-                        <span className="text-neutral-400 shrink-0 select-none">ג€¢</span>
+                        <span className="text-neutral-400 shrink-0 select-none">•</span>
                         <span>Led the research phase through interviews, surveys, usability testing, and insight synthesis to identify user needs and shape product direction.</span>
                       </li>
                       <li className="flex gap-2">
-                        <span className="text-neutral-400 shrink-0 select-none">ג€¢</span>
+                        <span className="text-neutral-400 shrink-0 select-none">•</span>
                         <span>Defined core user flows and translated user needs, product goals, and technological constraints into clear UX structure.</span>
                       </li>
                       <li className="flex gap-2">
-                        <span className="text-neutral-400 shrink-0 select-none">ג€¢</span>
+                        <span className="text-neutral-400 shrink-0 select-none">•</span>
                         <span>Led the UI design of the product and established its design guidelines. Collaborated closely with product, development to move ideas from concept to a coherent product experience.</span>
                       </li>
                       <li className="flex gap-2">
-                        <span className="text-neutral-400 shrink-0 select-none">ג€¢</span>
+                        <span className="text-neutral-400 shrink-0 select-none">•</span>
                         <span>Applied AI tools throughout the design process and contributed to prompt engineering as part of the AI based product experience.</span>
                       </li>
                     </ul>
@@ -208,9 +191,9 @@ export default function ResumePage({ onBack, onNavigate, isPrintOnlyMode = false
                   <div>
                     <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
                       <h3 className="font-bold text-neutral-950 text-sm">
-                        Product Designer <span className="font-light text-neutral-400 mx-1">ג€¢</span> Freelance
+                        Product Designer <span className="font-light text-neutral-400 mx-1">•</span> Freelance
                       </h3>
-                      <span className="text-[11px] font-medium text-neutral-500 sm:ml-auto">2023ג€“2024</span>
+                      <span className="text-[11px] font-medium text-neutral-500 sm:ml-auto">2023–2024</span>
                     </div>
                     <p className="text-[12px] text-neutral-600 font-light leading-relaxed">
                       Designed a B2B SaaS AI platform for e-commerce sellers, establishing the core UX/UI infrastructure from early demo to a refined, high-fidelity product.
@@ -223,7 +206,7 @@ export default function ResumePage({ onBack, onNavigate, isPrintOnlyMode = false
                       <h3 className="font-bold text-neutral-950 text-sm">
                         Occupational Therapist
                       </h3>
-                      <span className="text-[11px] font-medium text-neutral-500 sm:ml-auto">2013ג€“2022</span>
+                      <span className="text-[11px] font-medium text-neutral-500 sm:ml-auto">2013–2022</span>
                     </div>
                     <p className="text-[12px] text-neutral-600 font-light leading-relaxed">
                       Specialized in behavioral analysis, empathetic user interviewing, and driving data-backed decisions to translate complex human needs into actionable plans.
@@ -242,7 +225,7 @@ export default function ResumePage({ onBack, onNavigate, isPrintOnlyMode = false
                     <p className="text-[12px] text-neutral-600 font-light leading-relaxed">
                       Lead a non-profit community project for event-design equipment lending.
                     </p>
-                    <span className="text-[11px] font-medium text-neutral-500 sm:ml-auto shrink-0 whitespace-nowrap">2013ג€“Present</span>
+                    <span className="text-[11px] font-medium text-neutral-500 sm:ml-auto shrink-0 whitespace-nowrap">2023–Present</span>
                   </div>
                 </div>
               </div>

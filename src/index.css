@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Space Grotesk", sans-serif;
 }
 
@@ -11,8 +11,11 @@
     max-width: 100%;
   }
   body {
-    @apply bg-[#FAFAFA] text-[#1A1A1A] antialiased selection:bg-[#1A1A1A] selection:text-white;
+    @apply bg-[#FAFAFA] text-[#1A1A1A] subpixel-antialiased selection:bg-[#1A1A1A] selection:text-white;
     direction: ltr;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+    text-rendering: optimizeLegibility;
   }
 
   .custom-scrollbar::-webkit-scrollbar {

@@ -1,6 +1,7 @@
 ﻿import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Maximize2, X, Upload, RefreshCw, ChevronLeft, ChevronRight, ArrowUp } from 'lucide-react';
+import OtherProjects from './OtherProjects';
 import { Project } from '../types';
 import Header from './Header';
 import mindedBeforeNew from '../assets/images/minded_before_new.png';
@@ -52,9 +53,10 @@ interface MindEdPageProps {
   project: Project;
   onBack: () => void;
   onNavigate: (view: 'home' | 'about' | 'resume', targetId?: string) => void;
+  onNavigateToProject: (project: Project) => void;
 }
 
-export default function MindEdPage({ project, onBack, onNavigate }: MindEdPageProps) {
+export default function MindEdPage({ project, onBack, onNavigate, onNavigateToProject }: MindEdPageProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [headerVisible, setHeaderVisible] = useState(true);
   const lastScrollY = useRef(0);
@@ -844,6 +846,8 @@ export default function MindEdPage({ project, onBack, onNavigate }: MindEdPagePr
           </motion.div>
         )}
       </AnimatePresence>
+
+      <OtherProjects currentProjectId={project.id} onNavigateProject={onNavigateToProject} />
 
       <div className="flex justify-center py-8"><div className="w-10 h-px bg-black/[0.18]" /></div>
       <footer className="py-16 px-12 text-center">
