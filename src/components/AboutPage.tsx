@@ -75,7 +75,7 @@ export default function AboutPage({ onBack, onNavigate }: AboutPageProps) {
                 I am a Product Designer dedicated to building innovative, minimalistic products where the user's needs always drive the design.
               </p>
               <p>
-                I have 3 years of experience designing for B2B and B2B2C SaaS platforms. As a sole designer, I lead the entire product lifecycle from early research to shipped MVPs.
+                I have 2 years of experience designing for B2B and B2B2C SaaS platforms. As a sole designer, I lead the entire product lifecycle from early research to shipped MVPs.
               </p>
               <p>
                 My background features a unique pivot: after 7 years as an occupational therapist, I took a leap to follow my passion for visuals and aesthetics. Today, I combine that deeply human-centered, research-backed foundation with my design work.
