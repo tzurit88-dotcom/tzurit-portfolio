@@ -139,7 +139,7 @@ export default function ResumePage({ onBack, onNavigate, isPrintOnlyMode = false
           {/* BIO SUMMARY STATEMENT */}
           <div className="mb-10">
             <p className="text-[13px] sm:text-[14px] text-neutral-700 leading-relaxed font-light text-justify">
-              I am a product designer with 3 years of experience designing AI-powered SaaS products end to end, with a focus on B2B and B2B2C platforms. As the sole designer across multiple projects, I manage the entire lifecycle from initial research to final production. I bring a background in occupational therapy, adding a behavior-driven, human-centered lens to products by combining empathy with research-backed decision-making.
+              I am a product designer with 2 years of experience designing AI-powered SaaS products end to end, with a focus on B2B and B2B2C platforms. As the sole designer across multiple projects, I manage the entire lifecycle from initial research to final production. I bring a background in occupational therapy, adding a behavior-driven, human-centered lens to products by combining empathy with research-backed decision-making.
             </p>
           </div>
 
