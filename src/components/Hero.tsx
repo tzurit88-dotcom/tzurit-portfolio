@@ -306,7 +306,7 @@ export default function Hero({ externalHoverType = 'none' }: HeroProps) {
             whileHover="hover"
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            className="inline-flex items-center gap-2.5 px-7 py-4 bg-[#32404F] hover:bg-[#32404F]/90 text-[#FDFCFA] rounded-full text-[15px] font-medium shadow-md group cursor-pointer relative overflow-hidden transition-all duration-300"
+            className="inline-flex items-center gap-2.5 px-9 py-5 bg-[#32404F] hover:bg-[#32404F]/90 text-[#FDFCFA] rounded-full text-[17px] font-medium shadow-md group cursor-pointer relative overflow-hidden transition-all duration-300"
           >
             <span className="relative z-10 font-medium tracking-wide leading-none flex items-center">
               Explore my work
