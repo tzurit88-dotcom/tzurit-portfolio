@@ -67,7 +67,7 @@
 }
 
 .grid-cell-active-neighbor {
-  background-color: rgba(0, 120, 241, 0.50) !important;
+  background-color: rgba(0, 120, 241, 0.20) !important;
   border-color: rgba(133, 142, 151, 0.3) !important;
   transition: none !important;
 }
