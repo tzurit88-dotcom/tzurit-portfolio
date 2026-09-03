@@ -292,7 +292,7 @@ export default function Hero({ externalHoverType = 'none' }: HeroProps) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="pt-5 pointer-events-auto flex flex-wrap gap-4 items-center"
+          className="pt-10 pointer-events-auto flex flex-wrap gap-4 items-center"
         >
           {/* Primary Button: Explore my work */}
           <motion.button
