@@ -45,7 +45,7 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen bg-[#FDFCFA] text-[#32404F] font-sans selection:bg-[#BEC2C6]/30"
+      className="min-h-screen bg-[#FDFCFA] text-[#101828] font-sans selection:bg-[#BEC2C6]/30"
     >
       <Header currentView="project-page" onNavigate={onNavigate} />
       <motion.div
@@ -58,7 +58,7 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
         onClick={onBack}
         animate={{ top: headerVisible ? 106 : 20 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed left-6 md:left-12 z-40 group flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#32404F]/80 opacity-70 hover:opacity-100 transition-opacity px-3 py-2"
+        className="fixed left-6 md:left-12 z-40 group flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#101828]/80 opacity-70 hover:opacity-100 transition-opacity px-3 py-2"
       >
         <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform" />
         Back
@@ -83,7 +83,7 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-2xl font-light leading-relaxed text-[#32404F]/75 max-w-2xl"
+              className="text-xl md:text-2xl font-light leading-relaxed text-[#101828]/75 max-w-2xl"
              >
               Designing an AI-powered, adaptive learning experience for higher education.
              </motion.p>
@@ -123,7 +123,7 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
         </section>
 
         {/* Content Layers */}
-        <div className="space-y-28 md:space-y-36 px-6 md:px-12 text-[#32404F]/90 font-light leading-relaxed">
+        <div className="space-y-28 md:space-y-36 px-6 md:px-12 text-[#101828]/90 font-light leading-relaxed">
 
           {/* Background */}
           <section className="max-w-4xl mx-auto space-y-28">
@@ -140,8 +140,8 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
             </div>
 
             <div className="space-y-6">
-              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">Background</h2>
-              <p className="text-lg font-[370] leading-relaxed text-[#32404F]/90">
+              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#101828]">Background</h2>
+              <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">
                 Designed as an MVP for Global University Systems (GUS) - an international network of over 30 higher-education institutions worldwide - Gus transforms static academic content into dynamic, adaptive learning journeys. The platform empowers lecturers to design tailored lessons that adjust to each student's pace and responses, delivering a personalized experience while maintaining full pedagogical control.
               </p>
             </div>
@@ -150,17 +150,17 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
           {/* Challenge & Hypothesis */}
           <section className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 max-w-4xl mx-auto">
             <div className="space-y-6">
-              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">Challenge</h2>
+              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#101828]">Challenge</h2>
               <div className="space-y-4">
-                <p className="text-lg font-[370] leading-relaxed text-[#32404F]/90">
+                <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">
                   Traditional academic slide decks follow a "one-size-fits-all" approach - some students fall behind while others coast. Furthermore, lecturers lack the visibility to identify who is struggling with specific concepts until it is too late to intervene.
                 </p>
               </div>
             </div>
             <div className="space-y-6">
-              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">Solution</h2>
+              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#101828]">Solution</h2>
               <div className="space-y-4">
-                <p className="text-lg font-[370] leading-relaxed text-[#32404F]/90">
+                <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">
                   A system that adapts content to each student and surfaces "struggle signals" to the lecturer addresses both sides of the educational gap.
                 </p>
               </div>
@@ -170,12 +170,12 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
           {/* My Role & Scope */}
           <section className="max-w-4xl mx-auto space-y-12">
             <div className="space-y-6">
-              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">My Role & Scope</h2>
+              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#101828]">My Role & Scope</h2>
               <div className="space-y-6">
-                <p className="text-lg font-[370] leading-relaxed text-[#32404F]/90">
+                <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">
                   My work on the project was based on the PRD defined by the Product Manager. I owned the design process end to end across three distinct interfaces: Lecturer Desktop, Student Desktop, and Student Mobile.
                 </p>
-                <p className="text-lg font-[370] leading-relaxed text-[#32404F]/90">
+                <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">
                   In the absence of direct user access for research and testing, design decisions were rooted in UX heuristics and mental models.
                 </p>
               </div>
@@ -185,17 +185,17 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
           {/* Guiding Principles */}
           <section className="max-w-4xl mx-auto space-y-12">
             <div className="space-y-6">
-              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">Guiding Principles</h2>
-              <p className="text-lg font-[370] leading-relaxed text-[#32404F]/90">The following core principles guided the design of the interfaces:</p>
+              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#101828]">Guiding Principles</h2>
+              <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">The following core principles guided the design of the interfaces:</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-2">
-                  <div className="font-semibold text-[#32404F]">Lecturer Interface</div>
-                  <p className="font-[370] leading-relaxed text-[#32404F]/90">Providing total control over the content, while reducing uncertainty regarding what students see on their end.</p>
+                  <div className="font-semibold text-[#101828]">Lecturer Interface</div>
+                  <p className="font-[370] leading-relaxed text-[#101828]/90">Providing total control over the content, while reducing uncertainty regarding what students see on their end.</p>
                 </div>
                 <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-2">
-                  <div className="font-semibold text-[#32404F]">Student Interface</div>
-                  <p className="font-[370] leading-relaxed text-[#32404F]/90">Reducing cognitive load and encouraging steady progress through the learning material.</p>
+                  <div className="font-semibold text-[#101828]">Student Interface</div>
+                  <p className="font-[370] leading-relaxed text-[#101828]/90">Reducing cognitive load and encouraging steady progress through the learning material.</p>
                 </div>
               </div>
           </section>
@@ -207,8 +207,8 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
           {/* The Lecturer Surface */}
           <section className="max-w-4xl mx-auto space-y-16">
             <div className="space-y-3">
-              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">The Lecturer Surface</h2>
-              <h3 className="text-2xl md:text-3xl font-light text-[#32404F]/90">Bridging the gap between AI automation and pedagogical intent.</h3>
+              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#101828]">The Lecturer Surface</h2>
+              <h3 className="text-2xl md:text-3xl font-light text-[#101828]/90">Bridging the gap between AI automation and pedagogical intent.</h3>
             </div>
 
             <div className="space-y-20 md:space-y-24">
@@ -218,7 +218,7 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
                       <span className="text-[10px] font-bold opacity-40 uppercase tracking-widest block">Revision Control</span>
                       <div className="text-xl font-bold">Confidence through Design</div>
                     </div>
-                    <p className="text-lg font-[370] leading-relaxed text-[#32404F]/90">To encourage experimentation without the fear of data loss, lecturers can freely edit AI-generated fact sheets or instantly "Reset to Original." Visual indicators like "Edited" tags maintain clear validation by separating automated content from manual refinements.</p>
+                    <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">To encourage experimentation without the fear of data loss, lecturers can freely edit AI-generated fact sheets or instantly "Reset to Original." Visual indicators like "Edited" tags maintain clear validation by separating automated content from manual refinements.</p>
                   </div>
                   <div
                     className="w-full rounded-2xl overflow-hidden border border-[#BEC2C6]/60 group relative cursor-zoom-in"
@@ -226,7 +226,7 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
                   >
                     <img src={project.galleryImages?.[1]} alt="Revision control interface" className="w-full h-auto transition-transform duration-700 group-hover:scale-[1.02]" />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-[#BEC2C6]/10 transition-colors flex items-center justify-center">
-                      <Maximize2 className="text-[#32404F] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
+                      <Maximize2 className="text-[#101828] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
                     </div>
                   </div>
                </div>
@@ -237,7 +237,7 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
                       <span className="text-[10px] font-bold opacity-40 uppercase tracking-widest block">Post-Publication Control</span>
                       <div className="text-xl font-bold">Real-time editing and student tracking</div>
                     </div>
-                    <p className="text-lg font-[370] leading-relaxed text-[#32404F]/90">After publishing, the module remains editable. Lecturers can switch to "View as Student" at any time to check the content layout, while using progress data to spot lessons where students get stuck. If an issue is found, content updates can be pushed immediately without disrupting the students' learning flow.</p>
+                    <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">After publishing, the module remains editable. Lecturers can switch to "View as Student" at any time to check the content layout, while using progress data to spot lessons where students get stuck. If an issue is found, content updates can be pushed immediately without disrupting the students' learning flow.</p>
                   </div>
                   <div
                     className="w-full rounded-2xl overflow-hidden border border-[#BEC2C6]/60 group relative cursor-zoom-in"
@@ -245,7 +245,7 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
                   >
                     <img src={project.galleryImages?.[2]} alt="Publish confirmation modal" className="w-full h-auto transition-transform duration-700 group-hover:scale-[1.02]" />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-[#BEC2C6]/10 transition-colors flex items-center justify-center">
-                      <Maximize2 className="text-[#32404F] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
+                      <Maximize2 className="text-[#101828] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
                     </div>
                   </div>
                </div>
@@ -259,8 +259,8 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
           {/* The Student Surface */}
           <section className="max-w-4xl mx-auto space-y-16">
             <div className="space-y-3">
-              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">The Student Surface</h2>
-              <h3 className="text-2xl md:text-3xl font-light text-[#32404F]/90">Supporting various learning modes and utilizing "Nudges" to encourage engagement.</h3>
+              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#101828]">The Student Surface</h2>
+              <h3 className="text-2xl md:text-3xl font-light text-[#101828]/90">Supporting various learning modes and utilizing "Nudges" to encourage engagement.</h3>
             </div>
 
             <div className="space-y-20 md:space-y-24">
@@ -270,16 +270,16 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
                        <span className="text-[10px] font-bold opacity-40 uppercase tracking-widest block">AI Integration</span>
                       <div className="text-xl font-bold">Context-Aware Chat</div>
                     </div>
-                    <p className="text-lg font-[370] leading-relaxed text-[#32404F]/90">The AI assistant adapts its behavior based on the lesson stage: it answers freely during instruction, switches to "Tutor Mode" (guiding the student without revealing the answer) during interactive challenges, and is disabled during assessments.</p>
+                    <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">The AI assistant adapts its behavior based on the lesson stage: it answers freely during instruction, switches to "Tutor Mode" (guiding the student without revealing the answer) during interactive challenges, and is disabled during assessments.</p>
                     {/* Toggle */}
                     <button
                       onClick={() => setShowTutorMode(v => !v)}
                       className="flex items-center gap-3 cursor-pointer group"
                     >
-                      <div className={`relative w-11 h-6 rounded-full transition-colors duration-300 ${showTutorMode ? 'bg-[#32404F]' : 'bg-[#BEC2C6]/50'}`}>
+                      <div className={`relative w-11 h-6 rounded-full transition-colors duration-300 ${showTutorMode ? 'bg-[#101828]' : 'bg-[#BEC2C6]/50'}`}>
                         <div className={`absolute top-0.5 w-5 h-5 rounded-full bg-white shadow-sm transition-transform duration-300 ${showTutorMode ? 'translate-x-5' : 'translate-x-0.5'}`} />
                       </div>
-                      <span className="text-sm font-medium text-[#32404F]/70 group-hover:text-[#32404F] transition-colors">Show Tutor mode</span>
+                      <span className="text-sm font-medium text-[#101828]/70 group-hover:text-[#101828] transition-colors">Show Tutor mode</span>
                     </button>
                   </div>
                   <div
@@ -299,7 +299,7 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
                       />
                     </div>
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-[#BEC2C6]/10 transition-colors flex items-center justify-center">
-                      <Maximize2 className="text-[#32404F] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
+                      <Maximize2 className="text-[#101828] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
                     </div>
                   </div>
                </div>
@@ -310,7 +310,7 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
                        <span className="text-[10px] font-bold opacity-40 uppercase tracking-widest block">Progress Tracking</span>
                       <div className="text-xl font-bold">Pacing Indicators</div>
                     </div>
-                    <p className="text-lg font-[370] leading-relaxed text-[#32404F]/90">Encouraging language and color-coded status badges (e.g., "Catch Up" in orange) help students orient themselves within the schedule without creating unnecessary stress.</p>
+                    <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">Encouraging language and color-coded status badges (e.g., "Catch Up" in orange) help students orient themselves within the schedule without creating unnecessary stress.</p>
                   </div>
                   <div
                     className="w-full rounded-2xl overflow-hidden border border-[#BEC2C6]/60 group relative cursor-zoom-in"
@@ -318,7 +318,7 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
                   >
                     <img src={project.galleryImages?.[4]} alt="Mobile interface" className="w-full h-auto transition-transform duration-700 group-hover:scale-[1.02]" />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-[#BEC2C6]/10 transition-colors flex items-center justify-center">
-                      <Maximize2 className="text-[#32404F] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
+                      <Maximize2 className="text-[#101828] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
                     </div>
                   </div>
                </div>
@@ -332,21 +332,21 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
           {/* Persistent Feedback Bar */}
           <section className="max-w-4xl mx-auto space-y-16">
             <div className="space-y-3">
-              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">Mobile Adaptability - 1</h2>
-              <h3 className="text-2xl md:text-3xl font-light tracking-tight text-[#32404F]/90">The Persistent Feedback Bar</h3>
+              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#101828]">Mobile Adaptability - 1</h2>
+              <h3 className="text-2xl md:text-3xl font-light tracking-tight text-[#101828]/90">The Persistent Feedback Bar</h3>
             </div>
-              <p className="text-lg font-[370] leading-relaxed text-[#32404F]/90">
+              <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">
                 One of the primary challenges was managing feedback on mobile. Unlike "gated" learning apps, Gus allows students to navigate back to completed exercises to learn from their mistakes.
               </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div className="space-y-4">
                 <div className="text-[10px] font-bold opacity-40 uppercase tracking-widest">The Problem</div>
-                <p className="text-lg font-[370] leading-relaxed text-[#32404F]/90">Keeping the feedback drawer open blocked both navigation and content.</p>
+                <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">Keeping the feedback drawer open blocked both navigation and content.</p>
               </div>
               <div className="space-y-4">
                 <div className="text-[10px] font-bold opacity-40 uppercase tracking-widest">The Solution</div>
-                <p className="text-lg font-[370] leading-relaxed text-[#32404F]/90">A hierarchy that prioritizes navigation and content during movement, while keeping feedback accessible on demand. On mobile, the feedback collapses into a persistent floating bar at the bottom of the screen; if a student chooses to linger on a past question, the feedback can be expanded with a single tap without obstructing the context of the question.</p>
+                <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">A hierarchy that prioritizes navigation and content during movement, while keeping feedback accessible on demand. On mobile, the feedback collapses into a persistent floating bar at the bottom of the screen; if a student chooses to linger on a past question, the feedback can be expanded with a single tap without obstructing the context of the question.</p>
               </div>
             </div>
 
@@ -359,7 +359,7 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
                 >
                   <img src={project.galleryImages?.[i + 5]} alt={`Mobile view ${i + 1}`} className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.02]" />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-[#BEC2C6]/10 transition-colors flex items-center justify-center">
-                    <Maximize2 className="text-[#32404F] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
+                    <Maximize2 className="text-[#101828] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
                   </div>
                 </div>
               ))}
@@ -369,27 +369,27 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
           {/* Mobile Adaptability: Chat & Engagement */}
           <section className="max-w-4xl mx-auto space-y-12">
             <div className="space-y-3">
-              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">Mobile Adaptability - 2</h2>
-              <h3 className="text-2xl md:text-3xl font-light tracking-tight text-[#32404F]/90">Chat & Engagement</h3>
+              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#101828]">Mobile Adaptability - 2</h2>
+              <h3 className="text-2xl md:text-3xl font-light tracking-tight text-[#101828]/90">Chat & Engagement</h3>
             </div>
 
             <div className="flex flex-col gap-6 md:grid md:grid-cols-2 md:gap-x-16 md:gap-y-0 md:mb-[-1.5rem]">
                <div className="space-y-2">
                  <span className="text-[10px] font-bold opacity-40 uppercase tracking-widest block">Challenge 1</span>
-                 <p className="text-lg font-[370] leading-relaxed text-[#32404F]/90">The mobile screen only had room for the lesson slide (text and image). However, to nudge students to ask questions, the team agreed the AI chat must remain highly accessible.</p>
+                 <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">The mobile screen only had room for the lesson slide (text and image). However, to nudge students to ask questions, the team agreed the AI chat must remain highly accessible.</p>
                </div>
                <div className="space-y-2">
                  <span className="text-[10px] font-bold opacity-40 uppercase tracking-widest block">Solution</span>
-                 <p className="text-lg font-[370] leading-relaxed text-[#32404F]/90">Contained the chat within a top action button, using an icon and clear microcopy to actively invite engagement.</p>
+                 <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">Contained the chat within a top action button, using an icon and clear microcopy to actively invite engagement.</p>
                </div>
                <div className="hidden md:block md:col-span-2 md:mb-10" />
                <div className="space-y-2 md:min-h-[160px]">
                  <span className="text-[10px] font-bold opacity-40 uppercase tracking-widest block">Challenge 2</span>
-                 <p className="text-lg font-[370] leading-relaxed text-[#32404F]/90">The mobile chat drawer could not fit both the soft keyboard and the suggested questions simultaneously.</p>
+                 <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">The mobile chat drawer could not fit both the soft keyboard and the suggested questions simultaneously.</p>
                </div>
                <div className="space-y-2 md:min-h-[160px]">
                  <span className="text-[10px] font-bold opacity-40 uppercase tracking-widest block">Solution</span>
-                 <p className="text-lg font-[370] leading-relaxed text-[#32404F]/90">Placed the suggested questions inside their own drawer, designed to be open by default.</p>
+                 <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">Placed the suggested questions inside their own drawer, designed to be open by default.</p>
                </div>
             </div>
 
@@ -404,7 +404,7 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
                 >
                   <img src={project.galleryImages?.[idx]} alt={`Mobile view adaptability ${idx - 7}`} className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.02]" />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-[#BEC2C6]/10 transition-colors flex items-center justify-center">
-                    <Maximize2 className="text-[#32404F] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
+                    <Maximize2 className="text-[#101828] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
                   </div>
                 </div>
               ))}
@@ -413,8 +413,8 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
 
           {/* Outcome */}
           <section className="max-w-4xl mx-auto space-y-8">
-            <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#32404F]">Outcome</h2>
-            <p className="text-lg font-[370] leading-relaxed text-[#32404F]/90">
+            <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#101828]">Outcome</h2>
+            <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">
               The MVP was successfully shipped and implemented. As analytics were not yet instrumented and user access for follow-up testing was unavailable, the design patterns remain unvalidated in the field. However, the project established the foundation for a scalable Design System for the product’s next phases of growth.
             </p>
           </section>
@@ -445,7 +445,7 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
                 setSelectedImage(null);
               }}
             >
-              <X size={24} className="text-[#32404F]" />
+              <X size={24} className="text-[#101828]" />
             </motion.button>
             
             <motion.div
@@ -480,6 +480,7 @@ export default function GusPage({ project, onBack, onNavigate, onNavigateToProje
     </motion.div>
   );
 }
+
 
 
 

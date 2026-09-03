@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 @font-face {
   font-family: 'Quicksand';
@@ -79,5 +79,6 @@
   border-color: rgba(133, 142, 151, 0.6) !important;
   transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease !important;
 }
+
 
 

@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+﻿import { motion, AnimatePresence } from 'framer-motion';
 import { Project } from '../types';
 import { X, ArrowRight, Calendar, User, Tag } from 'lucide-react';
 
@@ -200,3 +200,4 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
     </motion.div>
   );
 }
+

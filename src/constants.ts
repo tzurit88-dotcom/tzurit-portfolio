@@ -1,4 +1,4 @@
-import { Project } from './types';
+﻿import { Project } from './types';
 
 // Import MindEd images
 import mindedHero from './assets/images/regenerated_image_1779030218289.png';
@@ -259,3 +259,4 @@ export const PROJECTS: Project[] = [
     tags: ['AI', 'E-commerce', 'Product Design'],
   },
 ];
+

@@ -99,7 +99,7 @@ export default function ResumePage({ onBack, onNavigate, isPrintOnlyMode = false
               <a
                 href="/CV-Tzurit-Avraham.pdf"
                 download="CV-Tzurit-Avraham.pdf"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#32404F] hover:bg-[#32404F]/90 text-[#FDFCFA] rounded-full text-xs font-medium tracking-wide transition-all cursor-pointer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#101828] hover:bg-[#101828]/90 text-[#FDFCFA] rounded-full text-xs font-medium tracking-wide transition-all cursor-pointer"
               >
                 <span>Download CV</span>
                 <Download size={13} />
@@ -325,13 +325,13 @@ export default function ResumePage({ onBack, onNavigate, isPrintOnlyMode = false
       {!isPrintOnlyMode && (
         <div className="print:hidden">
           <footer id="Contact" className="h-32 flex items-center justify-end px-12 bg-[#fbfafa] border-t border-[#e0e0e0] mt-32">
-            <div className="flex gap-12 text-[12px] uppercase tracking-widest text-[#32404F]">
+            <div className="flex gap-12 text-[12px] uppercase tracking-widest text-[#101828]">
               <a 
                 href="mailto:tzurit88@gmail.com" 
                 className="opacity-80 hover:opacity-100 transition-all duration-300 relative py-1 group block"
               >
                 <span>tzurit88@gmail.com</span>
-                <span className="absolute bottom-0 left-0 right-0 h-[1.2px] bg-[#32404F] transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100" />
+                <span className="absolute bottom-0 left-0 right-0 h-[1.2px] bg-[#101828] transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100" />
               </a>
               <a 
                 href="https://linkedin.com/in/tzurit-avraham-886013104" 
@@ -340,7 +340,7 @@ export default function ResumePage({ onBack, onNavigate, isPrintOnlyMode = false
                 className="opacity-80 hover:opacity-100 transition-all duration-300 relative py-1 group block"
               >
                 <span>LinkedIn</span>
-                <span className="absolute bottom-0 left-0 right-0 h-[1.2px] bg-[#32404F] transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100" />
+                <span className="absolute bottom-0 left-0 right-0 h-[1.2px] bg-[#101828] transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100" />
               </a>
             </div>
           </footer>
@@ -349,5 +349,6 @@ export default function ResumePage({ onBack, onNavigate, isPrintOnlyMode = false
     </motion.div>
   );
 }
+
 
 

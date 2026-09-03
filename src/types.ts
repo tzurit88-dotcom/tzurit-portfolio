@@ -1,4 +1,4 @@
-export interface CarouselImages {
+﻿export interface CarouselImages {
   lecturer: string[];
   studentDesktop: string[];
   studentMobile: string[];
@@ -25,3 +25,4 @@ export interface Project {
   role: string;
   tags: string[];
 }
+

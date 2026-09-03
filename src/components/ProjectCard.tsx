@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'framer-motion';
 import { Project } from '../types';
 import { cn } from '../lib/utils';
@@ -16,7 +16,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
       onClick={() => onClick(project)}
       initial="initial"
       whileHover="hover"
-      className="flex flex-col h-full group cursor-pointer bg-[#FDFCFA] border border-[#858E97]/35 rounded-2xl overflow-hidden hover:shadow-[0_12px_44px_rgba(50,64,79,0.06)] hover:border-[#32404F]/30 transition-all duration-500"
+      className="flex flex-col h-full group cursor-pointer bg-[#FDFCFA] border border-[#858E97]/35 rounded-2xl overflow-hidden hover:shadow-[0_12px_44px_rgba(50,64,79,0.06)] hover:border-[#101828]/30 transition-all duration-500"
     >
       <div className={cn(
         "relative overflow-hidden aspect-[4/3] md:h-[345px] lg:h-[385px] transition-colors duration-300",
@@ -120,7 +120,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
       </div>
       
       <div className="p-8 flex flex-col gap-4 min-h-[175px] bg-[#FDFCFA] border-t border-[#858E97]/25 transition-colors duration-300">
-        <h2 className="text-2xl md:text-[28px] font-semibold tracking-tight text-[#32404F] leading-snug">
+        <h2 className="text-2xl md:text-[28px] font-semibold tracking-tight text-[#101828] leading-snug">
           {project.title}
         </h2>
         <p className="text-[16px] md:text-[17px] leading-relaxed text-[#858E97] line-clamp-2" style={{ fontWeight: 350 }}>
@@ -130,3 +130,4 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
     </motion.div>
   );
 }
+

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Mail, Linkedin, ArrowDownRight } from 'lucide-react';
 
@@ -77,13 +77,13 @@ export default function Header({
             className="flex flex-row items-center gap-2 justify-center cursor-pointer border-none bg-transparent hover:opacity-75 transition-opacity text-left p-0 z-50"
           >
             <img src="/favicon.png" alt="logo" className="w-5 h-5 object-contain rounded-[4px]" />
-            <span className="font-semibold text-[20px] lg:text-[22px] leading-none text-left text-[#32404F]" style={{ fontFamily: "'Quicksand', sans-serif", letterSpacing: '0.02em' }}>
+            <span className="font-semibold text-[20px] lg:text-[22px] leading-none text-left text-[#101828]" style={{ fontFamily: "'Quicksand', sans-serif", letterSpacing: '0.02em' }}>
               Tzurit
             </span>
           </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-4 text-[12px] uppercase tracking-[0.2em] font-medium text-[#32404F]">
+          <nav className="hidden md:flex items-center gap-4 text-[12px] uppercase tracking-[0.2em] font-medium text-[#101828]">
             <div className="flex items-center gap-1">
               {menuItems.map((item) => {
                 const isActive = currentView === item.view;
@@ -91,14 +91,14 @@ export default function Header({
                   <button
                     key={item.label}
                     onClick={() => { if (onNavigate) onNavigate(item.view, item.id); }}
-                    className={`transition-all duration-300 uppercase tracking-[0.2em] text-[12px] cursor-pointer border-none bg-transparent px-6 py-5 block text-[#32404F] relative group ${
+                    className={`transition-all duration-300 uppercase tracking-[0.2em] text-[12px] cursor-pointer border-none bg-transparent px-6 py-5 block text-[#101828] relative group ${
                       isActive ? 'opacity-100 font-bold' : 'opacity-60 hover:opacity-100 font-medium'
                     }`}
                   >
                     <span className="relative py-1">
                       {item.label}
                       {!isActive && (
-                        <span className="absolute -bottom-1 left-0 right-0 h-[1px] bg-[#32404F] transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100" />
+                        <span className="absolute -bottom-1 left-0 right-0 h-[1px] bg-[#101828] transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100" />
                       )}
                     </span>
                   </button>
@@ -114,13 +114,13 @@ export default function Header({
               whileHover="hover"
               whileTap={{ scale: 0.97 }}
               transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-              className="inline-flex items-center justify-center gap-1.5 px-[22px] h-[46px] bg-[#FDFCFA] hover:bg-[#858E97]/10 text-[#32404F] border border-[#858E97]/40 rounded-full font-sans text-[16px] font-medium tracking-wide shadow-[0_2px_6px_rgba(50,64,79,0.1)] group cursor-pointer transition-all duration-300"
+              className="inline-flex items-center justify-center gap-1.5 px-[22px] h-[46px] bg-[#FDFCFA] hover:bg-[#858E97]/10 text-[#101828] border border-[#858E97]/40 rounded-full font-sans text-[16px] font-medium tracking-wide shadow-[0_2px_6px_rgba(50,64,79,0.1)] group cursor-pointer transition-all duration-300"
             >
               <span>contact</span>
               <motion.div
                 variants={{ initial: { x: 0, y: 0 }, hover: { x: 2, y: 2 } }}
                 transition={{ type: 'spring', stiffness: 350, damping: 15 }}
-                className="text-[#858E97] group-hover:text-[#32404F] flex items-center justify-center"
+                className="text-[#858E97] group-hover:text-[#101828] flex items-center justify-center"
               >
                 <ArrowDownRight size={15} />
               </motion.div>
@@ -131,7 +131,7 @@ export default function Header({
           <div className="md:hidden flex items-center z-50">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-3 -mr-3 flex items-center justify-center cursor-pointer border-none bg-transparent text-[#32404F] hover:opacity-70 transition-opacity"
+              className="p-3 -mr-3 flex items-center justify-center cursor-pointer border-none bg-transparent text-[#101828] hover:opacity-70 transition-opacity"
               aria-label="Toggle Navigation Menu"
             >
               <AnimatePresence mode="wait">
@@ -171,12 +171,12 @@ export default function Header({
                         setIsOpen(false);
                         setTimeout(() => { if (onNavigate) onNavigate(item.view, item.id); }, 100);
                       }}
-                      className={`text-[12px] uppercase tracking-[0.25em] font-semibold text-left py-4 w-full border-b border-neutral-100/50 hover:bg-neutral-50/50 px-2 rounded-sm transition-all text-[#32404F] flex items-center justify-between ${
+                      className={`text-[12px] uppercase tracking-[0.25em] font-semibold text-left py-4 w-full border-b border-neutral-100/50 hover:bg-neutral-50/50 px-2 rounded-sm transition-all text-[#101828] flex items-center justify-between ${
                         isActive ? 'opacity-100 font-bold bg-[#F5F4F0]/30' : 'opacity-70'
                       }`}
                     >
                       <span>{item.label}</span>
-                      {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#32404F]" />}
+                      {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#101828]" />}
                     </button>
                   );
                 })}
@@ -185,12 +185,12 @@ export default function Header({
                     setIsOpen(false);
                     setTimeout(() => { if (onNavigateToContact) onNavigateToContact(); }, 100);
                   }}
-                  className={`text-[12px] uppercase tracking-[0.25em] font-semibold text-left py-4 w-full border-b border-neutral-100/50 hover:bg-neutral-50/50 px-2 rounded-sm transition-all text-[#32404F] flex items-center justify-between ${
+                  className={`text-[12px] uppercase tracking-[0.25em] font-semibold text-left py-4 w-full border-b border-neutral-100/50 hover:bg-neutral-50/50 px-2 rounded-sm transition-all text-[#101828] flex items-center justify-between ${
                     currentView === 'contact' ? 'opacity-100 font-bold bg-[#F5F4F0]/30' : 'opacity-70'
                   }`}
                 >
                   <span>contact</span>
-                  {currentView === 'contact' && <span className="w-1.5 h-1.5 rounded-full bg-[#32404F]" />}
+                  {currentView === 'contact' && <span className="w-1.5 h-1.5 rounded-full bg-[#101828]" />}
                 </button>
               </div>
             </div>
@@ -208,7 +208,7 @@ export default function Header({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsDrawerOpen(false)}
-              className="fixed inset-0 bg-[#32404F]/22 z-[100] cursor-pointer"
+              className="fixed inset-0 bg-[#101828]/22 z-[100] cursor-pointer"
             />
 
             {/* Slide-out panel */}
@@ -222,13 +222,13 @@ export default function Header({
               {/* Drawer header */}
               <div className="p-6 border-b border-[#858E97]/15 flex items-center justify-between">
                 <div>
-                  <h2 className="text-4xl font-semibold text-[#32404F] leading-none font-sans">
+                  <h2 className="text-4xl font-semibold text-[#101828] leading-none font-sans">
                     Contact
                   </h2>
                 </div>
                 <button
                   onClick={() => setIsDrawerOpen(false)}
-                  className="p-2 rounded-full hover:bg-[#858E97]/10 text-[#858E97] hover:text-[#32404F] transition-all cursor-pointer border-none bg-transparent"
+                  className="p-2 rounded-full hover:bg-[#858E97]/10 text-[#858E97] hover:text-[#101828] transition-all cursor-pointer border-none bg-transparent"
                   aria-label="Close drawer"
                 >
                   <X size={18} className="stroke-[1.8]" />
@@ -241,7 +241,7 @@ export default function Header({
                   href="mailto:tzurit88@gmail.com"
                   whileHover={{ scale: 1.15, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="text-[#32404F] hover:text-[#858E97] transition-colors duration-300 flex items-center justify-center"
+                  className="text-[#101828] hover:text-[#858E97] transition-colors duration-300 flex items-center justify-center"
                   title="tzurit88@gmail.com"
                   aria-label="Email"
                 >
@@ -254,7 +254,7 @@ export default function Header({
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.15, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="text-[#32404F] hover:text-[#858E97] transition-colors duration-300 flex items-center justify-center"
+                  className="text-[#101828] hover:text-[#858E97] transition-colors duration-300 flex items-center justify-center"
                   title="+972 509 607 267"
                   aria-label="WhatsApp"
                 >
@@ -267,7 +267,7 @@ export default function Header({
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.15, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="text-[#32404F] hover:text-[#858E97] transition-colors duration-300 flex items-center justify-center"
+                  className="text-[#101828] hover:text-[#858E97] transition-colors duration-300 flex items-center justify-center"
                   title="LinkedIn Profile"
                   aria-label="LinkedIn"
                 >
@@ -288,3 +288,4 @@ export default function Header({
     </>
   );
 }
+

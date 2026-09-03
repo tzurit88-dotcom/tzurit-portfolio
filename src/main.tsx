@@ -1,4 +1,4 @@
-import {StrictMode} from 'react';
+﻿import {StrictMode} from 'react';
 import {createRoot} from 'react-dom/client';
 import App from './App.tsx';
 import MobilePopup from './components/MobilePopup.tsx';
@@ -11,3 +11,4 @@ createRoot(document.getElementById('root')!).render(
     <MobilePopup />
   </StrictMode>,
 );
+

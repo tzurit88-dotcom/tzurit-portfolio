@@ -100,7 +100,7 @@ export default function SystemOverview({ images, isPressPective, carouselImages 
       type="button"
       onClick={onClick}
       className="w-10 h-10 rounded-full bg-[#FDFCFA] border-2 border-black/10 flex items-center justify-center
-                 hover:scale-110 active:scale-95 transition-all text-[#32404F]/40 hover:text-[#32404F] z-20 shrink-0"
+                 hover:scale-110 active:scale-95 transition-all text-[#101828]/40 hover:text-[#101828] z-20 shrink-0"
     >
       {children}
     </button>
@@ -115,7 +115,7 @@ export default function SystemOverview({ images, isPressPective, carouselImages 
           <div className="flex items-center gap-3">
             <div className="w-10 shrink-0" />
             <div className="flex-1 min-w-0 flex items-center justify-between">
-              <h2 className="text-3xl md:text-5xl font-light tracking-tight text-[#32404F]/90">System Overview</h2>
+              <h2 className="text-3xl md:text-5xl font-light tracking-tight text-[#101828]/90">System Overview</h2>
               <div className="inline-flex items-center gap-1 p-1 bg-gray-100/80 border border-[#BEC2C6]/40 rounded-full">
             {(isPressPective
               ? [
@@ -135,8 +135,8 @@ export default function SystemOverview({ images, isPressPective, carouselImages 
                   px-5 py-2 rounded-full text-[10px] uppercase tracking-widest font-bold
                   flex items-center gap-1.5 transition-colors duration-200
                   ${viewMode === mode.value
-                    ? 'bg-[#32404F] text-[#FDFCFA]'
-                    : 'text-[#32404F]/40 hover:text-[#32404F]/60 bg-transparent'}
+                    ? 'bg-[#101828] text-[#FDFCFA]'
+                    : 'text-[#101828]/40 hover:text-[#101828]/60 bg-transparent'}
                 `}
               >
                 {!isPressPective && (mode.value === 'student-mobile' ? <Smartphone size={11} /> : <Monitor size={11} />)}
@@ -168,12 +168,12 @@ export default function SystemOverview({ images, isPressPective, carouselImages 
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.18 }}
-                  className="text-[14px] font-medium text-[#32404F]"
+                  className="text-[14px] font-medium text-[#101828]"
                 >
                   {currentTitle || ' '}
                 </motion.p>
               </AnimatePresence>
-              <span className="text-[11px] text-[#32404F]/25 font-medium shrink-0 ml-4">
+              <span className="text-[11px] text-[#101828]/25 font-medium shrink-0 ml-4">
                 {currentIndex + 1} / {displayImages.length}
               </span>
             </div>
@@ -198,7 +198,7 @@ export default function SystemOverview({ images, isPressPective, carouselImages 
                       className="w-full h-auto rounded-xl border border-[#BEC2C6]/65"
                     />
                     <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-[#FDFCFA]/90 shadow-md
-                                    flex items-center justify-center text-[#32404F]/60
+                                    flex items-center justify-center text-[#101828]/60
                                     opacity-0 group-hover:opacity-100 transition-opacity z-10">
                       <Maximize2 size={15} />
                     </div>
@@ -229,7 +229,7 @@ export default function SystemOverview({ images, isPressPective, carouselImages 
                     />
                     <div
                       className="absolute top-3 right-3 w-8 h-8 rounded-full bg-[#FDFCFA]/90 shadow-md
-                                  flex items-center justify-center text-[#32404F]/60
+                                  flex items-center justify-center text-[#101828]/60
                                   opacity-0 group-hover:opacity-100 transition-opacity z-[2]"
                       onClick={(e) => { e.stopPropagation(); openLightbox(displayImages[currentIndex]); }}
                     >
@@ -253,7 +253,7 @@ export default function SystemOverview({ images, isPressPective, carouselImages 
             type="button"
             onClick={() => setCurrentIndex(i)}
             className={`h-1.5 transition-all duration-300 rounded-full ${
-              i === currentIndex ? 'w-7 bg-[#32404F]/60' : 'w-2 bg-[#BEC2C6]/30'
+              i === currentIndex ? 'w-7 bg-[#101828]/60' : 'w-2 bg-[#BEC2C6]/30'
             }`}
           />
         ))}
@@ -300,4 +300,5 @@ export default function SystemOverview({ images, isPressPective, carouselImages 
     </section>
   );
 }
+
 

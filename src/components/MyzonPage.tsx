@@ -172,7 +172,7 @@ export default function MyzonPage({ project, onBack, onNavigate, onNavigateToPro
             {/* Table top area */}
             <div className="flex flex-col gap-1.5 mb-2">
               <div className="flex items-center gap-1">
-                <h4 className="text-[10px] sm:text-[11px] font-bold tracking-tight text-[#32404F]">Products</h4>
+                <h4 className="text-[10px] sm:text-[11px] font-bold tracking-tight text-[#101828]">Products</h4>
                 <span className="bg-purple-100 text-purple-700 px-1 py-0.2 rounded text-[7px] font-extrabold">24</span>
               </div>
               <p className="text-[7.5px] text-neutral-400 -mt-2 leading-tight">Choose a product from the list below for in-depth insights and customized content generation.</p>
@@ -260,7 +260,7 @@ export default function MyzonPage({ project, onBack, onNavigate, onNavigateToPro
                             </button>
                             {/* White cursor hover pointer replicating exact action shot */}
                             <div className="absolute right-[-4px] bottom-[-6px] pointer-events-none z-50">
-                              <svg className="w-3.5 h-3.5 text-[#32404F] filter drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
+                              <svg className="w-3.5 h-3.5 text-[#101828] filter drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
                                 <path stroke="white" strokeWidth="0.5" d="M4.5 1.5l15 15-4.5.8L19.5 24l-3 1.5-4.5-6.7-3.8 3.8z"/>
                               </svg>
                             </div>
@@ -333,7 +333,7 @@ export default function MyzonPage({ project, onBack, onNavigate, onNavigateToPro
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen bg-[#FDFCFA] text-[#32404F] font-sans selection:bg-neutral-150"
+      className="min-h-screen bg-[#FDFCFA] text-[#101828] font-sans selection:bg-neutral-150"
     >
       <Header currentView="project-page" onNavigate={onNavigate} />
       <motion.div
@@ -346,7 +346,7 @@ export default function MyzonPage({ project, onBack, onNavigate, onNavigateToPro
         onClick={onBack}
         animate={{ top: headerVisible ? 106 : 20 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed left-6 md:left-12 z-40 group flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#32404F] opacity-70 hover:opacity-100 transition-opacity px-3 py-2"
+        className="fixed left-6 md:left-12 z-40 group flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#101828] opacity-70 hover:opacity-100 transition-opacity px-3 py-2"
       >
         <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform" />
         Back
@@ -369,7 +369,7 @@ export default function MyzonPage({ project, onBack, onNavigate, onNavigateToPro
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-2xl font-light leading-relaxed text-[#32404F]/75 max-w-3xl"
+              className="text-xl md:text-2xl font-light leading-relaxed text-[#101828]/75 max-w-3xl"
             >
               {project.description}
             </motion.p>
@@ -398,7 +398,7 @@ export default function MyzonPage({ project, onBack, onNavigate, onNavigateToPro
         </section>
 
         {/* Content Layers with High-Quality Layout */}
-        <div className="space-y-24 md:space-y-32 px-6 md:px-12 text-[#32404F]/90">
+        <div className="space-y-24 md:space-y-32 px-6 md:px-12 text-[#101828]/90">
            {/* Visual Presentation Area - High-Fidelity UI Image */}
           <section className="max-w-4xl mx-auto">
             <div 
@@ -419,8 +419,8 @@ export default function MyzonPage({ project, onBack, onNavigate, onNavigateToPro
           {/* Background */}
           <section className="max-w-4xl mx-auto space-y-12 font-light">
             <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl font-semibold text-[#32404F] tracking-tight">Background</h2>
-              <p className="text-lg font-light leading-relaxed text-[#32404F]">
+              <h2 className="text-2xl md:text-3xl font-semibold text-[#101828] tracking-tight">Background</h2>
+              <p className="text-lg font-light leading-relaxed text-[#101828]">
                 The project started as a collaboration with a startup to build a high-fidelity interactive demo for potential clients and investors. After my involvement with the team ended, I decided to continue working on the project independently as a design challenge, focusing on refining the primary user flows and organizing the interface architecture.
               </p>
             </div>
@@ -429,8 +429,8 @@ export default function MyzonPage({ project, onBack, onNavigate, onNavigateToPro
           {/* The Problem */}
           <section className="max-w-4xl mx-auto space-y-12 font-light">
             <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl font-semibold text-[#32404F] tracking-tight">The Problem</h2>
-              <p className="text-lg font-light leading-relaxed text-[#32404F]">
+              <h2 className="text-2xl md:text-3xl font-semibold text-[#101828] tracking-tight">The Problem</h2>
+              <p className="text-lg font-light leading-relaxed text-[#101828]">
                 Amazon sellers often want to bring buyers from external platforms (like social media) to their product pages, but creating compliant and targeted marketing materials usually requires complex tools, a marketing budget, or manual design work that many sellers don't have the time or knowledge to handle.
               </p>
             </div>
@@ -439,8 +439,8 @@ export default function MyzonPage({ project, onBack, onNavigate, onNavigateToPro
           {/* The Solution */}
           <section className="max-w-4xl mx-auto space-y-12 font-light">
             <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl font-semibold text-[#32404F] tracking-tight">The Solution</h2>
-              <p className="text-lg font-light leading-relaxed text-[#32404F]">
+              <h2 className="text-2xl md:text-3xl font-semibold text-[#101828] tracking-tight">The Solution</h2>
+              <p className="text-lg font-light leading-relaxed text-[#101828]">
                 A desktop and mobile interface for an AI system that takes raw Amazon product data and automatically formats it into tailored marketing assets for different target audiences. The design focuses on making the process simple, so sellers can easily choose their audience, adjust the details, and get the correct formats for social media.
               </p>
             </div>
@@ -460,7 +460,7 @@ export default function MyzonPage({ project, onBack, onNavigate, onNavigateToPro
                 <div className="space-y-6">
                   <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 pb-4">
                     <div className="flex flex-col gap-1">
-                      <h2 className="text-base md:text-lg font-medium text-[#32404F] tracking-tight">{sec.tag}</h2>
+                      <h2 className="text-base md:text-lg font-medium text-[#101828] tracking-tight">{sec.tag}</h2>
                     </div>
                   </div>
                   
@@ -504,7 +504,7 @@ export default function MyzonPage({ project, onBack, onNavigate, onNavigateToPro
                 setSelectedImage(null);
               }}
             >
-              <X size={24} className="text-[#32404F]" />
+              <X size={24} className="text-[#101828]" />
             </motion.button>
             
             <motion.div
@@ -539,6 +539,7 @@ export default function MyzonPage({ project, onBack, onNavigate, onNavigateToPro
     </motion.div>
   );
 }
+
 
 
 

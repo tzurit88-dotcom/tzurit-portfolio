@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+﻿import { motion, AnimatePresence } from 'framer-motion';
 import { X, Mail, Linkedin } from 'lucide-react';
 
 interface ContactDrawerProps {
@@ -41,12 +41,12 @@ export default function ContactDrawer({ isOpen, onClose }: ContactDrawerProps) {
             <div className="px-8 py-6 border-b border-[#858E97]/15">
               <div className="flex items-start justify-between">
                 <div>
-                  <h2 className="text-xl font-semibold text-[#32404F] tracking-tight">Contact</h2>
-                  <p className="text-sm text-[#858E97] mt-1">Tzurit Avraham • Product Design</p>
+                  <h2 className="text-xl font-semibold text-[#101828] tracking-tight">Contact</h2>
+                  <p className="text-sm text-[#858E97] mt-1">Tzurit Avraham ג€¢ Product Design</p>
                 </div>
                 <button
                   onClick={onClose}
-                  className="text-[#32404F]/30 hover:text-[#32404F]/70 transition-colors p-1 -mr-1 mt-0.5"
+                  className="text-[#101828]/30 hover:text-[#101828]/70 transition-colors p-1 -mr-1 mt-0.5"
                 >
                   <X size={20} strokeWidth={1.5} />
                 </button>
@@ -57,7 +57,7 @@ export default function ContactDrawer({ isOpen, onClose }: ContactDrawerProps) {
             <div className="flex-1 flex flex-col items-center justify-center gap-10">
               <a
                 href="mailto:tzurit88@gmail.com"
-                className="text-[#32404F]/40 hover:text-[#32404F] transition-colors duration-300"
+                className="text-[#101828]/40 hover:text-[#101828] transition-colors duration-300"
                 aria-label="Email"
               >
                 <Mail size={26} strokeWidth={1.5} />
@@ -66,7 +66,7 @@ export default function ContactDrawer({ isOpen, onClose }: ContactDrawerProps) {
                 href="https://wa.me/972509607267"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#32404F]/40 hover:text-[#32404F] transition-colors duration-300"
+                className="text-[#101828]/40 hover:text-[#101828] transition-colors duration-300"
                 aria-label="WhatsApp"
               >
                 <WhatsAppIcon />
@@ -75,7 +75,7 @@ export default function ContactDrawer({ isOpen, onClose }: ContactDrawerProps) {
                 href="https://linkedin.com/in/tzurit-avraham-886013104"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#32404F]/40 hover:text-[#32404F] transition-colors duration-300"
+                className="text-[#101828]/40 hover:text-[#101828] transition-colors duration-300"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={26} strokeWidth={1.5} />
@@ -92,3 +92,4 @@ export default function ContactDrawer({ isOpen, onClose }: ContactDrawerProps) {
     </AnimatePresence>
   );
 }
+
