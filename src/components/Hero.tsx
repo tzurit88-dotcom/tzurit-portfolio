@@ -217,11 +217,11 @@ function InteractiveGrid({ hoverType }: InteractiveGridProps) {
   return (
     <div 
       ref={containerRef}
-      className="absolute right-0 top-0 bottom-0 w-[45%] h-full overflow-hidden border-l border-[#858E97]/25 hidden md:block z-0 select-none pointer-events-auto"
+      className="absolute right-0 top-0 bottom-0 w-[45%] h-full overflow-hidden border-l border-[#0078F1]/25 hidden md:block z-0 select-none pointer-events-auto"
     >
       {grid.cells > 0 && (
         <div 
-          className="grid w-full h-full border-t border-l border-[#858E97]/15"
+          className="grid w-full h-full border-t border-l border-[#0078F1]/15"
           style={{
             gridTemplateColumns: `repeat(${grid.cols}, 1fr)`,
           }}
