@@ -76,10 +76,10 @@ export default function Header({
             }}
             className="flex flex-col items-start justify-center cursor-pointer border-none bg-transparent hover:opacity-75 transition-opacity text-left p-0 z-50"
           >
-            <span className="font-normal text-[20px] lg:text-[22px] tracking-tighter leading-none text-left text-[#32404F]" style={{ fontFamily: "'Quicksand', sans-serif" }}>
+            <span className="font-medium text-[20px] lg:text-[22px] leading-none text-left text-[#32404F]" style={{ fontFamily: "'Quicksand', sans-serif", letterSpacing: '0.02em' }}>
               Tzurit
             </span>
-            <span className="text-[12px] tracking-[0.15em] text-[#858E97] mt-[6px] text-left font-light leading-none" style={{ textTransform: 'capitalize' }}>
+            <span className="text-[12px] uppercase tracking-[0.15em] text-[#858E97] mt-[6px] text-left font-light leading-none">
               Product Designer
             </span>
           </button>
