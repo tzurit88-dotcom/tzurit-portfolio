@@ -91,7 +91,7 @@ import myzonCampaignPublish from './assets/images/myzon_campaign_publish.png';
 
 export const PROJECTS: Project[] = [
   {
-    id: '1',
+    id: '2',
     title: 'GUS',
     category: 'AI, Higher Education',
     description: 'Designing an AI-powered, adaptive learning experience for higher education',
@@ -165,7 +165,7 @@ export const PROJECTS: Project[] = [
     tags: ['AI', 'Adaptive Learning', 'Higher Ed'],
   },
   {
-    id: '2',
+    id: '1',
     title: 'MindEd',
     category: 'Product Design, EdTech',
     description: 'Simplifying the app creation process in a vibe coding platform for educators',

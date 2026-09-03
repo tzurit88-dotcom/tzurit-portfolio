@@ -425,28 +425,26 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
           
           {/* Before & After Frames Visual Showcase */}
           <section className="max-w-4xl mx-auto">
-            <div className="md:-mx-24 lg:-mx-36 xl:-mx-52">
-              <div className="bg-[#D2C7FF] rounded-2xl p-6 md:p-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Before Frame */}
-                  <div className="space-y-3">
-                    <span className="block px-1 text-[12px] uppercase tracking-widest font-medium text-[#32404F]">Before Redesign</span>
-                    <img
-                      src={mindedBeforeNew}
-                      alt="MindEd Before Redesign"
-                      className="w-full h-auto block rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.18)]"
-                    />
-                  </div>
+            <div className="bg-[#8BA6FF] rounded-2xl p-6 md:p-8">
+              <div className="flex flex-col gap-6">
+                {/* Before Frame */}
+                <div className="space-y-3">
+                  <span className="block px-1 text-[12px] uppercase tracking-widest font-medium text-[#32404F]">Before Redesign</span>
+                  <img
+                    src={mindedBeforeNew}
+                    alt="MindEd Before Redesign"
+                    className="w-full h-auto block rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.18)]"
+                  />
+                </div>
 
-                  {/* After Frame */}
-                  <div className="space-y-3">
-                    <span className="block px-1 text-[12px] uppercase tracking-widest font-semibold text-[#32404F]">After Redesign</span>
-                    <img
-                      src={mindedAfterNew}
-                      alt="MindEd After Redesign"
-                      className="w-full h-auto block rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.18)]"
-                    />
-                  </div>
+                {/* After Frame */}
+                <div className="space-y-3">
+                  <span className="block px-1 text-[12px] uppercase tracking-widest font-semibold text-[#32404F]">After Redesign</span>
+                  <img
+                    src={mindedAfterNew}
+                    alt="MindEd After Redesign"
+                    className="w-full h-auto block rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.18)]"
+                  />
                 </div>
               </div>
             </div>

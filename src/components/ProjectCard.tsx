@@ -20,10 +20,10 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
     >
       <div className={cn(
         "relative overflow-hidden aspect-[4/3] md:h-[345px] lg:h-[385px] transition-colors duration-300",
-        project.id === '1' ? 'bg-[#D2C7FF] group-hover:bg-[#F5F3FF]' : 
-        project.id === '2' ? 'bg-[#E8FF77] group-hover:bg-[#FBFFDE]' : 
-        project.id === '3' ? 'bg-[#BAE7FF] group-hover:bg-[#F0F9FF]' : 
-        project.id === '4' ? 'bg-[#b1b1ff] group-hover:bg-[#c2c2ff]' : 
+        project.title === 'GUS' ? 'bg-[#D2C7FF] group-hover:bg-[#F5F3FF]' :
+        project.title === 'MindEd' ? 'bg-[#8BA6FF] group-hover:bg-[#b3c4ff]' :
+        project.id === '3' ? 'bg-[#BAE7FF] group-hover:bg-[#F0F9FF]' :
+        project.id === '4' ? 'bg-[#b1b1ff] group-hover:bg-[#c2c2ff]' :
         'bg-[#EAE8E4] group-hover:bg-[#FBFBFB]'
       )}>
         <div className="absolute inset-0 bg-gradient-to-br from-black/5 to-transparent z-10" />
@@ -33,10 +33,10 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
               src={project.thumbnailImages[0]}
               alt={project.title}
               variants={{
-                initial: project.id === '2'
+                initial: project.title === 'GUS'
                   ? { x: "154.55%", y: 115, rotate: -4, scale: 1 }
                   : { x: 32, y: 108, rotate: -4, scale: 1 },
-                hover: project.id === '2'
+                hover: project.title === 'GUS'
                   ? { x: "159.09%", y: 110, rotate: -3, scale: 1.02 }
                   : { x: 38, y: 103, rotate: -2.5, scale: 1.01 }
               }}
@@ -44,7 +44,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
 
               className={cn(
                 "absolute shadow-2xl rounded-[8px] z-20 object-cover",
-                project.id === '2' ? "w-[22%] aspect-[350/700]" :
+                project.title === 'GUS' ? "w-[22%] aspect-[350/700]" :
                 project.id === '4' ? "w-[80%]" : "w-[80%] aspect-[15/7]"
               )}
             />
@@ -52,10 +52,10 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
               src={project.thumbnailImages[1] || project.thumbnailImages[0]}
               alt={project.title}
               variants={{
-                initial: project.id === '2'
+                initial: project.title === 'GUS'
                   ? { x: "-6.25%", y: 20, rotate: 4, scale: 1 }
                   : { x: -32, y: 32, rotate: 4 },
-                hover: project.id === '2'
+                hover: project.title === 'GUS'
                   ? { x: "-7.5%", y: 15, rotate: 5, scale: 1.02 }
                   : { x: -38, y: 26, rotate: 5.5 }
               }}
@@ -63,7 +63,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
 
               className={cn(
                 "absolute shadow-2xl rounded-[8px] z-10 object-cover",
-                project.id === '2' ? "w-[80%] aspect-[15/7]" :
+                project.title === 'GUS' ? "w-[80%] aspect-[15/7]" :
                 project.id === '4' ? "w-[80%]" : "w-[80%] aspect-[15/7]"
               )}
             />
@@ -74,10 +74,10 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
               src={project.galleryImages[0]}
               alt={project.title}
               variants={{
-                initial: project.id === '2'
+                initial: project.title === 'GUS'
                   ? { x: "154.55%", y: 115, rotate: -4, scale: 1 }
                   : { x: 32, y: 108, rotate: -4, scale: 1 },
-                hover: project.id === '2'
+                hover: project.title === 'GUS'
                   ? { x: "159.09%", y: 110, rotate: -3, scale: 1.02 }
                   : { x: 38, y: 103, rotate: -2.5, scale: 1.01 }
               }}
@@ -85,7 +85,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
 
               className={cn(
                 "absolute shadow-2xl rounded-[8px] z-20 object-cover",
-                project.id === '2' ? "w-[22%] aspect-[350/700]" :
+                project.title === 'GUS' ? "w-[22%] aspect-[350/700]" :
                 project.id === '4' ? "w-[80%]" : "w-[80%] aspect-[15/7]"
               )}
             />
@@ -93,10 +93,10 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
               src={project.galleryImages[1] || project.galleryImages[0]}
               alt={project.title}
               variants={{
-                initial: project.id === '2'
+                initial: project.title === 'GUS'
                   ? { x: "-6.25%", y: 20, rotate: 4, scale: 1 }
                   : { x: -32, y: 32, rotate: 4 },
-                hover: project.id === '2'
+                hover: project.title === 'GUS'
                   ? { x: "-7.5%", y: 15, rotate: 5, scale: 1.02 }
                   : { x: -38, y: 26, rotate: 5.5 }
               }}
@@ -104,7 +104,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
 
               className={cn(
                 "absolute shadow-2xl rounded-[8px] z-10 object-cover",
-                project.id === '2' ? "w-[80%] aspect-[15/7]" :
+                project.title === 'GUS' ? "w-[80%] aspect-[15/7]" :
                 project.id === '4' ? "w-[80%]" : "w-[80%] aspect-[15/7]"
               )}
             />
