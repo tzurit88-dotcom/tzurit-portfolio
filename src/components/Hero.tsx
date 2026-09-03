@@ -169,40 +169,38 @@ function InteractiveGrid({ hoverType }: InteractiveGridProps) {
     }
   }, [hoverType, grid]);
 
-  const activateCell = (idx: number, type: 'center' | 'neighbor') => {
+  const allNeighborClasses = ['grid-cell-active-center', 'grid-cell-active-neighbor', 'grid-cell-active-neighbor-2', 'grid-cell-active-neighbor-3'];
+
+  const activateCell = (idx: number, type: 'center' | 'neighbor' | 'neighbor-2' | 'neighbor-3') => {
     const el = containerRef.current?.querySelector(`[data-index="${idx}"]`);
     if (!el) return;
 
-    // Remove active class states first to trigger instant activation on hover reentry
-    el.classList.remove('grid-cell-active-center', 'grid-cell-active-neighbor');
-    
-    // Force browser reflow to apply removal instantly
+    el.classList.remove(...allNeighborClasses);
     void (el as HTMLElement).offsetWidth;
 
-    el.classList.add(type === 'center' ? 'grid-cell-active-center' : 'grid-cell-active-neighbor');
+    el.classList.add(`grid-cell-active-${type}`);
 
     if (timeoutRefs.current[idx]) {
       clearTimeout(timeoutRefs.current[idx]);
     }
 
     timeoutRefs.current[idx] = setTimeout(() => {
-      el.classList.remove('grid-cell-active-center', 'grid-cell-active-neighbor');
+      el.classList.remove(...allNeighborClasses);
       delete timeoutRefs.current[idx];
-    }, 850); // Beautiful quick fade transition back to transparent
+    }, 850);
   };
 
   const handleCellHover = (index: number) => {
     const { cols, cells } = grid;
     if (cols === 0) return;
 
-    // Activate the exact hovered cell at center premium glow
     activateCell(index, 'center');
 
     const row = Math.floor(index / cols);
     const col = index % cols;
     const totalRows = Math.ceil(cells / cols);
 
-    // Form localized 2D geometric patterns (crosshair logic trail)
+    // Direct neighbors (level 1)
     const top = row > 0 ? index - cols : null;
     const bottom = row < totalRows - 1 ? index + cols : null;
     const left = col > 0 ? index - 1 : null;
@@ -212,6 +210,18 @@ function InteractiveGrid({ hoverType }: InteractiveGridProps) {
     if (bottom !== null) activateCell(bottom, 'neighbor');
     if (left !== null) activateCell(left, 'neighbor');
     if (right !== null) activateCell(right, 'neighbor');
+
+    // Level 2 neighbors
+    if (row > 1) activateCell(index - cols * 2, 'neighbor-2');
+    if (row < totalRows - 2) activateCell(index + cols * 2, 'neighbor-2');
+    if (col > 1) activateCell(index - 2, 'neighbor-2');
+    if (col < cols - 2) activateCell(index + 2, 'neighbor-2');
+
+    // Level 3 neighbors
+    if (row > 2) activateCell(index - cols * 3, 'neighbor-3');
+    if (row < totalRows - 3) activateCell(index + cols * 3, 'neighbor-3');
+    if (col > 2) activateCell(index - 3, 'neighbor-3');
+    if (col < cols - 3) activateCell(index + 3, 'neighbor-3');
   };
 
   return (
