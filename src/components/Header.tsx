@@ -76,8 +76,8 @@ export default function Header({
             }}
             className="flex flex-row items-center gap-2 justify-center cursor-pointer border-none bg-transparent hover:opacity-75 transition-opacity text-left p-0 z-50"
           >
-            <img src="/favicon.png" alt="logo" className="w-6 h-6 object-contain" />
-            <span className="font-bold text-[20px] lg:text-[22px] leading-none text-left text-[#32404F]" style={{ fontFamily: "'Quicksand', sans-serif", letterSpacing: '0.02em' }}>
+            <img src="/favicon.png" alt="logo" className="w-5 h-5 object-contain rounded-[4px]" />
+            <span className="font-semibold text-[20px] lg:text-[22px] leading-none text-left text-[#32404F]" style={{ fontFamily: "'Quicksand', sans-serif", letterSpacing: '0.02em' }}>
               Tzurit
             </span>
           </button>
