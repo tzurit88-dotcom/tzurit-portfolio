@@ -187,7 +187,7 @@ function InteractiveGrid({ hoverType }: InteractiveGridProps) {
     timeoutRefs.current[idx] = setTimeout(() => {
       el.classList.remove(...allNeighborClasses);
       delete timeoutRefs.current[idx];
-    }, 850);
+    }, 1400);
   };
 
   const handleCellHover = (index: number) => {
