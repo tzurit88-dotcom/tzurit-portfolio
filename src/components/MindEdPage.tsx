@@ -426,9 +426,9 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
           {/* Before & After Frames Visual Showcase */}
           <section className="max-w-4xl mx-auto">
             <div className="bg-[#8BA6FF] rounded-2xl p-6 md:p-8">
-              <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-6 items-center">
                 {/* Before Frame */}
-                <div className="space-y-3">
+                <div className="space-y-3 w-full max-w-xl">
                   <span className="block px-1 text-[12px] uppercase tracking-widest font-medium text-[#32404F]">Before Redesign</span>
                   <img
                     src={mindedBeforeNew}
@@ -438,7 +438,7 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
                 </div>
 
                 {/* After Frame */}
-                <div className="space-y-3">
+                <div className="space-y-3 w-full max-w-xl">
                   <span className="block px-1 text-[12px] uppercase tracking-widest font-semibold text-[#32404F]">After Redesign</span>
                   <img
                     src={mindedAfterNew}
