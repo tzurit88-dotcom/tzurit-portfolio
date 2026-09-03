@@ -77,7 +77,7 @@ export default function Header({
             className="flex flex-col items-start justify-center cursor-pointer border-none bg-transparent hover:opacity-75 transition-opacity text-left p-0 z-50"
           >
             <span className="font-medium text-[20px] lg:text-[22px] tracking-tighter uppercase leading-none text-left text-[#32404F]">
-              Tzurit Avraham
+              Tzurit
             </span>
             <span className="text-[12px] uppercase tracking-[0.15em] text-[#858E97] mt-1 text-left font-light leading-none">
               Product Designer
