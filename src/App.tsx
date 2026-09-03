@@ -147,7 +147,7 @@ export default function App() {
   }
 
   return (
-    <div className="relative min-h-screen font-sans text-[#101828] bg-[#FDFCFA]">
+    <div className="relative min-h-screen font-sans text-[#1B232C] bg-[#FDFCFA]">
       <Header
         currentView={currentView}
         onNavigate={handleNavigation}
@@ -174,13 +174,13 @@ export default function App() {
 
         {/* Simple Footer */}
         <footer id="Contact" className="h-32 flex items-center justify-end px-12 bg-[#FDFCFA] border-t border-[#858E97]/25">
-          <div className="flex gap-12 text-[11.5px] uppercase tracking-widest text-[#101828]">
+          <div className="flex gap-12 text-[11.5px] uppercase tracking-widest text-[#1B232C]">
             <a 
               href="mailto:tzurit88@gmail.com" 
               className="opacity-80 hover:opacity-100 transition-all duration-300 relative py-1 group block"
             >
               <span>tzurit88@gmail.com</span>
-              <span className="absolute bottom-0 left-0 right-0 h-[1.2px] bg-[#101828] transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100" />
+              <span className="absolute bottom-0 left-0 right-0 h-[1.2px] bg-[#1B232C] transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100" />
             </a>
             <a 
               href="https://linkedin.com/in/tzurit-avraham-886013104" 
@@ -189,7 +189,7 @@ export default function App() {
               className="opacity-80 hover:opacity-100 transition-all duration-300 relative py-1 group block"
             >
               <span>LinkedIn</span>
-              <span className="absolute bottom-0 left-0 right-0 h-[1.2px] bg-[#101828] transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100" />
+              <span className="absolute bottom-0 left-0 right-0 h-[1.2px] bg-[#1B232C] transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100" />
             </a>
           </div>
         </footer>
@@ -206,6 +206,7 @@ export default function App() {
     </div>
   );
 }
+
 
 
 

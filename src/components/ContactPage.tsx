@@ -22,19 +22,19 @@ export default function ContactPage({ onBack, onNavigate }: ContactPageProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -15 }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      className="min-h-screen bg-[#FDFCFA] font-sans text-[#101828]"
+      className="min-h-screen bg-[#FDFCFA] font-sans text-[#1B232C]"
     >
       <Header currentView="home" onNavigate={onNavigate} />
 
       <main className="max-w-sm mx-auto px-8 pt-36 pb-16 flex flex-col">
         {/* Title */}
-        <h1 className="text-3xl font-semibold text-[#101828] tracking-tight mb-16">Contact</h1>
+        <h1 className="text-3xl font-semibold text-[#1B232C] tracking-tight mb-16">Contact</h1>
 
         {/* Contact links */}
         <div className="flex flex-col gap-10">
           <a
             href="mailto:tzurit88@gmail.com"
-            className="flex items-center gap-5 text-[#101828]/70 hover:text-[#101828] transition-colors duration-300 group"
+            className="flex items-center gap-5 text-[#1B232C]/70 hover:text-[#1B232C] transition-colors duration-300 group"
           >
             <Mail size={28} strokeWidth={1.5} className="shrink-0" />
             <span className="text-base font-light">tzurit88@gmail.com</span>
@@ -43,7 +43,7 @@ export default function ContactPage({ onBack, onNavigate }: ContactPageProps) {
             href="https://wa.me/972509607267"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-5 text-[#101828]/70 hover:text-[#101828] transition-colors duration-300 group"
+            className="flex items-center gap-5 text-[#1B232C]/70 hover:text-[#1B232C] transition-colors duration-300 group"
           >
             <WhatsAppIcon />
             <span className="text-base font-light">+972 509 607 267</span>
@@ -52,7 +52,7 @@ export default function ContactPage({ onBack, onNavigate }: ContactPageProps) {
             href="https://linkedin.com/in/tzurit-avraham-886013104"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-5 text-[#101828]/70 hover:text-[#101828] transition-colors duration-300 group"
+            className="flex items-center gap-5 text-[#1B232C]/70 hover:text-[#1B232C] transition-colors duration-300 group"
           >
             <Linkedin size={28} strokeWidth={1.5} className="shrink-0" />
             <span className="text-base font-light">LinkedIn</span>
@@ -64,4 +64,5 @@ export default function ContactPage({ onBack, onNavigate }: ContactPageProps) {
     </motion.div>
   );
 }
+
 

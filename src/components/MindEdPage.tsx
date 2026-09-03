@@ -343,7 +343,7 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen bg-[#FDFCFA] text-[#101828] font-sans selection:bg-[#BEC2C6]/30"
+      className="min-h-screen bg-[#FDFCFA] text-[#1B232C] font-sans selection:bg-[#BEC2C6]/30"
     >
       <Header currentView="project-page" onNavigate={onNavigate} />
       <motion.div
@@ -356,7 +356,7 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
         onClick={onBack}
         animate={{ top: headerVisible ? 106 : 20 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed left-6 md:left-12 z-40 group flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-[#101828] opacity-70 hover:opacity-100 transition-opacity px-3 py-2"
+        className="fixed left-6 md:left-12 z-40 group flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-[#1B232C] opacity-70 hover:opacity-100 transition-opacity px-3 py-2"
       >
         <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform" />
         Back
@@ -381,7 +381,7 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-2xl font-light leading-relaxed text-[#101828]/75 max-w-2xl"
+              className="text-xl md:text-2xl font-light leading-relaxed text-[#1B232C]/75 max-w-2xl"
             >
               {project.description}
             </motion.p>
@@ -429,7 +429,7 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
               <div className="flex flex-col gap-6 items-center">
                 {/* Before Frame */}
                 <div className="space-y-3 w-full max-w-xl">
-                  <span className="block px-1 text-[12px] uppercase tracking-widest font-medium text-[#101828]">Before Redesign</span>
+                  <span className="block px-1 text-[12px] uppercase tracking-widest font-medium text-[#1B232C]">Before Redesign</span>
                   <img
                     src={mindedBeforeNew}
                     alt="MindEd Before Redesign"
@@ -439,7 +439,7 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
 
                 {/* After Frame */}
                 <div className="space-y-3 w-full max-w-xl">
-                  <span className="block px-1 text-[12px] uppercase tracking-widest font-semibold text-[#101828]">After Redesign</span>
+                  <span className="block px-1 text-[12px] uppercase tracking-widest font-semibold text-[#1B232C]">After Redesign</span>
                   <img
                     src={mindedAfterNew}
                     alt="MindEd After Redesign"
@@ -452,8 +452,8 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
 
           {/* Background */}
           <section className="max-w-4xl mx-auto space-y-6">
-            <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#101828]">Background</h2>
-            <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">
+            <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#1B232C]">Background</h2>
+            <p className="text-lg font-[370] leading-relaxed text-[#1B232C]/90">
               Built at MindCET, Israel's EdTech innovation center, MindEd is a vibe coding platform that empowers educators to build tailored educational apps and games. Instead of waiting for external, generic tech solutions, educators can use AI to solve their specific classroom micro-problems instantly.
             </p>
           </section>
@@ -463,16 +463,16 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
               {/* Left Column: Context */}
               <div className="space-y-6">
-                <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#101828]">Context</h2>
-                <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">
+                <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#1B232C]">Context</h2>
+                <p className="text-lg font-[370] leading-relaxed text-[#1B232C]/90">
                   App creation in MindEd follows three stages: defining the problem, mapping the solution, and development. Unlike other tools, app building in MindEd works in structured stages rather than all at once. This lets users refine and monitor their tool as it's being built. To support this, a Roadmap feature was added to provide progress tracking and the ability to revert to previous versions.
                 </p>
               </div>
 
               {/* Right Column: My Role */}
               <div className="space-y-6">
-                <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#101828]">My Role</h2>
-                <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">
+                <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#1B232C]">My Role</h2>
+                <p className="text-lg font-[370] leading-relaxed text-[#1B232C]/90">
                   I joined the project as the sole product designer after the initial pilot, where the immediate priority was optimizing the Development Area - the stage where educators turn their pedagogical ideas into interactive tools.
                 </p>
               </div>
@@ -481,45 +481,45 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
 
           {/* The Problem */}
           <section className="max-w-4xl mx-auto space-y-6">
-            <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#101828]">The Problem</h2>
-            <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">
+            <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#1B232C]">The Problem</h2>
+            <p className="text-lg font-[370] leading-relaxed text-[#1B232C]/90">
               While the first two stages went smoothly and left most educators satisfied, the Development Area proved confusing and less user-friendly. This led to:
             </p>
-            <ul className="space-y-2 text-lg font-[370] text-[#101828]/90">
-              <li className="flex items-center gap-4"><span className="w-1.5 h-1.5 rounded-full bg-[#101828]/90 shrink-0" />Inefficient use of the system</li>
-              <li className="flex items-center gap-4"><span className="w-1.5 h-1.5 rounded-full bg-[#101828]/90 shrink-0" />Lower satisfaction with the generated applications</li>
-              <li className="flex items-center gap-4"><span className="w-1.5 h-1.5 rounded-full bg-[#101828]/90 shrink-0" />User drop-off</li>
+            <ul className="space-y-2 text-lg font-[370] text-[#1B232C]/90">
+              <li className="flex items-center gap-4"><span className="w-1.5 h-1.5 rounded-full bg-[#1B232C]/90 shrink-0" />Inefficient use of the system</li>
+              <li className="flex items-center gap-4"><span className="w-1.5 h-1.5 rounded-full bg-[#1B232C]/90 shrink-0" />Lower satisfaction with the generated applications</li>
+              <li className="flex items-center gap-4"><span className="w-1.5 h-1.5 rounded-full bg-[#1B232C]/90 shrink-0" />User drop-off</li>
             </ul>
           </section>
 
           {/* Research & Insights */}
           <section className="max-w-4xl mx-auto space-y-12">
-            <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#101828]">Research &amp; Insights</h2>
+            <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#1B232C]">Research &amp; Insights</h2>
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-2">
-                <div className="text-[10px] uppercase tracking-widest font-semibold text-[#101828]">Goal</div>
-                <div className="text-[#101828]/90">Understand the root causes of user drop-off</div>
+                <div className="text-[10px] uppercase tracking-widest font-semibold text-[#1B232C]">Goal</div>
+                <div className="text-[#1B232C]/90">Understand the root causes of user drop-off</div>
               </div>
               <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-2">
-                <div className="text-[10px] uppercase tracking-widest font-semibold text-[#101828]">Method</div>
-                <div className="text-[#101828]/90"><span className="font-semibold text-[#101828]">20 In-depth interviews</span> with pilot educators</div>
+                <div className="text-[10px] uppercase tracking-widest font-semibold text-[#1B232C]">Method</div>
+                <div className="text-[#1B232C]/90"><span className="font-semibold text-[#1B232C]">20 In-depth interviews</span> with pilot educators</div>
               </div>
             </div>
-            <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">
+            <p className="text-lg font-[370] leading-relaxed text-[#1B232C]/90">
               The interviews revealed that educators skipped the introductory text and missed the Roadmap entirely. Without this visual anchor, they mistook the first partial output for the final product, leading to:
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-2">
-                <div className="font-semibold text-[#101828]">Expectation Mismatch</div>
-                <p className="font-[370] leading-relaxed text-[#101828]/90">The initial incomplete results felt disconnected from their goals, causing early frustration.</p>
+                <div className="font-semibold text-[#1B232C]">Expectation Mismatch</div>
+                <p className="font-[370] leading-relaxed text-[#1B232C]/90">The initial incomplete results felt disconnected from their goals, causing early frustration.</p>
               </div>
               <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-2">
-                <div className="font-semibold text-[#101828]">Redundant Requests</div>
-                <p className="font-[370] leading-relaxed text-[#101828]/90">Educators used the chat to ask for features already planned for later stages.</p>
+                <div className="font-semibold text-[#1B232C]">Redundant Requests</div>
+                <p className="font-[370] leading-relaxed text-[#1B232C]/90">Educators used the chat to ask for features already planned for later stages.</p>
               </div>
               <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-2">
-                <div className="font-semibold text-[#101828]">Process Disorientation</div>
-                <p className="font-[370] leading-relaxed text-[#101828]/90">The interface lacked clarity, making the workflow feel tedious and causing users to leave before realizing how much was left.</p>
+                <div className="font-semibold text-[#1B232C]">Process Disorientation</div>
+                <p className="font-[370] leading-relaxed text-[#1B232C]/90">The interface lacked clarity, making the workflow feel tedious and causing users to leave before realizing how much was left.</p>
               </div>
             </div>
           </section>
@@ -527,20 +527,20 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
           {/* Constraints */}
           <section className="max-w-4xl mx-auto space-y-12">
             <div className="space-y-6">
-              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#101828]">Constraints</h2>
-              <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">
+              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#1B232C]">Constraints</h2>
+              <p className="text-lg font-[370] leading-relaxed text-[#1B232C]/90">
                 I initially questioned the decision of staged generation itself, as it differs from standard vibe coding patterns. However, this was a structural product constraint not open to change. The design had to solve the orientation problem within this multi-stage framework.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
               <div className="space-y-6 md:col-span-2">
-                <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#101828]">A Lighter First Attempt</h2>
-                <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">
+                <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#1B232C]">A Lighter First Attempt</h2>
+                <p className="text-lg font-[370] leading-relaxed text-[#1B232C]/90">
                   I first tried a tactical fix: increasing the Roadmap's visual prominence through color and neutralizing the surrounding palette.
                 </p>
-                <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">
-                  It wasn't enough. <strong className="font-semibold text-[#101828]">Usability testing</strong> showed that 3 out of 5 educators still missed the Roadmap. It made me realize that visibility wasn't the only issue - there was a more fundamental problem.
+                <p className="text-lg font-[370] leading-relaxed text-[#1B232C]/90">
+                  It wasn't enough. <strong className="font-semibold text-[#1B232C]">Usability testing</strong> showed that 3 out of 5 educators still missed the Roadmap. It made me realize that visibility wasn't the only issue - there was a more fundamental problem.
                 </p>
               </div>
 
@@ -583,14 +583,14 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
                         if (label) label.removeAttribute('style');
                       }}
                     />
-                    <div className="text-[#101828]/20 italic text-center text-xs px-8 placeholder-label" style={{ display: 'none' }}>
+                    <div className="text-[#1B232C]/20 italic text-center text-xs px-8 placeholder-label" style={{ display: 'none' }}>
                       [Placeholder: Image (1500x700)]
                     </div>
                   </>
                 )}
                 
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <Maximize2 className="text-[#101828] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
+                  <Maximize2 className="text-[#1B232C] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
                 </div>
 
               </div>
@@ -600,7 +600,7 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
           {/* The Solution */}
           <section className="max-w-4xl mx-auto space-y-12">
             <div className="space-y-6">
-              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#101828]">The Solution</h2>
+              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#1B232C]">The Solution</h2>
             </div>
 
             <div 
@@ -615,13 +615,13 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
                   <button
                     type="button"
                     onClick={() => setRedesignMode('after')}
-                    className={`flex items-center justify-center px-4 py-2 rounded-full text-[8.5px] md:text-[10px] font-bold uppercase tracking-[0.18em] transition-all duration-300 relative z-10 cursor-pointer ${redesignMode === 'after' ? 'text-[#FDFCFA] font-medium' : 'text-[#101828]/40 hover:text-[#101828]/60 font-medium'}`}
+                    className={`flex items-center justify-center px-4 py-2 rounded-full text-[8.5px] md:text-[10px] font-bold uppercase tracking-[0.18em] transition-all duration-300 relative z-10 cursor-pointer ${redesignMode === 'after' ? 'text-[#FDFCFA] font-medium' : 'text-[#1B232C]/40 hover:text-[#1B232C]/60 font-medium'}`}
                   >
                     After Redesign
                     {redesignMode === 'after' && (
                       <motion.div
                         layoutId="activeRedesignTabBg"
-                        className="absolute inset-0 bg-[#101828] rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.15),0_1px_2px_rgba(0,0,0,0.08)] -z-10"
+                        className="absolute inset-0 bg-[#1B232C] rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.15),0_1px_2px_rgba(0,0,0,0.08)] -z-10"
                         transition={{ type: "spring", stiffness: 420, damping: 30 }}
                       />
                     )}
@@ -630,13 +630,13 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
                   <button
                     type="button"
                     onClick={() => setRedesignMode('before')}
-                    className={`flex items-center justify-center px-4 py-2 rounded-full text-[8.5px] md:text-[10px] font-bold uppercase tracking-[0.18em] transition-all duration-300 relative z-10 cursor-pointer ${redesignMode === 'before' ? 'text-[#FDFCFA] font-medium' : 'text-[#101828]/40 hover:text-[#101828]/60 font-medium'}`}
+                    className={`flex items-center justify-center px-4 py-2 rounded-full text-[8.5px] md:text-[10px] font-bold uppercase tracking-[0.18em] transition-all duration-300 relative z-10 cursor-pointer ${redesignMode === 'before' ? 'text-[#FDFCFA] font-medium' : 'text-[#1B232C]/40 hover:text-[#1B232C]/60 font-medium'}`}
                   >
                     Before Redesign
                     {redesignMode === 'before' && (
                       <motion.div
                         layoutId="activeRedesignTabBg"
-                        className="absolute inset-0 bg-[#101828] rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.15),0_1px_2px_rgba(0,0,0,0.08)] -z-10"
+                        className="absolute inset-0 bg-[#1B232C] rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.15),0_1px_2px_rgba(0,0,0,0.08)] -z-10"
                         transition={{ type: "spring", stiffness: 420, damping: 30 }}
                       />
                     )}
@@ -733,7 +733,7 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
                 </AnimatePresence>
                 
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <Maximize2 className="text-[#101828] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
+                  <Maximize2 className="text-[#1B232C] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
                 </div>
               </div>
             </div>
@@ -743,24 +743,24 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
           <section className="max-w-4xl mx-auto space-y-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-3">
-                <div className="font-semibold text-[#101828]">Established Master-Detail Hierarchy</div>
-                <p className="font-[370] leading-relaxed text-[#101828]/90">I flipped the Chat and Roadmap positions. In this RTL interface, placing the Chat (Master) on the right and the Roadmap (Detail) on the left creates a <strong className="font-normal text-[#101828]">natural cause-and-effect flow.</strong></p>
+                <div className="font-semibold text-[#1B232C]">Established Master-Detail Hierarchy</div>
+                <p className="font-[370] leading-relaxed text-[#1B232C]/90">I flipped the Chat and Roadmap positions. In this RTL interface, placing the Chat (Master) on the right and the Roadmap (Detail) on the left creates a <strong className="font-normal text-[#1B232C]">natural cause-and-effect flow.</strong></p>
               </div>
               <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-3">
-                <div className="font-semibold text-[#101828]">Simplified Roadmap Structure</div>
-                <p className="font-[370] leading-relaxed text-[#101828]/90">Condensed the Roadmap into three constant stages (Foundations, Main Features, Expansion). This provides a clear "beginning, middle, and end" to prevent cognitive overload, with titles visible at all times for <strong className="font-normal text-[#101828]">constant orientation.</strong></p>
+                <div className="font-semibold text-[#1B232C]">Simplified Roadmap Structure</div>
+                <p className="font-[370] leading-relaxed text-[#1B232C]/90">Condensed the Roadmap into three constant stages (Foundations, Main Features, Expansion). This provides a clear "beginning, middle, and end" to prevent cognitive overload, with titles visible at all times for <strong className="font-normal text-[#1B232C]">constant orientation.</strong></p>
               </div>
               <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-3">
-                <div className="font-semibold text-[#101828]">Reduced Visual Load</div>
-                <p className="font-[370] leading-relaxed text-[#101828]/90">Neutralized the UI palette to minimize competing signals and <strong className="font-normal text-[#101828]">keep the focus on the generated app.</strong></p>
+                <div className="font-semibold text-[#1B232C]">Reduced Visual Load</div>
+                <p className="font-[370] leading-relaxed text-[#1B232C]/90">Neutralized the UI palette to minimize competing signals and <strong className="font-normal text-[#1B232C]">keep the focus on the generated app.</strong></p>
               </div>
               <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-3">
-                <div className="font-semibold text-[#101828]">Closed the Feedback Loop</div>
-                <p className="font-[370] leading-relaxed text-[#101828]/90">Enabled the Chat and Roadmap to be open simultaneously. This <strong className="font-normal text-[#101828]">eliminates context switching</strong> and lets educators see the Roadmap update in real-time as they interact with the Chat.</p>
+                <div className="font-semibold text-[#1B232C]">Closed the Feedback Loop</div>
+                <p className="font-[370] leading-relaxed text-[#1B232C]/90">Enabled the Chat and Roadmap to be open simultaneously. This <strong className="font-normal text-[#1B232C]">eliminates context switching</strong> and lets educators see the Roadmap update in real-time as they interact with the Chat.</p>
               </div>
               <div className="bg-[#E5E6E6]/20 rounded-3xl p-6 border border-[#BEC2C6]/25 space-y-3">
-                <div className="font-semibold text-[#101828]">Improved Discoverability</div>
-                <p className="font-[370] leading-relaxed text-[#101828]/90">Redesigned the drawer button to provide a <strong className="font-normal text-[#101828]">clearer affordance,</strong> making the Roadmap functionality easier to find and access.</p>
+                <div className="font-semibold text-[#1B232C]">Improved Discoverability</div>
+                <p className="font-[370] leading-relaxed text-[#1B232C]/90">Redesigned the drawer button to provide a <strong className="font-normal text-[#1B232C]">clearer affordance,</strong> making the Roadmap functionality easier to find and access.</p>
               </div>
             </div>
 
@@ -769,8 +769,8 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
 
           {/* Project Status & Next Steps */}
           <section className="max-w-4xl mx-auto space-y-12">
-            <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#101828]">Project Status & Next Steps</h2>
-            <p className="text-lg font-[370] leading-relaxed text-[#101828]/90">
+            <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#1B232C]">Project Status & Next Steps</h2>
+            <p className="text-lg font-[370] leading-relaxed text-[#1B232C]/90">
               The project was closed at the concept stage, so this redesign wasn't validated in the field. If it had moved forward, the next step would have been a focused usability test with a prototype (5–6 educators) to verify if this orientation-heavy approach effectively reduced the drop-off rates seen in the pilot.
             </p>
           </section>
@@ -799,7 +799,7 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
                 setSelectedImage(null);
               }}
             >
-              <X size={24} className="text-[#101828]" />
+              <X size={24} className="text-[#1B232C]" />
             </motion.button>
             
             <motion.div
@@ -860,6 +860,7 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
     </motion.div>
   );
 }
+
 
 
 

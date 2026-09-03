@@ -56,7 +56,7 @@ export default function OtherProjects({ currentProjectId, onNavigateProject }: O
 
               {/* ׳›׳•׳×׳¨׳× ׳•׳×׳™׳׳•׳¨ ׳”׳₪׳¨׳•׳™׳§׳˜ ׳׳×׳—׳× ׳׳›׳¨׳˜׳™׳¡׳™׳™׳” */}
               <div className="pt-4 flex flex-col">
-                <h4 className="text-base font-semibold text-[#101828] mt-1 group-hover:text-[#101828]/80 transition-colors">
+                <h4 className="text-base font-semibold text-[#1B232C] mt-1 group-hover:text-[#1B232C]/80 transition-colors">
                   {proj.title}
                 </h4>
                 <p className="text-xs text-[#858E97] mt-1 text-light leading-relaxed line-clamp-2">
@@ -70,4 +70,5 @@ export default function OtherProjects({ currentProjectId, onNavigateProject }: O
     </section>
   );
 }
+
 

@@ -39,7 +39,7 @@ export default function AboutPage({ onBack, onNavigate }: AboutPageProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -15 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="relative min-h-screen font-sans text-[#101828] bg-[#FDFCFA] pt-44 md:pt-32"
+      className="relative min-h-screen font-sans text-[#1B232C] bg-[#FDFCFA] pt-44 md:pt-32"
     >
       <Header
         currentView="about"
@@ -69,8 +69,8 @@ export default function AboutPage({ onBack, onNavigate }: AboutPageProps) {
 
           {/* Right Column: Bio text */}
           <div className="flex-grow flex flex-col" style={{ height: '416px' }}>
-            <h1 className="text-3xl font-light tracking-tight text-[#101828] uppercase mb-5 block">About Me</h1>
-            <div className="text-sm md:text-base font-[370] leading-relaxed text-[#101828]/90 space-y-4 flex-1">
+            <h1 className="text-3xl font-light tracking-tight text-[#1B232C] uppercase mb-5 block">About Me</h1>
+            <div className="text-sm md:text-base font-[370] leading-relaxed text-[#1B232C]/90 space-y-4 flex-1">
               <p>
                 I am a Product Designer dedicated to building innovative, minimalistic products where the user's needs always drive the design.
               </p>
@@ -93,13 +93,13 @@ export default function AboutPage({ onBack, onNavigate }: AboutPageProps) {
       <div className="h-32 md:hidden" />
 
       <footer id="Contact" className="h-32 flex items-center justify-end px-12 bg-[#FDFCFA] border-t border-[#858E97]/25">
-        <div className="flex gap-12 text-[12px] uppercase tracking-widest text-[#101828]">
+        <div className="flex gap-12 text-[12px] uppercase tracking-widest text-[#1B232C]">
           <a
             href="mailto:tzurit88@gmail.com"
             className="opacity-80 hover:opacity-100 transition-all duration-300 relative py-1 group block"
           >
             <span>tzurit88@gmail.com</span>
-            <span className="absolute bottom-0 left-0 right-0 h-[1.2px] bg-[#101828] transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100" />
+            <span className="absolute bottom-0 left-0 right-0 h-[1.2px] bg-[#1B232C] transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100" />
           </a>
           <a
             href="https://linkedin.com/in/tzurit-avraham-886013104"
@@ -108,13 +108,14 @@ export default function AboutPage({ onBack, onNavigate }: AboutPageProps) {
             className="opacity-80 hover:opacity-100 transition-all duration-300 relative py-1 group block"
           >
             <span>LinkedIn</span>
-            <span className="absolute bottom-0 left-0 right-0 h-[1.2px] bg-[#101828] transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100" />
+            <span className="absolute bottom-0 left-0 right-0 h-[1.2px] bg-[#1B232C] transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100" />
           </a>
         </div>
       </footer>
     </motion.div>
   );
 }
+
 
 
 

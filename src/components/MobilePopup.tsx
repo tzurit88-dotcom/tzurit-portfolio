@@ -44,21 +44,21 @@ export default function MobilePopup() {
             {/* Close button */}
             <button
               onClick={dismiss}
-              className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full text-[#101828]/30 hover:text-[#101828]/70 hover:bg-[#858E97]/10 transition-all"
+              className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full text-[#1B232C]/30 hover:text-[#1B232C]/70 hover:bg-[#858E97]/10 transition-all"
               aria-label="Close"
             >
               <X size={16} strokeWidth={2} />
             </button>
 
             {/* Body text */}
-            <p className="text-[15px] font-semibold text-[#101828] leading-snug pr-6 mb-6">
+            <p className="text-[15px] font-semibold text-[#1B232C] leading-snug pr-6 mb-6">
               Hey there נ‘‹<br />The desktop version has an extra charm, just saying... נ˜‰
             </p>
 
             {/* CTA */}
             <button
               onClick={dismiss}
-              className="w-full py-3.5 rounded-full border border-[#858E97]/40 text-[#101828] text-[13px] font-medium tracking-wide hover:bg-[#858E97]/10 transition-all duration-200"
+              className="w-full py-3.5 rounded-full border border-[#858E97]/40 text-[#1B232C] text-[13px] font-medium tracking-wide hover:bg-[#858E97]/10 transition-all duration-200"
             >
               Staying here for now
             </button>
@@ -68,4 +68,5 @@ export default function MobilePopup() {
     </AnimatePresence>
   );
 }
+
 
