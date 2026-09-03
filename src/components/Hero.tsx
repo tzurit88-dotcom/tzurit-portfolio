@@ -277,13 +277,13 @@ export default function Hero({ externalHoverType = 'none' }: HeroProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="font-light leading-tight tracking-tight max-w-5xl text-[#32404F] font-sans"
-          style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)' }}
+          className="font-light leading-tight tracking-tight max-w-5xl text-[#32404F]"
+          style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontFamily: "'Quicksand', sans-serif" }}
         >
           I solve problems through{' '}
-          <span className="font-bold text-[#32404F]">intentional</span>
+          <span style={{ fontFamily: "'Quicksand', sans-serif" }} className="font-bold text-[#32404F]">intentional design</span>
           <br />
-          <span className="md:whitespace-nowrap">design and systematic thinking - using AI</span>
+          <span className="md:whitespace-nowrap">and systematic thinking - using AI</span>
           <br />
           for faster, elevated result.
         </motion.h1>
