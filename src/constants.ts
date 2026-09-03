@@ -92,30 +92,6 @@ import myzonCampaignPublish from './assets/images/myzon_campaign_publish.png';
 export const PROJECTS: Project[] = [
   {
     id: '1',
-    title: 'MindEd',
-    category: 'Product Design, EdTech',
-    description: 'Simplifying the app creation process in a vibe coding platform for educators',
-    fullDescription: 'MindEd is a specialized platform designed to empower educators with modern coding tools. This project focused on redesigning the core development area to lower the barrier to entry while maintaining professional-grade functionality. The redesign emphasized clarity, flow, and "vibe coding" principles to make the technical process feel more intuitive and creative.',
-    imageUrl: mindedHero,
-    thumbnailImages: [
-      mindedCardTop,
-      mindedCardBottom
-    ],
-    galleryImages: [
-      mindedHero,              // 0: Unique hero
-      mindedAfterGif,          // 1: After redesign GIF
-      mindedBeforeGif,         // 2: Before redesign GIF
-      mindedLighterAttempt,    // 3: Lighter attempt
-      mindedComparison,        // 4: Before vs After comparison
-      mindedFinal              // 5: Final redesign
-    ],
-    gifUrl: 'https://media.giphy.com/media/3o7TKMGpxP5O397N5e/giphy.gif', // Placeholder for the Before/After comparison
-    year: '2024',
-    role: 'Lead Product Designer',
-    tags: ['EdTech', 'UX Redesign', 'System Thinking'],
-  },
-  {
-    id: '2',
     title: 'GUS',
     category: 'AI, Higher Education',
     description: 'Designing an AI-powered, adaptive learning experience for higher education',
@@ -187,6 +163,30 @@ export const PROJECTS: Project[] = [
     year: '2024',
     role: 'Product Designer',
     tags: ['AI', 'Adaptive Learning', 'Higher Ed'],
+  },
+  {
+    id: '2',
+    title: 'MindEd',
+    category: 'Product Design, EdTech',
+    description: 'Simplifying the app creation process in a vibe coding platform for educators',
+    fullDescription: 'MindEd is a specialized platform designed to empower educators with modern coding tools. This project focused on redesigning the core development area to lower the barrier to entry while maintaining professional-grade functionality. The redesign emphasized clarity, flow, and "vibe coding" principles to make the technical process feel more intuitive and creative.',
+    imageUrl: mindedHero,
+    thumbnailImages: [
+      mindedCardTop,
+      mindedCardBottom
+    ],
+    galleryImages: [
+      mindedHero,              // 0: Unique hero
+      mindedAfterGif,          // 1: After redesign GIF
+      mindedBeforeGif,         // 2: Before redesign GIF
+      mindedLighterAttempt,    // 3: Lighter attempt
+      mindedComparison,        // 4: Before vs After comparison
+      mindedFinal              // 5: Final redesign
+    ],
+    gifUrl: 'https://media.giphy.com/media/3o7TKMGpxP5O397N5e/giphy.gif',
+    year: '2024',
+    role: 'Lead Product Designer',
+    tags: ['EdTech', 'UX Redesign', 'System Thinking'],
   },
   {
     id: '3',
