@@ -17,7 +17,7 @@ export default function OtherProjects({ currentProjectId, onNavigateProject }: O
       {/* ׳›׳•׳×׳¨׳× ׳”׳¡׳§׳©׳ */}
       <div className="text-center md:text-left mb-10">
         <h3 className="text-[11px] uppercase tracking-[0.3em] font-extrabold text-[#858E97]/90">
-          Explore Other Projects
+          More of My Work
         </h3>
       </div>
 
