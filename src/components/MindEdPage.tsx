@@ -425,7 +425,7 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
           
           {/* Before & After Frames Visual Showcase */}
           <section className="max-w-4xl mx-auto">
-            <div className="bg-[#8BA6FF] rounded-2xl p-6 md:p-8">
+            <div className="bg-[#ACACF8] rounded-2xl p-6 md:p-8">
               <div className="flex flex-col gap-6 items-center">
                 {/* Before Frame */}
                 <div className="space-y-3 w-full max-w-xl">
@@ -860,6 +860,7 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
     </motion.div>
   );
 }
+
 
 
 

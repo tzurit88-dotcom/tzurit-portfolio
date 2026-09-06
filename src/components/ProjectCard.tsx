@@ -21,7 +21,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
       <div className={cn(
         "relative overflow-hidden aspect-[4/3] md:h-[345px] lg:h-[385px] transition-colors duration-300",
         project.title === 'GUS' ? 'bg-[#E8FF77] group-hover:bg-[#FBFFDE]' :
-        project.title === 'MindEd' ? 'bg-[#8BA6FF] group-hover:bg-[#b3c4ff]' :
+        project.title === 'MindEd' ? 'bg-[#ACACF8] group-hover:bg-[#b3c4ff]' :
         project.id === '3' ? 'bg-[#BAE7FF] group-hover:bg-[#F0F9FF]' :
         project.id === '4' ? 'bg-[#b1b1ff] group-hover:bg-[#c2c2ff]' :
         'bg-[#EAE8E4] group-hover:bg-[#FBFBFB]'
@@ -130,5 +130,6 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
     </motion.div>
   );
 }
+
 
 

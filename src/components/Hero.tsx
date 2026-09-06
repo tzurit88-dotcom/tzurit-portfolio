@@ -330,3 +330,4 @@ export default function Hero({ externalHoverType = 'none' }: HeroProps) {
 }
 
 
+
