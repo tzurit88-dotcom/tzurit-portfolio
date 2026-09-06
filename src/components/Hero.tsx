@@ -283,7 +283,7 @@ export default function Hero({ externalHoverType = 'none' }: HeroProps) {
           I solve complex problems through{' '}
           <span style={{ fontFamily: "'Quicksand', sans-serif" }} className="font-bold text-[#1B232C]">intentional</span>
           <br />
-          <span style={{ fontFamily: "'Quicksand', sans-serif" }} className="font-bold text-[#1B232C]">design</span>{' '}using AI (and coffee..)
+          <span style={{ fontFamily: "'Quicksand', sans-serif" }} className="font-bold text-[#1B232C]">design</span>{' '}using AI (and coffee)
           <br />
           for faster, elevated results.
         </motion.h1>
