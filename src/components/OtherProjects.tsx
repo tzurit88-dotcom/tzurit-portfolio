@@ -45,12 +45,33 @@ export default function OtherProjects({ currentProjectId, onNavigateProject }: O
               className="group flex flex-col cursor-pointer"
             >
               {/* ׳׳™׳›׳ ׳”׳×׳׳•׳ ׳” ׳”׳§׳•׳׳₪׳§׳˜׳™ ׳¢׳ ׳’׳‘׳•׳׳•׳× ׳¢׳“׳™׳ ׳™׳ ׳•׳¨׳§׳¢ ׳¦׳‘׳¢׳•׳ ׳™ ׳”׳ ׳¡׳•׳’ ׳‘׳¢׳“׳™׳ ׳•׳× */}
-              <div className={`relative overflow-hidden aspect-[4/3] rounded-xl border border-[#858E97]/15 ${bgClassName} transition-colors duration-300 flex items-center justify-center p-5`}>
-                <img
-                  src={(proj.thumbnailImages && proj.thumbnailImages.length > 1 ? proj.thumbnailImages[1] : proj.thumbnailImages?.[0]) || proj.imageUrl}
-                  alt={proj.title}
-                  className="w-[90%] h-auto object-contain rounded-lg shadow-lg group-hover:scale-[1.03] transition-transform duration-500"
-                />
+              <div className={`relative overflow-hidden aspect-[4/3] rounded-xl border border-[#858E97]/15 ${bgClassName} transition-colors duration-300`}>
+                {proj.thumbnailImages && proj.thumbnailImages.length > 0 ? (
+                  <div className="relative w-full h-full p-5 flex items-center justify-center">
+                    <motion.img
+                      src={proj.thumbnailImages[0]}
+                      alt={proj.title}
+                      initial={proj.title === 'GUS' ? { x: '154.55%', y: 58, rotate: -4, scale: 1 } : { x: 16, y: 54, rotate: -4, scale: 1 }}
+                      whileHover={proj.title === 'GUS' ? { x: '159.09%', y: 55, rotate: -3, scale: 1.02 } : { x: 19, y: 51, rotate: -2.5, scale: 1.01 }}
+                      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                      className={`absolute shadow-xl rounded-[6px] z-20 object-cover ${proj.title === 'GUS' ? 'w-[22%] aspect-[350/700]' : proj.id === '4' ? 'w-[80%]' : 'w-[80%] aspect-[15/7]'}`}
+                    />
+                    <motion.img
+                      src={proj.thumbnailImages[1] || proj.thumbnailImages[0]}
+                      alt={proj.title}
+                      initial={proj.title === 'GUS' ? { x: '-6.25%', y: 10, rotate: 4, scale: 1 } : { x: -16, y: 16, rotate: 4 }}
+                      whileHover={proj.title === 'GUS' ? { x: '-7.5%', y: 7, rotate: 5, scale: 1.02 } : { x: -19, y: 13, rotate: 5.5 }}
+                      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                      className={`absolute shadow-xl rounded-[6px] z-10 object-cover ${proj.title === 'GUS' ? 'w-[80%] aspect-[15/7]' : proj.id === '4' ? 'w-[80%]' : 'w-[80%] aspect-[15/7]'}`}
+                    />
+                  </div>
+                ) : (
+                  <img
+                    src={proj.imageUrl}
+                    alt={proj.title}
+                    className="w-full h-full object-contain p-5"
+                  />
+                )}
               </div>
 
               {/* ׳›׳•׳×׳¨׳× ׳•׳×׳™׳׳•׳¨ ׳”׳₪׳¨׳•׳™׳§׳˜ ׳׳×׳—׳× ׳׳›׳¨׳˜׳™׳¡׳™׳™׳” */}
