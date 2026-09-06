@@ -23,7 +23,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
         project.title === 'GUS' ? 'bg-[#E8FF77] group-hover:bg-[#FBFFDE]' :
         project.title === 'MindEd' ? 'bg-[#ACACF8] group-hover:bg-[#b3c4ff]' :
         project.id === '3' ? 'bg-[#BAE7FF] group-hover:bg-[#F0F9FF]' :
-        project.id === '4' ? 'bg-[#b1b1ff] group-hover:bg-[#c2c2ff]' :
+        project.id === '4' ? 'bg-[#E6C9F7] group-hover:bg-[#eeddf9]' :
         'bg-[#EAE8E4] group-hover:bg-[#FBFBFB]'
       )}>
         <div className="absolute inset-0 bg-gradient-to-br from-black/5 to-transparent z-10" />
