@@ -45,13 +45,33 @@ export default function OtherProjects({ currentProjectId, onNavigateProject }: O
               className="group flex flex-col cursor-pointer"
             >
               {/* ׳׳™׳›׳ ׳”׳×׳׳•׳ ׳” ׳”׳§׳•׳׳₪׳§׳˜׳™ ׳¢׳ ׳’׳‘׳•׳׳•׳× ׳¢׳“׳™׳ ׳™׳ ׳•׳¨׳§׳¢ ׳¦׳‘׳¢׳•׳ ׳™ ׳”׳ ׳¡׳•׳’ ׳‘׳¢׳“׳™׳ ׳•׳× */}
-              <div className={`relative overflow-hidden aspect-[16/10] rounded-xl border border-[#858E97]/15 ${bgClassName} transition-colors duration-300 p-3 flex items-center justify-center`}>
-                <img
-                  src={proj.imageUrl}
-                  alt={proj.title}
-                  className="w-full h-full object-cover rounded-lg shadow-sm group-hover:scale-[1.03] transition-transform duration-500 whitespace-nowrap"
-                  referrerPolicy="no-referrer"
-                />
+              <div className={`relative overflow-hidden aspect-[4/3] rounded-xl border border-[#858E97]/15 ${bgClassName} transition-colors duration-300`}>
+                {proj.thumbnailImages && proj.thumbnailImages.length > 0 ? (
+                  <div className="relative w-full h-full p-6 flex items-center justify-center">
+                    <motion.img
+                      src={proj.thumbnailImages[0]}
+                      alt={proj.title}
+                      whileHover={proj.title === 'GUS' ? { x: '159.09%', y: 110, rotate: -3, scale: 1.02 } : { x: 38, y: 103, rotate: -2.5, scale: 1.01 }}
+                      initial={proj.title === 'GUS' ? { x: '154.55%', y: 115, rotate: -4, scale: 1 } : { x: 32, y: 108, rotate: -4, scale: 1 }}
+                      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                      className={`absolute shadow-2xl rounded-[8px] z-20 object-cover ${proj.title === 'GUS' ? 'w-[22%] aspect-[350/700]' : proj.id === '4' ? 'w-[80%]' : 'w-[80%] aspect-[15/7]'}`}
+                    />
+                    <motion.img
+                      src={proj.thumbnailImages[1] || proj.thumbnailImages[0]}
+                      alt={proj.title}
+                      whileHover={proj.title === 'GUS' ? { x: '-7.5%', y: 15, rotate: 5, scale: 1.02 } : { x: -38, y: 26, rotate: 5.5 }}
+                      initial={proj.title === 'GUS' ? { x: '-6.25%', y: 20, rotate: 4, scale: 1 } : { x: -32, y: 32, rotate: 4 }}
+                      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                      className={`absolute shadow-2xl rounded-[8px] z-10 object-cover ${proj.title === 'GUS' ? 'w-[80%] aspect-[15/7]' : proj.id === '4' ? 'w-[80%]' : 'w-[80%] aspect-[15/7]'}`}
+                    />
+                  </div>
+                ) : (
+                  <img
+                    src={proj.imageUrl}
+                    alt={proj.title}
+                    className="w-full h-full object-cover rounded-lg shadow-sm group-hover:scale-[1.03] transition-transform duration-500"
+                  />
+                )}
               </div>
 
               {/* ׳›׳•׳×׳¨׳× ׳•׳×׳™׳׳•׳¨ ׳”׳₪׳¨׳•׳™׳§׳˜ ׳׳×׳—׳× ׳׳›׳¨׳˜׳™׳¡׳™׳™׳” */}
