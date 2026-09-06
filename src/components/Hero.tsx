@@ -283,7 +283,9 @@ export default function Hero({ externalHoverType = 'none' }: HeroProps) {
           <span className="md:whitespace-nowrap">I solve complex problems through{' '}
           <span style={{ fontFamily: "'Quicksand', sans-serif" }} className="font-bold text-[#1B232C]">intentional design</span></span>
           <br />
-          using AI (and coffee) for faster, elevated results.
+          <span className="md:whitespace-nowrap">using AI (and coffee)</span>
+          <br />
+          for faster, elevated results.
         </motion.h1>
 
         <motion.div
