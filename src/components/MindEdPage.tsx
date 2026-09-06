@@ -422,7 +422,104 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
 
         {/* Content Layers */}
         <div className="space-y-24 md:space-y-32 px-6 md:px-12">
-          
+
+          {/* The Solution — moved to top */}
+          <section className="max-w-4xl mx-auto space-y-12">
+            <div
+              className="bg-[#E5E6E6]/15 rounded-2xl overflow-hidden border border-[#BEC2C6]/25 group shadow-sm flex flex-col items-center md:-mx-12 lg:-mx-20 w-full md:w-[calc(100%+6rem)] lg:w-[calc(100%+10rem)] max-w-none"
+            >
+              <div className="w-full py-5 flex justify-center items-center">
+                <div
+                  className="inline-flex p-1 bg-[#FDFCFA] rounded-full border border-[#BEC2C6]/40 select-none shadow-sm"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setRedesignMode('after')}
+                    className={`flex items-center justify-center px-4 py-2 rounded-full text-[8.5px] md:text-[10px] font-bold uppercase tracking-[0.18em] transition-all duration-300 relative z-10 cursor-pointer ${redesignMode === 'after' ? 'text-[#FDFCFA] font-medium' : 'text-[#1B232C]/40 hover:text-[#1B232C]/60 font-medium'}`}
+                  >
+                    After Redesign
+                    {redesignMode === 'after' && (
+                      <motion.div
+                        layoutId="activeRedesignTabBgTop"
+                        className="absolute inset-0 bg-[#1B232C] rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.15),0_1px_2px_rgba(0,0,0,0.08)] -z-10"
+                        transition={{ type: "spring", stiffness: 420, damping: 30 }}
+                      />
+                    )}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setRedesignMode('before')}
+                    className={`flex items-center justify-center px-4 py-2 rounded-full text-[8.5px] md:text-[10px] font-bold uppercase tracking-[0.18em] transition-all duration-300 relative z-10 cursor-pointer ${redesignMode === 'before' ? 'text-[#FDFCFA] font-medium' : 'text-[#1B232C]/40 hover:text-[#1B232C]/60 font-medium'}`}
+                  >
+                    Before Redesign
+                    {redesignMode === 'before' && (
+                      <motion.div
+                        layoutId="activeRedesignTabBgTop"
+                        className="absolute inset-0 bg-[#1B232C] rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.15),0_1px_2px_rgba(0,0,0,0.08)] -z-10"
+                        transition={{ type: "spring", stiffness: 420, damping: 30 }}
+                      />
+                    )}
+                  </button>
+                </div>
+              </div>
+              <div
+                className="w-full aspect-[15/5.8] flex items-center justify-center p-4 md:p-8 pb-8 md:pb-12 pt-0 md:pt-0 cursor-zoom-in relative"
+                onClick={() => {
+                  if (redesignMode === 'before') {
+                    setSelectedImage(customBefore?.url || project.galleryImages?.[2] || null);
+                  } else {
+                    setSelectedImage(customAfter?.url || project.galleryImages?.[1] || null);
+                  }
+                }}
+              >
+                <AnimatePresence mode="wait">
+                  {redesignMode === 'before' ? (
+                    <motion.div
+                      key="before-top"
+                      initial={{ opacity: 0, scale: 0.98 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.98 }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      className="w-full h-full flex items-center justify-center"
+                    >
+                      {customBefore ? (
+                        customBefore.type === 'video' ? (
+                          <video src={customBefore.url} autoPlay loop muted playsInline className="max-w-full max-h-full object-contain rounded-xl border border-[#BEC2C6]/40 shadow-sm" />
+                        ) : (
+                          <img src={customBefore.url} className="max-w-full max-h-full object-contain rounded-xl border border-[#BEC2C6]/40 shadow-sm" alt="Before Redesign" />
+                        )
+                      ) : (
+                        <img src={project.galleryImages?.[2]} alt="Before Redesign" className="max-w-full max-h-full object-contain rounded-xl border border-[#BEC2C6]/40 shadow-sm" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+                      )}
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="after-top"
+                      initial={{ opacity: 0, scale: 0.98 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.98 }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      className="w-full h-full flex items-center justify-center"
+                    >
+                      {customAfter ? (
+                        customAfter.type === 'video' ? (
+                          <video src={customAfter.url} autoPlay loop muted playsInline className="max-w-full max-h-full object-contain rounded-xl border border-[#BEC2C6]/40 shadow-sm" />
+                        ) : (
+                          <img src={customAfter.url} className="max-w-full max-h-full object-contain rounded-xl border border-[#BEC2C6]/40 shadow-sm" alt="After Redesign" />
+                        )
+                      ) : (
+                        <img src={project.galleryImages?.[1]} alt="After Redesign" className="max-w-full max-h-full object-contain rounded-xl border border-[#BEC2C6]/40 shadow-sm" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+                      )}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <Maximize2 className="text-[#1B232C] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
+                </div>
+              </div>
+            </div>
+          </section>
 
           {/* Background */}
           <section className="max-w-4xl mx-auto space-y-6">
@@ -567,148 +664,6 @@ export default function MindEdPage({ project, onBack, onNavigate, onNavigateToPr
                   <Maximize2 className="text-[#1B232C] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
                 </div>
 
-              </div>
-            </div>
-          </section>
-
-          {/* The Solution */}
-          <section className="max-w-4xl mx-auto space-y-12">
-            <div className="space-y-6">
-              <h2 className="text-xs uppercase tracking-[0.15em] font-bold text-[#1B232C]">The Solution</h2>
-            </div>
-
-            <div 
-              className="bg-[#E5E6E6]/15 rounded-2xl overflow-hidden border border-[#BEC2C6]/25 group shadow-sm flex flex-col items-center md:-mx-12 lg:-mx-20 w-full md:w-[calc(100%+6rem)] lg:w-[calc(100%+10rem)] max-w-none"
-            >
-              {/* Centered within the card at the top but not overlapping the image */}
-              <div className="w-full py-5 flex justify-center items-center">
-                <div 
-                  className="inline-flex p-1 bg-[#FDFCFA] rounded-full border border-[#BEC2C6]/40 select-none shadow-sm"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <button
-                    type="button"
-                    onClick={() => setRedesignMode('after')}
-                    className={`flex items-center justify-center px-4 py-2 rounded-full text-[8.5px] md:text-[10px] font-bold uppercase tracking-[0.18em] transition-all duration-300 relative z-10 cursor-pointer ${redesignMode === 'after' ? 'text-[#FDFCFA] font-medium' : 'text-[#1B232C]/40 hover:text-[#1B232C]/60 font-medium'}`}
-                  >
-                    After Redesign
-                    {redesignMode === 'after' && (
-                      <motion.div
-                        layoutId="activeRedesignTabBg"
-                        className="absolute inset-0 bg-[#1B232C] rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.15),0_1px_2px_rgba(0,0,0,0.08)] -z-10"
-                        transition={{ type: "spring", stiffness: 420, damping: 30 }}
-                      />
-                    )}
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setRedesignMode('before')}
-                    className={`flex items-center justify-center px-4 py-2 rounded-full text-[8.5px] md:text-[10px] font-bold uppercase tracking-[0.18em] transition-all duration-300 relative z-10 cursor-pointer ${redesignMode === 'before' ? 'text-[#FDFCFA] font-medium' : 'text-[#1B232C]/40 hover:text-[#1B232C]/60 font-medium'}`}
-                  >
-                    Before Redesign
-                    {redesignMode === 'before' && (
-                      <motion.div
-                        layoutId="activeRedesignTabBg"
-                        className="absolute inset-0 bg-[#1B232C] rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.15),0_1px_2px_rgba(0,0,0,0.08)] -z-10"
-                        transition={{ type: "spring", stiffness: 420, damping: 30 }}
-                      />
-                    )}
-                  </button>
-                </div>
-              </div>
-
-              <div 
-                className="w-full aspect-[15/5.8] flex items-center justify-center p-4 md:p-8 pb-8 md:pb-12 pt-0 md:pt-0 cursor-zoom-in relative"
-                onClick={() => {
-                  if (redesignMode === 'before') {
-                    setSelectedImage(customBefore?.url || project.galleryImages?.[2] || null);
-                  } else {
-                    setSelectedImage(customAfter?.url || project.galleryImages?.[1] || null);
-                  }
-                }}
-              >
-                <AnimatePresence mode="wait">
-                  {redesignMode === 'before' ? (
-                    <motion.div
-                      key="before"
-                      initial={{ opacity: 0, scale: 0.98 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.98 }}
-                      transition={{ duration: 0.3, ease: 'easeInOut' }}
-                      className="w-full h-full flex items-center justify-center"
-                    >
-                      {customBefore ? (
-                        customBefore.type === 'video' ? (
-                          <video
-                            src={customBefore.url}
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            className="max-w-full max-h-full object-contain transition-transform duration-700 rounded-xl border border-[#BEC2C6]/40 shadow-sm"
-                          />
-                        ) : (
-                          <img
-                            src={customBefore.url}
-                            className="max-w-full max-h-full object-contain transition-transform duration-700 rounded-xl border border-[#BEC2C6]/40 shadow-sm"
-                            alt="MindEd Before Redesign Custom"
-                          />
-                        )
-                      ) : (
-                        <img
-                          src={project.galleryImages?.[2]}
-                          alt="Before Redesign"
-                          className="max-w-full max-h-full object-contain transition-transform duration-700 rounded-xl border border-[#BEC2C6]/40 shadow-sm"
-                          onError={(e) => {
-                            (e.target as HTMLImageElement).style.display = 'none';
-                          }}
-                        />
-                      )}
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="after"
-                      initial={{ opacity: 0, scale: 0.98 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.98 }}
-                      transition={{ duration: 0.3, ease: 'easeInOut' }}
-                      className="w-full h-full flex items-center justify-center"
-                    >
-                      {customAfter ? (
-                        customAfter.type === 'video' ? (
-                          <video
-                            src={customAfter.url}
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            className="max-w-full max-h-full object-contain transition-transform duration-700 rounded-xl border border-[#BEC2C6]/40 shadow-sm"
-                          />
-                        ) : (
-                          <img
-                            src={customAfter.url}
-                            className="max-w-full max-h-full object-contain transition-transform duration-700 rounded-xl border border-[#BEC2C6]/40 shadow-sm"
-                            alt="After Redesign Custom"
-                          />
-                        )
-                      ) : (
-                        <img
-                          src={project.galleryImages?.[1]}
-                          alt="After Redesign"
-                          className="max-w-full max-h-full object-contain transition-transform duration-700 rounded-xl border border-[#BEC2C6]/40 shadow-sm"
-                          onError={(e) => {
-                            (e.target as HTMLImageElement).style.display = 'none';
-                          }}
-                        />
-                      )}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-                
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <Maximize2 className="text-[#1B232C] opacity-0 group-hover:opacity-40 transition-opacity" size={24} />
-                </div>
               </div>
             </div>
           </section>
