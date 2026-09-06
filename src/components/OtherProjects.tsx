@@ -29,7 +29,7 @@ export default function OtherProjects({ currentProjectId, onNavigateProject }: O
             proj.id === '1' ? 'bg-[#D2C7FF] hover:bg-[#F5F3FF]' :
             proj.id === '2' ? 'bg-[#E8FF77] hover:bg-[#FBFFDE]' :
             proj.id === '3' ? 'bg-[#BAE7FF] hover:bg-[#F0F9FF]' :
-            proj.id === '4' ? 'bg-[#b1b1ff] hover:bg-[#c2c2ff]' :
+            proj.id === '4' ? 'bg-[#E6C9F7] hover:bg-[#eeddf9]' :
             'bg-[#EAE8E4] hover:bg-[#FBFBFB]';
 
           return (
