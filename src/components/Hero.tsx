@@ -280,12 +280,10 @@ export default function Hero({ externalHoverType = 'none' }: HeroProps) {
           className="font-light leading-tight tracking-tight max-w-6xl text-[#1B232C]"
           style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontFamily: "'Quicksand', sans-serif" }}
         >
-          <span className="md:whitespace-nowrap">I solve problems through{' '}
+          <span className="md:whitespace-nowrap">I solve complex problems through{' '}
           <span style={{ fontFamily: "'Quicksand', sans-serif" }} className="font-bold text-[#1B232C]">intentional design</span></span>
           <br />
-          <span className="md:whitespace-nowrap">and systematic thinking - using AI (and coffee)</span>
-          <br />
-          to take solutions further, faster.
+          using AI (and coffee) for faster, elevated results.
         </motion.h1>
 
         <motion.div
